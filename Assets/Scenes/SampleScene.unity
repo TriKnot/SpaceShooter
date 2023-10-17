@@ -269,11 +269,59 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spaceship14_2
       objectReference: {fileID: 0}
+    - target: {fileID: 5255663518126137396, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
+      propertyPath: _yawForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255663518126137396, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
+      propertyPath: _rollForce
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255663518126137396, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
+      propertyPath: _pitchForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255663518126137396, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
+      propertyPath: _thrustForce
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2140451887144911323, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1200290389}
   m_SourcePrefab: {fileID: 100100000, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
+--- !u!1 &1200290381 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2140451887144911323, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
+  m_PrefabInstance: {fileID: 1200290380}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1200290383 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5255663518126137396, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
+  m_PrefabInstance: {fileID: 1200290380}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200290381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa7c5e99f0a6ad1469ae0a5bcf0bde94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1200290389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200290381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c88fdbfe10bcd9429cca30e5a5d10b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shipEngine: {fileID: 1200290383}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
