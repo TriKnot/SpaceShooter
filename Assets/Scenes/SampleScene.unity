@@ -123,16 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!198 &141040563 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8254333399356323471, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-  m_PrefabInstance: {fileID: 1200290380}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &611317993 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8280205493223356093, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-  m_PrefabInstance: {fileID: 1200290380}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,11 +217,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!198 &1088969134 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8508010220801873342, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-  m_PrefabInstance: {fileID: 1200290380}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1200290380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -240,10 +225,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1899551149735134822, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 17
-      objectReference: {fileID: 0}
     - target: {fileID: 2140451887144623611, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -288,92 +269,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spaceship14_2
       objectReference: {fileID: 0}
-    - target: {fileID: 3366189588983974181, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 3366189588983974181, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3366189588983974181, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4263236007744516579, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 5255663518126137396, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-      propertyPath: _leftBackThruster
-      value: 
-      objectReference: {fileID: 1088969134}
-    - target: {fileID: 5255663518126137396, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-      propertyPath: _leftFrontThruster
-      value: 
-      objectReference: {fileID: 611317993}
-    - target: {fileID: 5255663518126137396, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-      propertyPath: _rightBackThruster
-      value: 
-      objectReference: {fileID: 1737735769}
-    - target: {fileID: 5255663518126137396, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-      propertyPath: _rightFrontThruster
-      value: 
-      objectReference: {fileID: 141040563}
-    - target: {fileID: 5255663518126137396, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-      propertyPath: _engineThrustEmissionRateMax
-      value: 450
-      objectReference: {fileID: 0}
-    - target: {fileID: 5255663518126137396, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-      propertyPath: _engineThrustEmissionLifeTimeMax
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8254333399356323471, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 8254333399356323471, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8254333399356323471, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8280205493223356093, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 8280205493223356093, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8280205493223356093, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8508010220801873342, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 8508010220801873342, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8508010220801873342, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
---- !u!198 &1737735769 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3366189588983974181, guid: 4402ef4896c61e14099a80c3fa4ad1cc, type: 3}
-  m_PrefabInstance: {fileID: 1200290380}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
