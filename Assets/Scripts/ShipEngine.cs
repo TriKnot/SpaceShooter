@@ -36,7 +36,12 @@ public class ShipEngine : MonoBehaviour
     
     public bool ShouldDampenCurrentValues
     {
-        set => _shouldStop = value;
+        set
+        {
+            _shouldStop = value;
+            if (!value)
+                _currentThrustInput = 0;
+        }
     }
 
     private void Awake()

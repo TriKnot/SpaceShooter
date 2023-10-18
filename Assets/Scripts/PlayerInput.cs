@@ -6,6 +6,7 @@ public class PlayerInput : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private ShipEngine _shipEngine;
+    [SerializeField] private WeaponSystem _weaponSystem;
     
     private PlayerInputActions _playerInputActions;
     
@@ -80,7 +81,7 @@ public class PlayerInput : MonoBehaviour
     
     private void OnFire(InputAction.CallbackContext context)
     {
-        Debug.Log("Pew!");
+        _weaponSystem.ShootLaser();
     }
     
     private void OnMove(InputAction.CallbackContext context)
@@ -100,6 +101,5 @@ public class PlayerInput : MonoBehaviour
     private void OnStop(InputAction.CallbackContext context)
     {
         _shipEngine.ShouldDampenCurrentValues = context.started;
-        Debug.Log(context);
     }
 }
