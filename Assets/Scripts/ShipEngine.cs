@@ -64,7 +64,8 @@ public class ShipEngine : MonoBehaviour
 
         if (_shouldStop)
         {
-            if(_velocity.magnitude < 5.0f)
+            
+            if(_velocity.magnitude < 10.0f)
             {
                 _velocity = Vector3.zero;
                 _angularVelocity = Vector3.zero;
@@ -103,14 +104,15 @@ public class ShipEngine : MonoBehaviour
 
     private void MoveShip()
     {
-        // Rotate the ship
-        transform.Rotate(_angularVelocity * Time.deltaTime, Space.Self);
+        if(_angularVelocity.magnitude > 0.1f)
+        {
+            // Rotate the ship
+            transform.Rotate(_angularVelocity * Time.deltaTime, Space.Self);
+        }
         
         // Move the ship
         _transform.position += _velocity * Time.deltaTime;
         
-        Debug.Log($" _velocity: {_velocity} ");
-        Debug.Log($" _angularVelocity: {_angularVelocity} ");
     }
 
     private void UpdateEngineParticles()
