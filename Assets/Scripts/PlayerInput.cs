@@ -1,3 +1,4 @@
+using Asteroids;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,9 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private ShipEngine _shipEngine;
     
     private PlayerInputActions _playerInputActions;
+
+    [SerializeField]
+    private Asteroid[] _fractures;
     
     // Actions
     private InputAction _move;
@@ -79,7 +83,10 @@ public class PlayerInput : MonoBehaviour
     
     private void OnFire(InputAction.CallbackContext context)
     {
-        Debug.Log("Fire");
+        foreach (Asteroid frac in _fractures)
+        {
+            frac.FractureObject();
+        }
     }
     
     private void OnMove(InputAction.CallbackContext context)
