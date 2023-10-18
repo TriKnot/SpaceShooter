@@ -63,19 +63,21 @@ namespace UI
 
             // Assign to UI
             {
-                _fpsText.text = _currentAveraged switch
+                 string fps = _currentAveraged switch
                 {
                     var x when x >= 0 && x < _cacheNumbersAmount => _cachedNumberStrings[x],
                     var x when x >= _cacheNumbersAmount => $"> {_cacheNumbersAmount}",
                     var x when x < 0 => "< 0",
                     _ => "?"
                 };
+                 
+                 _fpsText.text = "FPS: " + fps;
             }
         }
 
         private void UpdateEntityCountText()
         {
-            _entityText.text = _entityCount.Value.ToString();    
+            _entityText.text = "Entities: " + _entityCount.Value;    
         }
 
         public void OnValueChanged(int newValue)
