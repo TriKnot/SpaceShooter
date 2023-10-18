@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b8c7d88eebb9940b3c4196017b84df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fractured: {fileID: 3623216778096601390, guid: 0df7f3e030f1da24a9abe74e81197585, type: 3}
-  _minScaleMultiplier: 1
+  fractured: {fileID: 5086799448916661253, guid: 9cb5e7465eef1af4988889e41a071493, type: 3}
+  _minScaleMultiplier: 10
   _maxScaleMultiplier: 100
   _entityCount: {fileID: 11400000, guid: 909bdc52c947b5c4aab2e94a77181910, type: 2}
 --- !u!64 &2615907601388813192
@@ -116,7 +116,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5

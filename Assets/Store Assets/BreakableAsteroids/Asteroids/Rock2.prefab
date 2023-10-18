@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b8c7d88eebb9940b3c4196017b84df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fractured: {fileID: 3623216778096601390, guid: 0df7f3e030f1da24a9abe74e81197585, type: 3}
-  _minScaleMultiplier: 1
+  fractured: {fileID: 5802414221815388905, guid: 8a0d737915eae7a4e8c4176987503064, type: 3}
+  _minScaleMultiplier: 10
   _maxScaleMultiplier: 100
   _entityCount: {fileID: 11400000, guid: 909bdc52c947b5c4aab2e94a77181910, type: 2}
 --- !u!64 &7950008947720794758
