@@ -100,6 +100,7 @@ MonoBehaviour:
   fractured: {fileID: 3623216778096601390, guid: 0df7f3e030f1da24a9abe74e81197585, type: 3}
   _minScaleMultiplier: 1
   _maxScaleMultiplier: 100
+  _entityCount: {fileID: 11400000, guid: 909bdc52c947b5c4aab2e94a77181910, type: 2}
 --- !u!64 &4039586575218629321
 MeshCollider:
   m_ObjectHideFlags: 0

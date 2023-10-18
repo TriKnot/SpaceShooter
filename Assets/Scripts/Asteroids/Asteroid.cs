@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using ScriptableObjects.Variables;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Asteroids
@@ -36,6 +37,17 @@ namespace Asteroids
             AsteroidFractured fracturedAsteroid = Instantiate(fractured, trans.position, trans.rotation); //Spawn in the broken version
             fracturedAsteroid.Init(_scaleMultiplier, _velocity, _angularVelocity); //Initialise the broken version
             Destroy(gameObject); //Destroy the object to stop it getting in the way
+        }
+        
+        [SerializeField] private IntVariableSO _entityCount;
+        private void OnEnable()
+        {
+            _entityCount.Value++;
+        }
+        
+        private void OnDisable()
+        {
+            _entityCount.Value--;
         }
     }
 }

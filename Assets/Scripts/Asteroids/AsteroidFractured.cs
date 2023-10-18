@@ -1,3 +1,5 @@
+using System;
+using ScriptableObjects.Variables;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -6,6 +8,7 @@ namespace Asteroids
     public class AsteroidFractured : MonoBehaviour
     {
         [SerializeField] private AsteroidPiece[] _pieces;
+        [SerializeField] private IntVariableSO _entityCount;
 
         public void Init(float _scaleMultiplier, Vector3 _velocity, Vector3 _angularVelocity)
         {
@@ -34,10 +37,20 @@ namespace Asteroids
                 Vector3 asteroidRotationVelocity = Vector3.Cross(angularVelocity, piecePosition - asteroidCenter);
                 Vector3 calculatedVelocity = asteroidRotationVelocity + velocity + randomDirectionVelocity;
                 calculatedVelocity = Vector3.ClampMagnitude(calculatedVelocity, 100);
-                piece.Init(calculatedVelocity, Random.insideUnitSphere * scaleMultiplier, scaleMultiplier);
+                piece.Init(calculatedVelocity, Random.insideUnitSphere * scaleMultiplier, scaleMultiplier, _entityCount);
             }
             Destroy(gameObject);
         }
 
+        private void OnEnable()
+        {
+            _entityCount.Value++;
+        }
+        
+        private void OnDisable()
+        {
+            _entityCount.Value--;
+        }
+        
     }
 }
