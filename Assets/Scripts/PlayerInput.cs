@@ -8,9 +8,6 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private ShipEngine _shipEngine;
     
     private PlayerInputActions _playerInputActions;
-
-    [SerializeField]
-    private Asteroid[] _fractures;
     
     // Actions
     private InputAction _move;
@@ -83,10 +80,7 @@ public class PlayerInput : MonoBehaviour
     
     private void OnFire(InputAction.CallbackContext context)
     {
-        foreach (Asteroid frac in _fractures)
-        {
-            frac.FractureObject();
-        }
+        Debug.Log("Pew!");
     }
     
     private void OnMove(InputAction.CallbackContext context)
