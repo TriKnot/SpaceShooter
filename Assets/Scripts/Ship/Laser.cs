@@ -43,7 +43,6 @@ namespace Ship
     
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Hit something!");
             if (!other.TryGetComponent(out Asteroid asteroid)) return;
             asteroid.FractureObject();
             Destroy(gameObject);
