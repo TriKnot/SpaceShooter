@@ -64,15 +64,16 @@ public class ShipEngine : MonoBehaviour
 
         if (_shouldStop)
         {
-            if(_velocity.magnitude < 0.1f)
+            if(_velocity.magnitude < 5.0f)
             {
                 _velocity = Vector3.zero;
                 _angularVelocity = Vector3.zero;
+                _currentThrustInput = 0f;
                 return;
             }
             
             // Calculate the target rotation based on the input values
-            var targetRotation = Quaternion.LookRotation(_velocity, Vector3.up);
+            var targetRotation = Quaternion.LookRotation(-_velocity, Vector3.up);
             targetRotation *= Quaternion.Euler(_currentPitchInput, _currentYawInput, _currentRollInput);
 
             // Calculate the rotation step based on your desired rotation speed
@@ -84,10 +85,10 @@ public class ShipEngine : MonoBehaviour
             // Dampen the angular velocity
             _angularVelocity = Vector3.Lerp(_angularVelocity, Vector3.zero, Time.deltaTime);
             
-            if(Quaternion.Angle(_transform.rotation, targetRotation) < 0.1f)
+            if(Quaternion.Angle(_transform.rotation, targetRotation) < 5.0f)
             {
                 // Dampen the velocity
-                _currentThrustInput = -1f;
+                _currentThrustInput = 1f;
             }
             
         }
