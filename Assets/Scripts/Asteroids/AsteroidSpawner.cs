@@ -11,6 +11,7 @@ namespace Asteroids
         [SerializeField] private float _minSpawnDistance;
         [SerializeField] private float _spawnRate;
         [SerializeField] private Camera _camera;
+        [SerializeField] private Transform _playerTransform;
         
 
         private void Start()
@@ -44,7 +45,7 @@ namespace Asteroids
             int attempts = 0; // safety measure to prevent infinite loop
             do
             {
-                spawnPos = Random.insideUnitSphere * Random.Range(_minSpawnDistance, _maxspawnRadius);
+                spawnPos = Random.insideUnitSphere * Random.Range(_minSpawnDistance, _maxspawnRadius) + _playerTransform.position;
             } while (!IsPositionOnScreen(spawnPos) && attempts++ < 100);
             Asteroid asteroid = Instantiate(_asteroidPrefabs[randAsteroidIndex], spawnPos, Random.rotation);
         }
