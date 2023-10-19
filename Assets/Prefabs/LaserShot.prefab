@@ -102,6 +102,8 @@ MonoBehaviour:
   _maxDistance: 15000
   _transform: {fileID: 6657106941065523967}
   _damage: 10
+  _hitEffectPrefab: {fileID: 3917771847206133421, guid: f28d31dccf140ff4d85369e38957b073, type: 3}
+  _asteroidPieceCountSO: {fileID: 11400000, guid: b6544f9f6cc0f1c41a0c67283548fc52, type: 2}
 --- !u!65 &8815321312933379336
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -205,3 +205,5 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _piecePrefabs: {fileID: 11400000, guid: aaa1fbea16871f142ae069c0b9639fe4, type: 2}
+  _currentHealth: 0

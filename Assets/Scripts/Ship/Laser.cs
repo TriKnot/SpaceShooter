@@ -1,4 +1,5 @@
 using Asteroids;
+using ScriptableObjects.Variables;
 using UnityEngine;
 
 namespace Ship
@@ -9,6 +10,10 @@ namespace Ship
         [SerializeField] private float _maxDistance;
         [SerializeField] private Transform _transform;
         [SerializeField] private float _damage;
+        
+        [SerializeField] private Explosion _hitEffectPrefab;
+
+        [SerializeField] private IntVariableSO _asteroidPieceCountSO;
     
         private Vector3 _direction;
     
@@ -37,7 +42,8 @@ namespace Ship
         {
             if (!other.TryGetComponent(out AsteroidHealthSystem healthSystem)) return;
             // If it is, fracture it
-            Hit(healthSystem);        }
+            Hit(healthSystem, other.transform.position);        
+        }
         
         private void CheckAhead()
         {
@@ -47,13 +53,17 @@ namespace Ship
             // If there is, check if it's an asteroid
             if (!hit.collider.TryGetComponent(out AsteroidHealthSystem healthSystem)) return;
             // If it is, fracture it
-            Hit(healthSystem);
+            Hit(healthSystem, hit.point);
         }
         
-        private void Hit(AsteroidHealthSystem healthSystem)
+        private void Hit(AsteroidHealthSystem healthSystem, Vector3 hitPoint)
         {
             // Damage the asteroid
-            healthSystem.Hit(_damage);
+            healthSystem.Hit(_damage, hitPoint, _asteroidPieceCountSO);
+            // Spawn the hit effect 
+            Vector3 hitPosition = hitPoint + _velocity.normalized * 100.0f;
+            Explosion explosion = Instantiate(_hitEffectPrefab, hitPosition, Quaternion.identity);
+            explosion.Explode(100);
             Destroy(gameObject);
         }
 
