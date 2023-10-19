@@ -25,7 +25,11 @@ namespace Asteroids
             {
                 piece.gameObject.SetActive(true);
                 
-                Vector3 piecePosition = piece.transform.position;
+                // Move the asteroid piece away from the center of the asteroid in relation to the scalemultiplier
+                Transform pieceTransform = piece.transform;
+                pieceTransform.localPosition *= scaleMultiplier * 0.05f;
+                
+                Vector3 piecePosition = pieceTransform.position;
                 Vector3 asteroidCenter = transform.position;
                 
                 Vector3 randomDirectionVelocity = Random.insideUnitSphere * scaleMultiplier;

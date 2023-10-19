@@ -4842,6 +4842,8 @@ GameObject:
   - component: {fileID: 8612962079389752947}
   - component: {fileID: 5255663518126137396}
   - component: {fileID: 8270111089822977417}
+  - component: {fileID: 507339119604976543}
+  - component: {fileID: 3262509998626119402}
   m_Layer: 0
   m_Name: Spaceship14_2
   m_TagString: Untagged
@@ -4868,6 +4870,7 @@ Transform:
   - {fileID: 4263236007744516579}
   - {fileID: 1899551149735134822}
   - {fileID: 1598111701248006358}
+  - {fileID: 1826827773809977513}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2140451887145917915
@@ -4982,6 +4985,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shipEngine: {fileID: 5255663518126137396}
+  _weaponSystem: {fileID: 507339119604976543}
+--- !u!114 &507339119604976543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140451887144911323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7025c4f4e59b6246bfcb6820417180a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _laserPrefab: {fileID: 237629716101580376, guid: a212475828d24c741b5c2c7e654d6878, type: 3}
+  _laserSpawnPoint: {fileID: 1826827773809977513}
+  _laserStartRotation: {x: 90, y: 0, z: 0}
+--- !u!114 &3262509998626119402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2140451887144911323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28bcfd3569910f942a40f14d270660ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _asteroidPrefabs:
+  - {fileID: 5175909829843006713, guid: a028a9caf7ccf2443a238296ded73a04, type: 3}
+  - {fileID: 3177671791670645568, guid: 41059c7f21dd4994d9797364e07a3d45, type: 3}
+  - {fileID: 2906392387806336398, guid: 579e809d2465e864795196e5b0545d73, type: 3}
+  - {fileID: 7317728986581835491, guid: b31bb4b021ef65f4fbaf7f2d7e56f967, type: 3}
+  - {fileID: 145704788088057013, guid: 1b25ec5b3aa236f49bb4e00c0b8a5efe, type: 3}
+  - {fileID: 1618759041239481701, guid: a7650c1ce3d21654ebf92d7ebf494bfc, type: 3}
+  - {fileID: 572667168815375895, guid: 2da3e069c77e294469e5af0fe430dabf, type: 3}
+  - {fileID: 5574121199870545792, guid: 52e5665ed874ab649afee8d6df0ab38e, type: 3}
+  - {fileID: 635422582205603307, guid: 3054692602d6b2c418a430defcc5dca4, type: 3}
+  - {fileID: 1137959277829153431, guid: 8312a98dccd9dba4ab86a80fa392cfa8, type: 3}
+  - {fileID: 1486938197721155888, guid: af2725044a76460448d036210c096953, type: 3}
+  - {fileID: 2432721041874615820, guid: 73da260fe05fc414da1dbbca90d3030c, type: 3}
+  - {fileID: 4100319026708289000, guid: 46e7653dfbf77b247bc855c46bbd4f4e, type: 3}
+  - {fileID: 1705999101787402632, guid: ec4c29675987e87429aeec5e4e93fc5f, type: 3}
+  - {fileID: 1650272209027139134, guid: c0e82ab38938b0a4ab35f65d8981ac0f, type: 3}
+  _initialAsteroidCount: 10
+  _maxspawnRadius: 5000
+  _minSpawnDistance: 100
+  _spawnRate: 1
 --- !u!1 &3019140101077939271
 GameObject:
   m_ObjectHideFlags: 0
@@ -14638,6 +14689,37 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &3425102320251557419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1826827773809977513}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1826827773809977513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3425102320251557419}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -4.5, z: 6.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2140451887144623611}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3562085055441052260
 GameObject:
   m_ObjectHideFlags: 0
@@ -24359,7 +24441,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 1000000
   field of view: 60
   orthographic: 0
   orthographic size: 5
