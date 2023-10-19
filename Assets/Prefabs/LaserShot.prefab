@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 10000
-  _maxDistance: 15000
+  _maxDistance: 30000
   _transform: {fileID: 6657106941065523967}
   _damage: 10
   _hitEffectPrefab: {fileID: 3917771847206133421, guid: f28d31dccf140ff4d85369e38957b073, type: 3}
