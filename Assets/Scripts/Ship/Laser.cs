@@ -5,7 +5,6 @@ namespace Ship
 {
     public class Laser : MonoBehaviour
     {
-        [SerializeField] private Vector3 _targetSize;
         [SerializeField] private float _speed;
         [SerializeField] private float _maxDistance;
         [SerializeField] private Transform _transform;
@@ -30,14 +29,7 @@ namespace Ship
             Vector3 frameVelocity = _velocity * Time.fixedDeltaTime;
             _transform.position += frameVelocity;
             _travelDistance += frameVelocity.magnitude;
-        
-            // Scale up
-            if (_isFullSize) return;
-        
-            _transform.localScale = Vector3.Lerp(_transform.localScale, _targetSize, Time.fixedDeltaTime );
-        
-            if(_transform.localScale == _targetSize)
-                _isFullSize = true;
+
         }
     
     
