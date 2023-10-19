@@ -905,9 +905,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b5bd3950be46b3488d88e7a32d5d003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityText: {fileID: 606081610}
-  _entityCount: {fileID: 11400000, guid: 909bdc52c947b5c4aab2e94a77181910, type: 2}
+  _asteroidText: {fileID: 606081610}
+  _asteroidPieceText: {fileID: 1413535568}
   _fpsText: {fileID: 1964678638}
+  _asteroidCount: {fileID: 11400000, guid: 909bdc52c947b5c4aab2e94a77181910, type: 2}
+  _asteroidPieceCount: {fileID: 11400000, guid: b6544f9f6cc0f1c41a0c67283548fc52, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
