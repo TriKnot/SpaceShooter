@@ -29,7 +29,7 @@ namespace Ship
             Vector3 frameVelocity = _velocity * Time.fixedDeltaTime;
             _transform.position += frameVelocity;
             _travelDistance += frameVelocity.magnitude;
-
+            CheckAhead();
         }
     
         private void OnTriggerEnter(Collider other)
