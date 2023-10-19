@@ -32,10 +32,28 @@ namespace Ship
 
         }
     
-    
         private void OnTriggerEnter(Collider other)
         {
             if (!other.TryGetComponent(out Asteroid asteroid)) return;
+            HitAsteroid(asteroid);
+        }
+        
+        private void CheckAhead()
+        {
+            // Check if there's an asteroid ahead
+            RaycastHit hit;
+            if (!Physics.Raycast(_transform.position, _velocity, out hit, _speed * Time.fixedDeltaTime)) return;
+            // If there is, check if it's an asteroid
+            if (hit.collider.TryGetComponent(out Asteroid asteroid))
+            {
+                // If it is, fracture it
+                HitAsteroid(asteroid);
+            }
+        }
+        
+        private void HitAsteroid(Asteroid asteroid)
+        {
+            // Fracture the asteroid
             asteroid.FractureObject();
             Destroy(gameObject);
         }
