@@ -865,6 +865,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spaceship
       objectReference: {fileID: 0}
+    - target: {fileID: 2243656454026406511, guid: cb544a9179cb2244d854eca89bb5a7c7, type: 3}
+      propertyPath: _spawnRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243656454026406511, guid: cb544a9179cb2244d854eca89bb5a7c7, type: 3}
+      propertyPath: _initialAsteroidCount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2243656454026406511, guid: cb544a9179cb2244d854eca89bb5a7c7, type: 3}
+      propertyPath: _asteroidPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9157108533330915895, guid: cb544a9179cb2244d854eca89bb5a7c7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -13,29 +13,21 @@ namespace Asteroids
         [SerializeField] private float _maxScaleMultiplier;
         
         private float _scaleMultiplier;
-        private Vector3 _velocity;
-        private Vector3 _angularVelocity;
+        private AsteroidMovement _asteroidMovement;
 
         private void Awake()
         {
             _scaleMultiplier = Random.Range(_minScaleMultiplier, _maxScaleMultiplier);
             transform.localScale *= _scaleMultiplier;
-            _velocity = Random.insideUnitSphere * Random.Range(0, 100);
-            _angularVelocity = Random.insideUnitSphere * Random.Range(0, 100);
-        }
-
-        public void FixedUpdate()
-        {
-            // Move the asteroid
-            transform.position += _velocity * Time.fixedDeltaTime;
-            transform.rotation *= Quaternion.Euler(_angularVelocity * Time.fixedDeltaTime);
+            _asteroidMovement = gameObject.AddComponent<AsteroidMovement>();
+            _asteroidMovement.Init(_scaleMultiplier, Mathf.Pow(_scaleMultiplier, 3));
         }
         
         public void FractureObject()
         {
             Transform trans = transform;
             AsteroidFractured fracturedAsteroid = Instantiate(fractured, trans.position, trans.rotation); //Spawn in the broken version
-            fracturedAsteroid.Init(_scaleMultiplier, _velocity, _angularVelocity); //Initialise the broken version
+            fracturedAsteroid.Init(_scaleMultiplier,_asteroidMovement.Velocity, _asteroidMovement.AngularVelocity); //Initialise the broken version
             Destroy(gameObject); //Destroy the object to stop it getting in the way
         }
         

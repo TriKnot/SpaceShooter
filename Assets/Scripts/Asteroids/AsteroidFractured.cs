@@ -10,12 +10,12 @@ namespace Asteroids
         [SerializeField] private AsteroidPiece[] _pieces;
         [SerializeField] private IntVariableSO _entityCount;
 
-        public void Init(float _scaleMultiplier, Vector3 _velocity, Vector3 _angularVelocity)
+        public void Init(float scaleMultiplier, Vector3 velocity, Vector3 angularVelocity)
         {
             Transform trans = transform;
-            trans.localScale *= _scaleMultiplier;
-            trans.rotation *= Quaternion.Euler(_angularVelocity * Time.fixedDeltaTime);
-            FractureObject(_scaleMultiplier, _velocity, _angularVelocity);
+            trans.localScale *= scaleMultiplier;
+            trans.rotation *= Quaternion.Euler(angularVelocity * Time.fixedDeltaTime);
+            FractureObject(scaleMultiplier, velocity, angularVelocity);
         }
 
 
@@ -33,7 +33,7 @@ namespace Asteroids
                 Vector3 asteroidRotationVelocity = Vector3.Cross(angularVelocity, piecePosition - asteroidCenter);
                 Vector3 calculatedVelocity = asteroidRotationVelocity + velocity + randomDirectionVelocity;
                 calculatedVelocity = Vector3.ClampMagnitude(calculatedVelocity, 100);
-                piece.Init(calculatedVelocity, Random.insideUnitSphere * scaleMultiplier, scaleMultiplier, _entityCount);
+                piece.Init(calculatedVelocity, Random.insideUnitSphere * scaleMultiplier, scaleMultiplier, scaleMultiplier / _pieces.Length, _entityCount);
             }
             Destroy(gameObject);
         }
