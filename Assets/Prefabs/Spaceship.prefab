@@ -207,6 +207,7 @@ MonoBehaviour:
   _minSpawnDistance: 500
   _spawnRate: 1
   _camera: {fileID: 8364268030501572679}
+  _playerTransform: {fileID: 9157108533330915895}
 --- !u!54 &6810704665422523245
 Rigidbody:
   m_ObjectHideFlags: 0
