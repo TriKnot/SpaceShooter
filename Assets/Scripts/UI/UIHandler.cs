@@ -8,11 +8,13 @@ namespace UI
 {
     public class UIHandler : MonoBehaviour, IVariableObserver<int>
     {
-        [SerializeField] private TextMeshProUGUI _entityText;
-        [SerializeField] private IntVariableSO _entityCount;
-        
+        [SerializeField] private TextMeshProUGUI _asteroidText;
+        [SerializeField] private TextMeshProUGUI _asteroidPieceText;
         [SerializeField] private TextMeshProUGUI _fpsText;
-
+        
+        [SerializeField] private IntVariableSO _asteroidCount;
+        [SerializeField] private IntVariableSO _asteroidPieceCount;
+        
         private Dictionary<int, string> _cachedNumberStrings = new();
         private int[] _frameRateSamples;
         private int _cacheNumbersAmount = 300;
@@ -30,12 +32,13 @@ namespace UI
 
             _frameRateSamples = new int[_averageFromAmount];
             
-            _entityCount.RegisterObserver(this);
+            _asteroidCount.RegisterObserver(this);
+            _asteroidPieceCount.RegisterObserver(this);
         }
 
         private void OnDestroy()
         {
-            _entityCount.UnregisterObserver(this);
+            _asteroidCount.UnregisterObserver(this);
         }
 
         void Update()
@@ -75,14 +78,20 @@ namespace UI
             }
         }
 
-        private void UpdateEntityCountText()
+        private void UpdateAsteroidCountText()
         {
-            _entityText.text = "Entities: " + _entityCount.Value;    
+            _asteroidText.text = "Asteroids: " + _asteroidCount.Value;    
+        }
+        
+        private void UpdateAsteroidPieceCountText()
+        {
+            _asteroidPieceText.text = "Asteroid pieces: " + _asteroidPieceCount.Value;    
         }
 
         public void OnValueChanged(int newValue)
         {
-            UpdateEntityCountText();
+            UpdateAsteroidCountText();
+            UpdateAsteroidPieceCountText();
         }
     }
 }
