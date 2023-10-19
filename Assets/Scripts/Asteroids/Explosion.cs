@@ -14,19 +14,25 @@ namespace Asteroids
         public void Explode(float scaleMultiplier)
         {
             _scaleMultiplier = scaleMultiplier;
-            // Setup the explosion and play it
-            ParticleSystem.MainModule main = _particleSystems.main;
-            main.startSizeMultiplier *= scaleMultiplier * 2;
+            if(_particleSystems)
+            {
+                // Setup the explosion and play it
+                ParticleSystem.MainModule main = _particleSystems.main;
+                main.startSizeMultiplier *= scaleMultiplier * 2;
+
+                // Set duration and lifetime to scale with the explosion between 0.25s and 5s
+                float duration = Mathf.Lerp(0.25f, 2.5f, Mathf.InverseLerp(10, 100, scaleMultiplier));
+                main.duration = duration;
+                main.startLifetimeMultiplier = duration;
+
+                _particleSystems.Play();
+            }
             
-            // Set duration and lifetime to scale with the explosion between 0.25s and 5s
-            float duration = Mathf.Lerp(0.25f, 2.5f, Mathf.InverseLerp(10, 100, scaleMultiplier));
-            main.duration = duration;
-            main.startLifetimeMultiplier = duration;
-            
-            _particleSystems.Play();
-            
-            _light.range *= scaleMultiplier;
-            _light.intensity *= scaleMultiplier;
+            if(_light)
+            {
+                _light.range *= scaleMultiplier;
+                _light.intensity *= scaleMultiplier;
+            }
             
             // Set a random spherical rotation
             transform.rotation = Quaternion.Euler(UnityEngine.Random.insideUnitSphere * 360);

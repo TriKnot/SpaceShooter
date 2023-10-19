@@ -26,5 +26,10 @@ namespace Asteroids
         {
             _entityCount.Value--;
         }
+
+        public void OnHit()
+        {
+            Destroy(gameObject);
+        }
     }
 }

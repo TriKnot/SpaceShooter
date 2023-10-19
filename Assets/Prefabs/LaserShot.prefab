@@ -101,6 +101,7 @@ MonoBehaviour:
   _speed: 10000
   _maxDistance: 15000
   _transform: {fileID: 6657106941065523967}
+  _damage: 10
 --- !u!65 &8815321312933379336
 BoxCollider:
   m_ObjectHideFlags: 0

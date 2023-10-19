@@ -12,9 +12,12 @@ namespace Asteroids
         [SerializeField] private float _minScaleMultiplier;
         [SerializeField] private float _maxScaleMultiplier;
         [SerializeField] private AnimationCurve _massCurve;
+        [SerializeField] private AsteroidHealthSystem _healthSystem;
         
         private float _scaleMultiplier;
         private AsteroidMovement _asteroidMovement;
+        
+        [SerializeField] private IntVariableSO _entityCount;
 
         private void Awake()
         {
@@ -23,9 +26,10 @@ namespace Asteroids
             transform.localScale *= _scaleMultiplier;
             _asteroidMovement = gameObject.AddComponent<AsteroidMovement>();
             _asteroidMovement.Init(_scaleMultiplier, Mathf.Pow(_scaleMultiplier, 3));
+            _healthSystem.Init(_scaleMultiplier);
         }
-        
-        public void FractureObject()
+
+        public void OnDeath()
         {
             Transform trans = transform;
             AsteroidFractured fracturedAsteroid = Instantiate(fractured, trans.position, trans.rotation); //Spawn in the broken version
@@ -33,7 +37,6 @@ namespace Asteroids
             Destroy(gameObject); //Destroy the object to stop it getting in the way
         }
         
-        [SerializeField] private IntVariableSO _entityCount;
         private void OnEnable()
         {
             _entityCount.Value++;

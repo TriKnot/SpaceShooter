@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1137959277829153431}
   - component: {fileID: 3436817826054681021}
   - component: {fileID: -882953670979405414}
+  - component: {fileID: 4433768031536276738}
   m_Layer: 0
   m_Name: Rock10
   m_TagString: Untagged
@@ -101,6 +102,13 @@ MonoBehaviour:
   fractured: {fileID: 3148435110158974641, guid: a680ad859bd92a345b6ae6b11c6a4301, type: 3}
   _minScaleMultiplier: 10
   _maxScaleMultiplier: 100
+  _massCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _healthSystem: {fileID: 4433768031536276738}
   _entityCount: {fileID: 11400000, guid: 909bdc52c947b5c4aab2e94a77181910, type: 2}
 --- !u!64 &3436817826054681021
 MeshCollider:
@@ -151,3 +159,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4433768031536276738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6549293077901927804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 267f28d7333e464da3e0a0520a72db3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionPrefab: {fileID: 3917771847206133421, guid: 6e8c7c425e5bc374daf95a774767b1e3, type: 3}
+  _onDeathEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1137959277829153431}
+        m_TargetAssemblyTypeName: Asteroids.Asteroid, Assembly-CSharp
+        m_MethodName: OnDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

@@ -8,6 +8,7 @@ namespace Ship
         [SerializeField] private float _speed;
         [SerializeField] private float _maxDistance;
         [SerializeField] private Transform _transform;
+        [SerializeField] private float _damage;
     
         private Vector3 _direction;
     
@@ -34,9 +35,9 @@ namespace Ship
     
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.TryGetComponent(out Asteroid asteroid)) return;
-            HitAsteroid(asteroid);
-        }
+            if (!other.TryGetComponent(out AsteroidHealthSystem healthSystem)) return;
+            // If it is, fracture it
+            Hit(healthSystem);        }
         
         private void CheckAhead()
         {
@@ -44,18 +45,17 @@ namespace Ship
             RaycastHit hit;
             if (!Physics.Raycast(_transform.position, _velocity, out hit, _speed * Time.fixedDeltaTime)) return;
             // If there is, check if it's an asteroid
-            if (hit.collider.TryGetComponent(out Asteroid asteroid))
-            {
-                // If it is, fracture it
-                HitAsteroid(asteroid);
-            }
+            if (!hit.collider.TryGetComponent(out AsteroidHealthSystem healthSystem)) return;
+            // If it is, fracture it
+            Hit(healthSystem);
         }
         
-        private void HitAsteroid(Asteroid asteroid)
+        private void Hit(AsteroidHealthSystem healthSystem)
         {
-            // Fracture the asteroid
-            asteroid.FractureObject();
+            // Damage the asteroid
+            healthSystem.Hit(_damage);
             Destroy(gameObject);
         }
+
     }
 }
