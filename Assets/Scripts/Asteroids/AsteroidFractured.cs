@@ -1,6 +1,7 @@
 using System;
 using ScriptableObjects.Variables;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Asteroids
@@ -9,12 +10,17 @@ namespace Asteroids
     {
         [SerializeField] private AsteroidPiece[] _pieces;
         [SerializeField] private IntVariableSO _entityCount;
+        [SerializeField] private Explosion _explosionPrefab;
 
         public void Init(float scaleMultiplier, Vector3 velocity, Vector3 angularVelocity)
         {
             Transform trans = transform;
             trans.localScale *= scaleMultiplier;
             trans.rotation *= Quaternion.Euler(angularVelocity * Time.fixedDeltaTime);
+            
+            Explosion explosion = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+            explosion.Explode(scaleMultiplier);
+            
             FractureObject(scaleMultiplier, velocity, angularVelocity);
         }
 
@@ -33,7 +39,7 @@ namespace Asteroids
                 Vector3 asteroidRotationVelocity = Vector3.Cross(angularVelocity, piecePosition - asteroidCenter);
                 Vector3 calculatedVelocity = asteroidRotationVelocity + velocity + randomDirectionVelocity;
                 calculatedVelocity = Vector3.ClampMagnitude(calculatedVelocity, 100);
-                piece.Init(calculatedVelocity, Random.insideUnitSphere * scaleMultiplier, scaleMultiplier, scaleMultiplier / _pieces.Length, _entityCount);
+                piece.Init(calculatedVelocity, Random.insideUnitSphere, scaleMultiplier, scaleMultiplier / _pieces.Length, _entityCount);
             }
             Destroy(gameObject);
         }

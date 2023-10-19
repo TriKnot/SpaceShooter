@@ -5367,6 +5367,7 @@ MonoBehaviour:
   - {fileID: 471775296100177103}
   - {fileID: 1134712433366678414}
   _entityCount: {fileID: 11400000, guid: b6544f9f6cc0f1c41a0c67283548fc52, type: 2}
+  _explosionPrefab: {fileID: 3917771847206133421, guid: 6e8c7c425e5bc374daf95a774767b1e3, type: 3}
 --- !u!1 &3987014365302923927
 GameObject:
   m_ObjectHideFlags: 0
