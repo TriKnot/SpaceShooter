@@ -202,10 +202,11 @@ MonoBehaviour:
   - {fileID: 4100319026708289000, guid: 46e7653dfbf77b247bc855c46bbd4f4e, type: 3}
   - {fileID: 1705999101787402632, guid: ec4c29675987e87429aeec5e4e93fc5f, type: 3}
   - {fileID: 1650272209027139134, guid: c0e82ab38938b0a4ab35f65d8981ac0f, type: 3}
-  _initialAsteroidCount: 10
-  _maxspawnRadius: 5000
-  _minSpawnDistance: 100
+  _initialAsteroidCount: 50
+  _maxspawnRadius: 50000
+  _minSpawnDistance: 500
   _spawnRate: 1
+  _camera: {fileID: 8364268030501572679}
 --- !u!54 &6810704665422523245
 Rigidbody:
   m_ObjectHideFlags: 0
