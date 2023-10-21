@@ -101,7 +101,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -136,6 +136,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &140263728796573388
 GameObject:
@@ -238,7 +239,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -273,6 +274,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &152067572849251053
 GameObject:
@@ -375,7 +377,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -410,6 +412,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &169935070514499789
 GameObject:
@@ -512,7 +515,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -547,6 +550,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &209954410737496083
 GameObject:
@@ -649,7 +653,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -684,6 +688,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &251884605374852276
 GameObject:
@@ -786,7 +791,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -821,6 +826,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &271315650224437775
 GameObject:
@@ -923,7 +929,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -958,6 +964,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &458593195910016106
 GameObject:
@@ -1060,7 +1067,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -1095,6 +1102,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &694249452408926154
 GameObject:
@@ -1197,7 +1205,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -1232,6 +1240,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &773973399941035212
 GameObject:
@@ -1334,7 +1343,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -1369,6 +1378,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &775810685118069559
 GameObject:
@@ -1471,7 +1481,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -1506,6 +1516,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &784857668349159454
 GameObject:
@@ -1608,7 +1619,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -1643,6 +1654,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &822313664804471714
 GameObject:
@@ -1745,7 +1757,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -1780,6 +1792,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &885490364809498670
 GameObject:
@@ -1882,7 +1895,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -1917,6 +1930,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &1044339796256783292
 GameObject:
@@ -2019,7 +2033,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -2054,6 +2068,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &1123413140244809108
 GameObject:
@@ -2156,7 +2171,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -2191,6 +2206,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &1462457139565340186
 GameObject:
@@ -2293,7 +2309,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -2328,6 +2344,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &1610736640913347558
 GameObject:
@@ -2430,7 +2447,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -2465,6 +2482,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &1676506370914194966
 GameObject:
@@ -2567,7 +2585,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -2602,6 +2620,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &1701545830702115362
 GameObject:
@@ -2704,7 +2723,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -2739,6 +2758,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &2016383999254964628
 GameObject:
@@ -2841,7 +2861,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -2876,6 +2896,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &2239020969797750986
 GameObject:
@@ -2978,7 +2999,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -3013,6 +3034,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &2260597955461338557
 GameObject:
@@ -3115,7 +3137,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -3150,6 +3172,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &2331372755987271530
 GameObject:
@@ -3252,7 +3275,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -3287,6 +3310,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &2363233056812701586
 GameObject:
@@ -3389,7 +3413,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -3424,6 +3448,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &2497957688268709782
 GameObject:
@@ -3526,7 +3551,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -3561,6 +3586,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &2548936483810700116
 GameObject:
@@ -3663,7 +3689,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -3698,6 +3724,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &2625798665782740152
 GameObject:
@@ -3800,7 +3827,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -3835,6 +3862,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &2772332295176684554
 GameObject:
@@ -3937,7 +3965,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -3972,6 +4000,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &2774485764479989595
 GameObject:
@@ -4074,7 +4103,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -4109,6 +4138,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &3057179292362308749
 GameObject:
@@ -4211,7 +4241,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -4246,6 +4276,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &3064938941809011134
 GameObject:
@@ -4348,7 +4379,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -4383,6 +4414,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &3242971963826807691
 GameObject:
@@ -4485,7 +4517,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -4520,6 +4552,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &3432075770028089687
 GameObject:
@@ -4622,7 +4655,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -4657,6 +4690,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &3433668094527641430
 GameObject:
@@ -4759,7 +4793,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -4794,6 +4828,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &3478337805899207965
 GameObject:
@@ -4896,7 +4931,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -4931,6 +4966,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &3548744541263308263
 GameObject:
@@ -5033,7 +5069,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -5068,6 +5104,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &3571401483332957034
 GameObject:
@@ -5170,7 +5207,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -5205,6 +5242,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &3717385074625872427
 GameObject:
@@ -5307,7 +5345,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -5342,6 +5380,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &3732972223869004561
 GameObject:
@@ -5444,7 +5483,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -5479,6 +5518,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &3788984739598528136
 GameObject:
@@ -5581,7 +5621,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -5616,6 +5656,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &3828067904261332594
 GameObject:
@@ -5718,7 +5759,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -5753,6 +5794,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &3831759424314504966
 GameObject:
@@ -5855,7 +5897,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -5890,6 +5932,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &3841490733689973356
 GameObject:
@@ -5992,7 +6035,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -6027,6 +6070,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &3953642548786038019
 GameObject:
@@ -6129,7 +6173,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -6164,6 +6208,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &4228255585053198791
 GameObject:
@@ -6266,7 +6311,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -6301,6 +6346,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &4229675501039844193
 GameObject:
@@ -6403,7 +6449,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -6438,6 +6484,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &4340157740965296992
 GameObject:
@@ -6540,7 +6587,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -6575,6 +6622,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &4372899314539546428
 GameObject:
@@ -6677,7 +6725,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -6712,6 +6760,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &4473976159993643321
 GameObject:
@@ -6814,7 +6863,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -6849,6 +6898,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &4482305393837348794
 GameObject:
@@ -6951,7 +7001,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -6986,6 +7036,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &4485224960139079300
 GameObject:
@@ -7088,7 +7139,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -7123,6 +7174,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &4689944892139559738
 GameObject:
@@ -7225,7 +7277,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -7260,6 +7312,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &4703231774562198590
 GameObject:
@@ -7362,7 +7415,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -7397,6 +7450,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &4745374011542981275
 GameObject:
@@ -7499,7 +7553,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -7534,6 +7588,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &4881702291439291492
 GameObject:
@@ -7636,7 +7691,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -7671,6 +7726,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &4971433411292901348
 GameObject:
@@ -7773,7 +7829,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -7808,6 +7864,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &5110465645901569801
 GameObject:
@@ -7910,7 +7967,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -7945,6 +8002,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &5212686371094605530
 GameObject:
@@ -8047,7 +8105,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -8082,6 +8140,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &5439210732340749395
 GameObject:
@@ -8184,7 +8243,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -8219,6 +8278,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &5461041231365977065
 GameObject:
@@ -8321,7 +8381,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -8356,6 +8416,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &5515347895241370683
 GameObject:
@@ -8458,7 +8519,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -8493,6 +8554,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &5595499262088481774
 GameObject:
@@ -8595,7 +8657,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -8630,6 +8692,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &5606055162833456318
 GameObject:
@@ -8732,7 +8795,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -8767,6 +8830,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &5692704717562128537
 GameObject:
@@ -8869,7 +8933,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -8904,6 +8968,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &5783808003148388485
 GameObject:
@@ -9006,7 +9071,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -9041,6 +9106,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &5826386597872650473
 GameObject:
@@ -9143,7 +9209,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -9178,6 +9244,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &5977034188938423826
 GameObject:
@@ -9280,7 +9347,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -9315,6 +9382,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &5992384888147085664
 GameObject:
@@ -9417,7 +9485,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -9452,6 +9520,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &6014421153102974853
 GameObject:
@@ -9554,7 +9623,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -9589,6 +9658,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &6103340775560799932
 GameObject:
@@ -9691,7 +9761,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -9726,6 +9796,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &6109430472807586572
 GameObject:
@@ -9828,7 +9899,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -9863,6 +9934,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &6276190301194692994
 GameObject:
@@ -9965,7 +10037,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -10000,6 +10072,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &6397679868108812118
 GameObject:
@@ -10102,7 +10175,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -10137,6 +10210,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &6416387884361343494
 GameObject:
@@ -10239,7 +10313,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -10274,6 +10348,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &6426325688335126832
 GameObject:
@@ -10376,7 +10451,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -10411,6 +10486,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &6480610625254239023
 GameObject:
@@ -10513,7 +10589,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -10548,6 +10624,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &6517497025387375024
 GameObject:
@@ -10650,7 +10727,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -10685,6 +10762,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &6691508938985376322
 GameObject:
@@ -10787,7 +10865,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -10822,6 +10900,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &6809779626607901331
 GameObject:
@@ -10924,7 +11003,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -10959,6 +11038,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &7110082202533708288
 GameObject:
@@ -11061,7 +11141,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -11096,6 +11176,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &7111513579488323917
 GameObject:
@@ -11198,7 +11279,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -11233,6 +11314,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &7139729654043156525
 GameObject:
@@ -11586,7 +11668,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -11621,6 +11703,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &7257517150460802564
 GameObject:
@@ -11723,7 +11806,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -11758,6 +11841,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &7484398992759518920
 GameObject:
@@ -11860,7 +11944,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -11895,6 +11979,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &7495268881033979700
 GameObject:
@@ -11997,7 +12082,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -12032,6 +12117,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &7705268809757201593
 GameObject:
@@ -12134,7 +12220,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -12169,6 +12255,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &7707972889213243689
 GameObject:
@@ -12271,7 +12358,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -12306,6 +12393,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &7751099472585094747
 GameObject:
@@ -12408,7 +12496,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -12443,6 +12531,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &7824582960688271123
 GameObject:
@@ -12545,7 +12634,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -12580,6 +12669,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &8202627428340935958
 GameObject:
@@ -12682,7 +12772,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -12717,6 +12807,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &8231061117039570782
 GameObject:
@@ -12819,7 +12910,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -12854,6 +12945,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &8242248100163570665
 GameObject:
@@ -12956,7 +13048,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -12991,6 +13083,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &8306593536290551760
 GameObject:
@@ -13093,7 +13186,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -13128,6 +13221,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &8499237488046416897
 GameObject:
@@ -13230,7 +13324,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -13265,6 +13359,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &8573820663874287407
 GameObject:
@@ -13367,7 +13462,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -13402,6 +13497,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &8750763243149510643
 GameObject:
@@ -13504,7 +13600,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -13539,6 +13635,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &8774762221062502284
 GameObject:
@@ -13641,7 +13738,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -13676,6 +13773,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &8849587942062758927
 GameObject:
@@ -13778,7 +13876,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -13813,6 +13911,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &8853029219180388287
 GameObject:
@@ -13915,7 +14014,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -13950,6 +14049,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &8874768199745731236
 GameObject:
@@ -14052,7 +14152,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -14087,6 +14187,7 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0
 --- !u!1 &9046309848687263837
 GameObject:
@@ -14189,7 +14290,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -14224,4 +14325,5 @@ MonoBehaviour:
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls: []
+  _piecePrefabs: {fileID: 0}
   _currentHealth: 0

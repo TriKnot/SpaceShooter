@@ -111,7 +111,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -149,6 +149,7 @@ MonoBehaviour:
   _rightFrontThrusterLight: {fileID: 9087903941129652768}
   _engineThrustEmissionRateMax: 450
   _engineThrustEmissionLifeTimeMax: 0.2
+  _engineLightIntensityMax: 10
 --- !u!114 &5864374286673776930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +179,7 @@ MonoBehaviour:
   _laserPrefab: {fileID: 237629716101580376, guid: a212475828d24c741b5c2c7e654d6878, type: 3}
   _laserSpawnPoint: {fileID: 31782022756789237}
   _laserStartRotation: {x: 90, y: 0, z: 0}
+  cooldownTime: 0.1
 --- !u!114 &2243656454026406511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +210,7 @@ MonoBehaviour:
   - {fileID: 1650272209027139134, guid: c0e82ab38938b0a4ab35f65d8981ac0f, type: 3}
   _initialAsteroidCount: 50
   _maxspawnRadius: 50000
-  _minSpawnDistance: 500
+  _minSpawnDistance: 1000
   _spawnRate: 1
   _camera: {fileID: 8364268030501572679}
   _playerTransform: {fileID: 9157108533330915895}

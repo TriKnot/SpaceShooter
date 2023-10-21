@@ -259,6 +259,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 1112486448473803477, guid: 47b02f96ea2f3ea4a9938f1bf03f3b0e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7923860269140027797, guid: 47b02f96ea2f3ea4a9938f1bf03f3b0e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.8945737
@@ -376,6 +380,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9035906405750306179, guid: 966a402fcf538c1409d976e4d205f48f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -449,6 +457,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.093
       objectReference: {fileID: 0}
+    - target: {fileID: 7623277134460244458, guid: e14b5b8538eb90d46a69f76d75655e3c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -481,6 +493,10 @@ PrefabInstance:
     - target: {fileID: 3407232047206641802, guid: da99dac72e6ac0e4880b823451855e13, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.027
+      objectReference: {fileID: 0}
+    - target: {fileID: 4814751902390204872, guid: da99dac72e6ac0e4880b823451855e13, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8029528508860005884, guid: da99dac72e6ac0e4880b823451855e13, type: 3}
       propertyPath: m_LocalPosition.x
@@ -591,6 +607,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2398691335458338152, guid: 1be10301dd933114c86c467754f349f1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6907084875380053314, guid: 1be10301dd933114c86c467754f349f1, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.028
@@ -627,6 +647,10 @@ PrefabInstance:
     - target: {fileID: 1875872557988390945, guid: ba304cc753b98004ea6c88dadb59190a, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.047
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754089495158383166, guid: ba304cc753b98004ea6c88dadb59190a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9215841336364068089, guid: ba304cc753b98004ea6c88dadb59190a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -697,6 +721,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 7485583516208510558, guid: d3fb8b02d2d6be34ea37bcd8c18c9557, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8414564876571437463, guid: d3fb8b02d2d6be34ea37bcd8c18c9557, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5984972
@@ -770,6 +798,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 507571746085515220, guid: f0de4839811d597448fcb9254b101b14, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1589452720414000007, guid: f0de4839811d597448fcb9254b101b14, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.049
@@ -887,6 +919,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6569595154974941418, guid: 75d513788c8249d489e354993848b483, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -960,6 +996,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.074
       objectReference: {fileID: 0}
+    - target: {fileID: 7833247516613619842, guid: dba4d83936c445a4e83596dfc978baa7, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -989,6 +1029,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 1996986447559297539, guid: 14ce83e2f40f5774b8d4f0c7b42f00ba, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4055104221608853209, guid: 14ce83e2f40f5774b8d4f0c7b42f00ba, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.1537223
@@ -1106,6 +1150,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.020
       objectReference: {fileID: 0}
+    - target: {fileID: 7273265673441264552, guid: fb6573612f7830c43aa1099dad464f8a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1175,6 +1223,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1543608464492731986, guid: 6676ad9d1341bd8418480237f83dc141, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1686878181800342237, guid: 6676ad9d1341bd8418480237f83dc141, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.052
@@ -1208,6 +1260,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 7543939955321332065, guid: 2f75dbf4f6adb924d804d7bde691435f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8154912364641161631, guid: 2f75dbf4f6adb924d804d7bde691435f, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.095
@@ -1325,6 +1381,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8278580615077196199, guid: 928714fba560f2e4eb327554faeed9f0, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1398,6 +1458,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.077
       objectReference: {fileID: 0}
+    - target: {fileID: 3961912437563865191, guid: f3560e30ed872ef499e66338f1e9aef4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1427,6 +1491,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 1939686016902025615, guid: 9810078e45850aa4ca4c49b9ae2ef5cb, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4514883082050027663, guid: 9810078e45850aa4ca4c49b9ae2ef5cb, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.016
@@ -1544,6 +1612,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.055
       objectReference: {fileID: 0}
+    - target: {fileID: 7443753825134118234, guid: 28bf3a4c9dfa3eb44813f231eb73eb23, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1613,6 +1685,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2673195856932626096, guid: d480e353a1cfeb34887512f0dd999ab2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7859286682190619335, guid: d480e353a1cfeb34887512f0dd999ab2, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.017
@@ -1649,6 +1725,10 @@ PrefabInstance:
     - target: {fileID: 5101250362639338851, guid: 0ef5d6be608d8fe439b51df2d2e65953, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478726607695386116, guid: 0ef5d6be608d8fe439b51df2d2e65953, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8823203857438216648, guid: 0ef5d6be608d8fe439b51df2d2e65953, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1763,6 +1843,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.043
       objectReference: {fileID: 0}
+    - target: {fileID: 9082510014525309763, guid: 4ea746201bca7a7439014fe7ff0339e5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1832,6 +1916,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5786612211170929476, guid: 6ef32ed67d431204185bfc635796bc9f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7534412093948979801, guid: 6ef32ed67d431204185bfc635796bc9f, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.046
@@ -1868,6 +1956,10 @@ PrefabInstance:
     - target: {fileID: 2299311979822410570, guid: d3ec7efb05b8c8949b0b10befebece69, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.101
+      objectReference: {fileID: 0}
+    - target: {fileID: 2423971462745732063, guid: d3ec7efb05b8c8949b0b10befebece69, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8412167772547974274, guid: d3ec7efb05b8c8949b0b10befebece69, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1982,6 +2074,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.022
       objectReference: {fileID: 0}
+    - target: {fileID: 9108964330275361657, guid: 391bbc24ea8bc8f4b9b58fabc530f3c9, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2054,6 +2150,10 @@ PrefabInstance:
     - target: {fileID: 5160491355133626020, guid: e2aee10790fbe504dbae75816e6d5a40, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.059
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878280392245757535, guid: e2aee10790fbe504dbae75816e6d5a40, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2128,6 +2228,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6626979936593869703, guid: a12d16e55ed1e5b4f86f63e274e8ae44, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2200,6 +2304,10 @@ PrefabInstance:
     - target: {fileID: 3374049530984439187, guid: d875d5554164e404e9f8e585ac493f6c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174817640196633712, guid: d875d5554164e404e9f8e585ac493f6c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2274,6 +2382,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.086
       objectReference: {fileID: 0}
+    - target: {fileID: 8080696637363258679, guid: 148c84416f219164d8efb014ccaa88ef, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2343,6 +2455,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3299063998479461008, guid: cb8ed5c88d5b3ed419e37c7d82269190, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5792827018341497923, guid: cb8ed5c88d5b3ed419e37c7d82269190, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.067
@@ -2376,6 +2492,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 3365076118810167478, guid: 4c38a3527791348409baeea67441e190, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3798833037077758101, guid: 4c38a3527791348409baeea67441e190, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.7022396
@@ -2493,6 +2613,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8291195955310714688, guid: 7df4ac1c212a7174bb2ee9847b41e7f7, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2566,6 +2690,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.079
       objectReference: {fileID: 0}
+    - target: {fileID: 1570375234928964428, guid: 2633abe79fb5fe2459f51f46913b794e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2595,6 +2723,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 1763900694162432759, guid: b2bc72216cb8ca144a0d391e3911904d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2349943340967837246, guid: b2bc72216cb8ca144a0d391e3911904d, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.094
@@ -2671,6 +2803,10 @@ PrefabInstance:
     - target: {fileID: 365047395806387193, guid: 979cbb8218f0a984db112aeb416faead, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.089
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967172437718744167, guid: 979cbb8218f0a984db112aeb416faead, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7287696517853236084, guid: 979cbb8218f0a984db112aeb416faead, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2785,6 +2921,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.029
       objectReference: {fileID: 0}
+    - target: {fileID: 4247951488722609850, guid: 05e5e107c00448845a88eed01c9ddbad, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2814,6 +2954,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 3238070765020979695, guid: 92ae05d7d1b8c6e449956b6b88e004ee, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4585544355776226286, guid: 92ae05d7d1b8c6e449956b6b88e004ee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.2969421
@@ -2890,6 +3034,10 @@ PrefabInstance:
     - target: {fileID: 1991377317996332630, guid: 3bcb6357c628728469b83068bfb3971c, type: 3}
       propertyPath: m_Name
       value: rock.002_cell
+      objectReference: {fileID: 0}
+    - target: {fileID: 4658586538231634347, guid: 3bcb6357c628728469b83068bfb3971c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8438843117024872825, guid: 3bcb6357c628728469b83068bfb3971c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3004,6 +3152,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6749275025309004237, guid: b86ed0f330cccf74ebf8796cf04f249a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3033,6 +3185,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 1563850806092582377, guid: 1dc974a9d9fa9cf4db7ab6a591fbdca1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2853927018873863571, guid: 1dc974a9d9fa9cf4db7ab6a591fbdca1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.3782866
@@ -3106,6 +3262,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 896821976188228169, guid: 7c11fe1e753dee847b53cbf9a779d929, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1165711520763930611, guid: 7c11fe1e753dee847b53cbf9a779d929, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.007
@@ -3183,6 +3343,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.076
       objectReference: {fileID: 0}
+    - target: {fileID: 7270826935823696228, guid: e13bf1a9be29ba64aaeafc4dee2f095c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7827694528360364037, guid: e13bf1a9be29ba64aaeafc4dee2f095c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.9134991
@@ -3252,6 +3416,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 315550122382111963, guid: 1ba78429680d8814282cb893c1dea08f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 913328279528395649, guid: 1ba78429680d8814282cb893c1dea08f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.6795821
@@ -3325,6 +3493,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 7149709691965336156, guid: 52a567a899413954f85e1726d4bd10eb, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7603506331980183021, guid: 52a567a899413954f85e1726d4bd10eb, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.064
@@ -3398,6 +3570,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 3840963859002770784, guid: 89bc549287f388a4aabf2721a1290cef, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4522590970206900304, guid: 89bc549287f388a4aabf2721a1290cef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.9230583
@@ -3475,6 +3651,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.014
       objectReference: {fileID: 0}
+    - target: {fileID: 2004066418487570401, guid: cdab92f4b7cc1c447aba7104b1f24303, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3543152086809849039, guid: cdab92f4b7cc1c447aba7104b1f24303, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.8050324
@@ -3547,6 +3727,10 @@ PrefabInstance:
     - target: {fileID: 262420535470990622, guid: 3177d93c0cffdcc4d80710b43ada4bd8, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4829204904069411249, guid: 3177d93c0cffdcc4d80710b43ada4bd8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6606997075945504223, guid: 3177d93c0cffdcc4d80710b43ada4bd8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3621,6 +3805,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.057
       objectReference: {fileID: 0}
+    - target: {fileID: 3909009526029381139, guid: c4ad3eff70594dd45b90fec5787d18f5, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8037777012700972678, guid: c4ad3eff70594dd45b90fec5787d18f5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.3065382
@@ -3690,6 +3878,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 5646585940188406173, guid: 4e0a474cf1550ef43afb66f926819596, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7844822674501764883, guid: 4e0a474cf1550ef43afb66f926819596, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.025
@@ -3763,6 +3955,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 2053233071168369188, guid: c8877ff6c702153418b22c6ca2aa3d8a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2206071794787504509, guid: c8877ff6c702153418b22c6ca2aa3d8a, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.024
@@ -3836,6 +4032,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 911442503157809735, guid: ece4e8e4b594be24f854018eee05bebd, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7322966715598671472, guid: ece4e8e4b594be24f854018eee05bebd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5104033
@@ -3949,6 +4149,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6465707052526769470, guid: 389533f991c27254db49cb14779312ec, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8626745254399094771, guid: 389533f991c27254db49cb14779312ec, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.100
@@ -3982,6 +4186,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 11209117445162747, guid: 2d05460a2f0ee224f9cd8a5c0914b14d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2779284129873384664, guid: 2d05460a2f0ee224f9cd8a5c0914b14d, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.081
@@ -4059,6 +4267,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.037
       objectReference: {fileID: 0}
+    - target: {fileID: 4766111556288955131, guid: 3dad230f4899af64b8dac10a8a1e576b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6185331954136352807, guid: 3dad230f4899af64b8dac10a8a1e576b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.4953661
@@ -4128,6 +4340,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 4612456319276700298, guid: 50d4d85d68b2b6e4680827577a47bc0a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4644662844890964956, guid: 50d4d85d68b2b6e4680827577a47bc0a, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.083
@@ -4205,6 +4421,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.056
       objectReference: {fileID: 0}
+    - target: {fileID: 6155731696290726161, guid: 30c6b53698b8e9449999553b0821b5ce, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9083993783556315144, guid: 30c6b53698b8e9449999553b0821b5ce, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.626456
@@ -4274,6 +4494,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 6881906018006746331, guid: f885f88c2d37889468eae5dd64446cbd, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8010098588878294165, guid: f885f88c2d37889468eae5dd64446cbd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.2939341
@@ -4347,6 +4571,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 1396835271378062618, guid: 84ff6ad718bb74e41bb85d70c0c4bf28, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4767706891847852252, guid: 84ff6ad718bb74e41bb85d70c0c4bf28, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.033
@@ -4420,6 +4648,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 3174392060716201901, guid: cd4b6bedec6ffe34f99edeed34107f5c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4918643508802467417, guid: cd4b6bedec6ffe34f99edeed34107f5c, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.090
@@ -4493,6 +4725,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 1522333688363202295, guid: 61f29f8213cf6fa48a8cdacbaa67aa4c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6014172563072423556, guid: 61f29f8213cf6fa48a8cdacbaa67aa4c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.4653188
@@ -4610,6 +4846,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7186368173538980128, guid: be639c12e3e1bae468cc460959fb3c81, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4639,6 +4879,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 1740935708050748986, guid: 45baa99bc1551af4fa31558ab59708da, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5382162072255739010, guid: 45baa99bc1551af4fa31558ab59708da, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.040
@@ -4752,6 +4996,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5865485423729934130, guid: 8c4c77b762920ec4f9e34a0687096402, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6600276739917453758, guid: 8c4c77b762920ec4f9e34a0687096402, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.005
@@ -4829,6 +5077,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6996996793212924113, guid: f50a98bfe429afe40a6d8afc8ace2e94, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4902,6 +5154,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.006
       objectReference: {fileID: 0}
+    - target: {fileID: 8144258762176942530, guid: 13f92a40f0af99c44b7fdd66f80030ea, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4970,6 +5226,10 @@ PrefabInstance:
     - target: {fileID: 1014760145448142722, guid: ffe1c6829841f5f41a5d6df41c51120b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400429407778000257, guid: ffe1c6829841f5f41a5d6df41c51120b, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3700303374815452894, guid: ffe1c6829841f5f41a5d6df41c51120b, type: 3}
       propertyPath: m_Name
@@ -5043,6 +5303,10 @@ PrefabInstance:
     - target: {fileID: 2543387714917146769, guid: 6f04a4acde7a2ea43b07be64d4dcaca4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5053303101791491407, guid: 6f04a4acde7a2ea43b07be64d4dcaca4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6675993401424567399, guid: 6f04a4acde7a2ea43b07be64d4dcaca4, type: 3}
       propertyPath: m_Name
@@ -5121,6 +5385,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.002
       objectReference: {fileID: 0}
+    - target: {fileID: 7966495456185068919, guid: ac4d3dc1f0f451b438a7635f58183b3c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5150,6 +5418,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 303984237933024649, guid: dc31f97ea6abaaa489dfa8ddf57ee9fc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 812817907086755727, guid: dc31f97ea6abaaa489dfa8ddf57ee9fc, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.073
@@ -5263,6 +5535,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4436539884519026129, guid: e4d5994126403714dae194f95c8d7ac2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6122598835294934686, guid: e4d5994126403714dae194f95c8d7ac2, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.011
@@ -5336,6 +5612,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3336803098893288011, guid: fd6d17c92a2883646967cca6bc324739, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8307943149756213574, guid: fd6d17c92a2883646967cca6bc324739, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.041
@@ -5369,6 +5649,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 525098943474197690, guid: 9ea645fe7f331d246a3dccc1aa5bf4d9, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2894896564716777312, guid: 9ea645fe7f331d246a3dccc1aa5bf4d9, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.061
@@ -5442,6 +5726,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 410328912154504347, guid: a9ae041e077b83343a57408f566c8024, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6227141103166710609, guid: a9ae041e077b83343a57408f566c8024, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.078
@@ -5555,6 +5843,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6248743437297600030, guid: 6d84157d24b7cb044b12b9d950761945, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7535316170682544366, guid: 6d84157d24b7cb044b12b9d950761945, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.010
@@ -5632,6 +5924,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.058
       objectReference: {fileID: 0}
+    - target: {fileID: 9198986109591398522, guid: 4a873ae1aebbdcc4aa386a9b4fad43bc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5701,6 +5997,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6166361306426826372, guid: d1bb6f4ada0557c43a25e39ae30a86ee, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6829683901721832104, guid: d1bb6f4ada0557c43a25e39ae30a86ee, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.008
@@ -5734,6 +6034,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 6130609984571026615, guid: bf1e2063fd038254dadc1530fb12d162, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6554490876827846450, guid: bf1e2063fd038254dadc1530fb12d162, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.05807466
@@ -5851,6 +6155,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.039
       objectReference: {fileID: 0}
+    - target: {fileID: 8568525402588290570, guid: e9581080bbb9bea46809cfcb6dc4b51d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5920,6 +6228,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3727452091266529791, guid: c689c8522e70a2a4697de7e4068dbb5e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7858511388766125504, guid: c689c8522e70a2a4697de7e4068dbb5e, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.026
@@ -5953,6 +6265,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 3176171734635114366, guid: c0d06861c33c0c146b96bf8c9974f9c8, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4031654383027121801, guid: c0d06861c33c0c146b96bf8c9974f9c8, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.013
@@ -6029,6 +6345,10 @@ PrefabInstance:
     - target: {fileID: 1075241537240500247, guid: 6afe9aed090bc074ea5d8453b97256ce, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.070
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963570414636406118, guid: 6afe9aed090bc074ea5d8453b97256ce, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4796802336000314242, guid: 6afe9aed090bc074ea5d8453b97256ce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6143,6 +6463,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7005478605998993383, guid: 6ef2dafbf1f582e499110e164be0c6d4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6215,6 +6539,10 @@ PrefabInstance:
     - target: {fileID: 705723853313948032, guid: 28072456d5a23074dab40718a0e241a1, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.080
+      objectReference: {fileID: 0}
+    - target: {fileID: 3142540009114190221, guid: 28072456d5a23074dab40718a0e241a1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6289,6 +6617,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.042
       objectReference: {fileID: 0}
+    - target: {fileID: 7407170326980172011, guid: cc9e77f7d76f9534cbeacedaca020f37, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6321,6 +6653,10 @@ PrefabInstance:
     - target: {fileID: 1827131995681374076, guid: 47b8373d956867e4c81112c6dfef07ec, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.091
+      objectReference: {fileID: 0}
+    - target: {fileID: 2532288062748906628, guid: 47b8373d956867e4c81112c6dfef07ec, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6672982548352508163, guid: 47b8373d956867e4c81112c6dfef07ec, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6395,6 +6731,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.012
       objectReference: {fileID: 0}
+    - target: {fileID: 3821799132616017817, guid: a5b6ea55bf0baee4d84981e823128932, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7189384396435090059, guid: a5b6ea55bf0baee4d84981e823128932, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.2120632
@@ -6464,6 +6804,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 1435255195786146511, guid: 771cfc94cf578de49add8443a293bcab, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4536657323336403339, guid: 771cfc94cf578de49add8443a293bcab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.07255999
@@ -6581,6 +6925,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6666041268675320434, guid: 9ac15bc5639e4ef4199974e45d190e52, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6649,6 +6997,10 @@ PrefabInstance:
     - target: {fileID: 1024427364054174127, guid: 19f080b1ddc339745a79a789315e2487, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1732979265839536910, guid: 19f080b1ddc339745a79a789315e2487, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4201426005081446755, guid: 19f080b1ddc339745a79a789315e2487, type: 3}
       propertyPath: m_Name
@@ -6727,6 +7079,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.021
       objectReference: {fileID: 0}
+    - target: {fileID: 6583555774258305952, guid: b41f934e1d1c5a6429233f17a6c5d9fa, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6799,6 +7155,10 @@ PrefabInstance:
     - target: {fileID: 4131142496373728354, guid: 996d7455ebfa8554286c40786b9a1664, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6699261820067178882, guid: 996d7455ebfa8554286c40786b9a1664, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6873,6 +7233,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.096
       objectReference: {fileID: 0}
+    - target: {fileID: 8361652541819974402, guid: b4896abd59e91f64abaf9848e97a3775, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6902,6 +7266,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 933205140370877010, guid: 8b9d045c111bd8f4c8869cae2e59413d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5346704628474347867, guid: 8b9d045c111bd8f4c8869cae2e59413d, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.044
@@ -6975,6 +7343,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 7417257017429283208, guid: b9e1e424f1212fe47aac745fc9e498cd, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8508682222696349280, guid: b9e1e424f1212fe47aac745fc9e498cd, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.036
@@ -7088,6 +7460,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2631837933155733611, guid: 71719df08d74ff14bb9bb6b4fe595101, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2668600244641261377, guid: 71719df08d74ff14bb9bb6b4fe595101, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.019
@@ -7124,6 +7500,10 @@ PrefabInstance:
     - target: {fileID: 1321102240935478468, guid: ee6ec155abd7db0418046f7703fe0c33, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.069
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927874400985120846, guid: ee6ec155abd7db0418046f7703fe0c33, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8796572207228094835, guid: ee6ec155abd7db0418046f7703fe0c33, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7238,6 +7618,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6030752705106170005, guid: 0b67a017f8b138f4cb3442246e537084, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7307,6 +7691,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1901301633319618991, guid: 752466c2fb4e4674598e380414a5b803, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6473491013936580434, guid: 752466c2fb4e4674598e380414a5b803, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.082
@@ -7343,6 +7731,10 @@ PrefabInstance:
     - target: {fileID: 837373462005214344, guid: bb979ee0cfd4ea543b0906d5771e32d7, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.031
+      objectReference: {fileID: 0}
+    - target: {fileID: 7392249898417665528, guid: bb979ee0cfd4ea543b0906d5771e32d7, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8772515829842095422, guid: bb979ee0cfd4ea543b0906d5771e32d7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7416,6 +7808,10 @@ PrefabInstance:
     - target: {fileID: 1236858900220451528, guid: e36af5ca3cfd5464cb25f10b82cfef4d, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.045
+      objectReference: {fileID: 0}
+    - target: {fileID: 6229635376212777893, guid: e36af5ca3cfd5464cb25f10b82cfef4d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6439474993130682505, guid: e36af5ca3cfd5464cb25f10b82cfef4d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7530,6 +7926,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock.002_cell.085
       objectReference: {fileID: 0}
+    - target: {fileID: 9100703044436339565, guid: 1a8bc7031853ca84d8fa6dfd365acf0e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7559,6 +7959,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8289779279771719214}
     m_Modifications:
+    - target: {fileID: 83897879974750511, guid: f17e63c4dc439894fbe11a129053e738, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 853167105170852475, guid: f17e63c4dc439894fbe11a129053e738, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.087
@@ -7675,6 +8079,10 @@ PrefabInstance:
     - target: {fileID: 2159653812751121644, guid: 5efed639fabc6ca4aa688d1f2253b2e3, type: 3}
       propertyPath: m_Name
       value: rock.002_cell.032
+      objectReference: {fileID: 0}
+    - target: {fileID: 5955028897738113920, guid: 5efed639fabc6ca4aa688d1f2253b2e3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
