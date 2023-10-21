@@ -48,11 +48,13 @@ namespace PlayerInput
                 _stop.started += OnStop;
                 _stop.canceled += OnStop;
             }
-        
-            _fire = _playerInputActions.Player.Fire;
-            _fire.Enable();
-            _fire.performed += OnFire;
-        
+            if(_weaponSystem)
+            {
+                _fire = _playerInputActions.Player.Fire;
+                _fire.Enable();
+                _fire.started += OnFire;
+                _fire.canceled += OnFire;
+            }        
         }
 
 
@@ -75,15 +77,21 @@ namespace PlayerInput
                 _look.canceled -= OnLook;
             
                 _stop.Disable();
-                _stop.performed -= OnStop;
+                _stop.started -= OnStop;
                 _stop.canceled -= OnStop;
             }
-            _fire.performed -= OnFire;
+            
+            if(_weaponSystem)
+            {
+                _fire.Disable();
+                _fire.started -= OnFire;
+                _fire.canceled -= OnFire;
+            }
         }
     
         private void OnFire(InputAction.CallbackContext context)
         {
-            _weaponSystem.ShootLaser();
+            _weaponSystem.ShouldShoot = context.started;
         }
     
         private void OnMove(InputAction.CallbackContext context)
