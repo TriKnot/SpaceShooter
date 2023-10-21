@@ -13,7 +13,7 @@ namespace Ship
         private bool _isOnCooldown = false;
         private float _shotTimer;
 
-        public bool ShouldShoot { get; set; } = true;
+        public bool ShouldShoot { get; set; } = false;
         
         private void Update()
         {
