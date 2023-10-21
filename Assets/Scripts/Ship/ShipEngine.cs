@@ -84,7 +84,18 @@ namespace Ship
                 }
             
                 // Calculate the target rotation based on the input values
-                var targetRotation = Quaternion.LookRotation(-_velocity, Vector3.up);
+                Quaternion targetRotation = Quaternion.LookRotation(_velocity, Vector3.up);
+                // Check if forward of backward rotation is closest to current
+                Quaternion currentRotation = _transform.rotation;
+                float forwardAngle = Quaternion.Angle(currentRotation, targetRotation);
+                float backwardAngle = Quaternion.Angle(currentRotation, targetRotation * Quaternion.Euler(0, 180, 0));
+                float thrustDirection = -1f;
+                if (backwardAngle < forwardAngle)
+                {
+                    targetRotation *= Quaternion.Euler(0, 180, 0);
+                    thrustDirection = 1f;
+                }
+                
                 targetRotation *= Quaternion.Euler(_currentPitchInput, _currentYawInput, _currentRollInput);
 
                 // Calculate the rotation step based on your desired rotation speed
@@ -96,10 +107,12 @@ namespace Ship
                 // Dampen the angular velocity
                 _angularVelocity = Vector3.Lerp(_angularVelocity, Vector3.zero, Time.deltaTime);
             
-                if(Quaternion.Angle(_transform.rotation, targetRotation) < 5.0f)
+                if(Quaternion.Angle(_transform.rotation, targetRotation) < 15.0f)
                 {
+                    // Scale the thrust based of the current velocity
+                    thrustDirection *= Mathf.InverseLerp(0, 1000, _velocity.magnitude);
                     // Dampen the velocity
-                    _currentThrustInput = 1f;
+                    _currentThrustInput = thrustDirection;
                 }
             
             }
@@ -127,10 +140,6 @@ namespace Ship
 
         private void UpdateEngineParticles()
         {
-            // Calculate the emission rate and lifetime based on the current yaw
-            // emissionRate += Mathf.Lerp(0, _engineThrustEmissionRateMax, Mathf.Abs(_currentYaw));
-            // emissionLifeTime += Mathf.Lerp(0, _engineThrustEmissionLifeTimeMax, Mathf.Abs(_currentYaw));
-
             // Calculate the emission rate and lifetime based on the current thrust
             float emissionRate = Mathf.Lerp(0, _engineThrustEmissionRateMax, Mathf.Abs(_currentThrustInput)); // Use the absolute value of _currentThrust
             float emissionLifeTime = Mathf.Lerp(0, _engineThrustEmissionLifeTimeMax, Mathf.Abs(_currentThrustInput));
