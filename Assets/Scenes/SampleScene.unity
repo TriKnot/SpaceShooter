@@ -867,7 +867,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2243656454026406511, guid: cb544a9179cb2244d854eca89bb5a7c7, type: 3}
       propertyPath: _spawnRate
-      value: 0.01
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2243656454026406511, guid: cb544a9179cb2244d854eca89bb5a7c7, type: 3}
       propertyPath: _maxspawnRadius
