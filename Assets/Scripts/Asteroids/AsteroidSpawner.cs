@@ -46,19 +46,34 @@ namespace Asteroids
             do
             {
                 spawnPos = Random.insideUnitSphere * Random.Range(_minSpawnDistance, _maxspawnRadius) + _playerTransform.position;
-            } while (!IsPositionOnScreen(spawnPos) && attempts++ < 100);
+            } while (PointInCameraView(spawnPos) && attempts++ < 100);
             Asteroid asteroid = Instantiate(_asteroidPrefabs[randAsteroidIndex], spawnPos, Random.rotation);
         }
-        
-        private bool IsPositionOnScreen(Vector3 worldPosition)
-        {
-            // Convert the world position to screen space
-            Vector3 screenPosition = _camera.WorldToViewportPoint(worldPosition);
 
-            // Check if the screen position is within the view
-            return screenPosition.x is > 0 and < 1 &&
-                   screenPosition.y is > 0 and < 1 &&
-                   screenPosition.z > 0;
+        public bool PointInCameraView(Vector3 point) {
+            Vector3 viewport = _camera.WorldToViewportPoint(point);
+            bool inCameraFrustum = Is01(viewport.x) && Is01(viewport.y);
+            bool inFrontOfCamera = viewport.z > 0;
+
+            RaycastHit depthCheck;
+            bool objectBlockingPoint = false;
+
+            Vector3 directionBetween = point - _camera.transform.position;
+            directionBetween = directionBetween.normalized;
+
+            float distance = Vector3.Distance(_camera.transform.position, point);
+
+            if(Physics.Raycast(_camera.transform.position, directionBetween, out depthCheck, distance + 0.05f)) {
+                if(depthCheck.point != point) {
+                    objectBlockingPoint = true;
+                }
+            }
+
+            return inCameraFrustum && inFrontOfCamera && !objectBlockingPoint;
+        }
+
+        public bool Is01(float a) {
+            return a > 0 && a < 1;
         }
     }
 }
