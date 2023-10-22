@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fractured: {fileID: 8361143167818499559, guid: 16165ff48390af44f993e05c19bac115, type: 3}
-  _minScaleMultiplier: 10
-  _maxScaleMultiplier: 100
+  _minScaleMultiplier: {fileID: 11400000, guid: 2146f3de2f2e57c4a99af9cb1c3a3902, type: 2}
+  _maxScaleMultiplier: {fileID: 11400000, guid: c1a8bbf7443287545817c672e426a5e2, type: 2}
   _massCurve:
     serializedVersion: 2
     m_Curve:

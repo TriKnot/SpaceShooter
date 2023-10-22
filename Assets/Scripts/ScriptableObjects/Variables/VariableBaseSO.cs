@@ -16,11 +16,8 @@ namespace ScriptableObjects.Variables
             get { return value; }
             set
             {
-                if (!value.Equals(this.value))
-                {
-                    this.value = value;
-                    OnValueChanged(this.value);
-                }
+                this.value = value;
+                OnValueChanged(this.value);
             }
         }
         

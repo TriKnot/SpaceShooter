@@ -1,31 +1,35 @@
 using System.Collections;
+using ScriptableObjects.Variables;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Asteroids
 {
     public class AsteroidSpawner : MonoBehaviour
     {
         [SerializeField] private Asteroid[] _asteroidPrefabs;
-        [SerializeField] private int _initialAsteroidCount;
-        [SerializeField] private float _maxspawnRadius;
-        [SerializeField] private float _minSpawnDistance;
-        [SerializeField] private float _spawnRate;
-        [SerializeField] private Camera _camera;
-        [SerializeField] private Transform _playerTransform;
+        [SerializeField] private IntVariableSO _initialAsteroidCount;
+        [SerializeField] private FloatVariableSO _maxspawnRadius;
+        [SerializeField] private FloatVariableSO _minSpawnDistance;
+        [SerializeField] private FloatVariableSO _spawnRate;
+        [SerializeField] private GameObjectVariableSO _cameraGameObject;
+        [SerializeField] private TransformVariableSO _playerTransform;
         
+        private Camera _camera;
+
+        private void Awake()
+        {
+            _playerTransform.ValueChanged += SpawnStartAsteroids;
+        }
 
         private void Start()
         {
-            if (_camera == null)
+            if (_cameraGameObject == null)
             {
                 Debug.LogError($"Main Camera is not assigned. Please assign the camera in the Inspector of {gameObject.name}.");
                 return;
             }
             
-            for (int i = 0; i < _initialAsteroidCount; i++)
-            {
-                SpawnAsteroid();
-            }
             StartCoroutine(SpawnAsteroidIEnumerator());
         }
 
@@ -33,9 +37,18 @@ namespace Asteroids
         {
             while (true)
             {
-                yield return new WaitForSeconds(_spawnRate);
+                yield return new WaitForSeconds(_spawnRate.Value);
                 SpawnAsteroid();
             }
+        }
+        
+        private void SpawnStartAsteroids(Transform playerTransform)
+        {
+            for (int i = 0; i < _initialAsteroidCount.Value; i++)
+            {
+                SpawnAsteroid();
+            }
+            Debug.Log(_initialAsteroidCount.Value + " asteroids spawned.");
         }
 
         private void SpawnAsteroid()
@@ -45,12 +58,17 @@ namespace Asteroids
             int attempts = 0; // safety measure to prevent infinite loop
             do
             {
-                spawnPos = Random.insideUnitSphere * Random.Range(_minSpawnDistance, _maxspawnRadius) + _playerTransform.position;
+                spawnPos = Random.insideUnitSphere * Random.Range(_minSpawnDistance.Value, _maxspawnRadius.Value) + _playerTransform.Value.position;
             } while (PointInCameraView(spawnPos) && attempts++ < 100);
             Asteroid asteroid = Instantiate(_asteroidPrefabs[randAsteroidIndex], spawnPos, Random.rotation);
         }
 
-        public bool PointInCameraView(Vector3 point) {
+        private bool PointInCameraView(Vector3 point) {
+            
+            if(_camera == null) {
+                _camera = _cameraGameObject.Value.GetComponent<Camera>();
+            }
+            
             Vector3 viewport = _camera.WorldToViewportPoint(point);
             bool inCameraFrustum = Is01(viewport.x) && Is01(viewport.y);
             bool inFrontOfCamera = viewport.z > 0;

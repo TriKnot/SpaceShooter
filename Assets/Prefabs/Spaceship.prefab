@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 869261052058749132}
   - component: {fileID: 5864374286673776930}
   - component: {fileID: 5070867055277325207}
-  - component: {fileID: 2243656454026406511}
   - component: {fileID: 6810704665422523245}
+  - component: {fileID: 4220443403973321955}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Untagged
@@ -180,40 +180,6 @@ MonoBehaviour:
   _laserSpawnPoint: {fileID: 31782022756789237}
   _laserStartRotation: {x: 90, y: 0, z: 0}
   cooldownTime: 0.1
---- !u!114 &2243656454026406511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 462493232781566062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28bcfd3569910f942a40f14d270660ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _asteroidPrefabs:
-  - {fileID: 5175909829843006713, guid: a028a9caf7ccf2443a238296ded73a04, type: 3}
-  - {fileID: 3177671791670645568, guid: 41059c7f21dd4994d9797364e07a3d45, type: 3}
-  - {fileID: 2906392387806336398, guid: 579e809d2465e864795196e5b0545d73, type: 3}
-  - {fileID: 7317728986581835491, guid: b31bb4b021ef65f4fbaf7f2d7e56f967, type: 3}
-  - {fileID: 145704788088057013, guid: 1b25ec5b3aa236f49bb4e00c0b8a5efe, type: 3}
-  - {fileID: 1618759041239481701, guid: a7650c1ce3d21654ebf92d7ebf494bfc, type: 3}
-  - {fileID: 572667168815375895, guid: 2da3e069c77e294469e5af0fe430dabf, type: 3}
-  - {fileID: 5574121199870545792, guid: 52e5665ed874ab649afee8d6df0ab38e, type: 3}
-  - {fileID: 635422582205603307, guid: 3054692602d6b2c418a430defcc5dca4, type: 3}
-  - {fileID: 1137959277829153431, guid: 8312a98dccd9dba4ab86a80fa392cfa8, type: 3}
-  - {fileID: 1486938197721155888, guid: af2725044a76460448d036210c096953, type: 3}
-  - {fileID: 2432721041874615820, guid: 73da260fe05fc414da1dbbca90d3030c, type: 3}
-  - {fileID: 4100319026708289000, guid: 46e7653dfbf77b247bc855c46bbd4f4e, type: 3}
-  - {fileID: 1705999101787402632, guid: ec4c29675987e87429aeec5e4e93fc5f, type: 3}
-  - {fileID: 1650272209027139134, guid: c0e82ab38938b0a4ab35f65d8981ac0f, type: 3}
-  _initialAsteroidCount: 50
-  _maxspawnRadius: 50000
-  _minSpawnDistance: 1000
-  _spawnRate: 1
-  _camera: {fileID: 8364268030501572679}
-  _playerTransform: {fileID: 9157108533330915895}
 --- !u!54 &6810704665422523245
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -241,6 +207,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4220443403973321955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462493232781566062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db73288f6173499c94fd24258fa97a9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variables:
+  - {fileID: 11400000, guid: b300da4337a04024981c5446904dd2f4, type: 2}
 --- !u!1 &1926390470842181072
 GameObject:
   m_ObjectHideFlags: 0
@@ -24803,6 +24783,7 @@ GameObject:
   - component: {fileID: 8934991835646179454}
   - component: {fileID: 8364268030501572679}
   - component: {fileID: 4391294316698479170}
+  - component: {fileID: 4309737760591541522}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -24884,3 +24865,17 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7500706464497309663}
   m_Enabled: 1
+--- !u!114 &4309737760591541522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7500706464497309663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09e012dc5dab40e482014d33fca88f6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variables:
+  - {fileID: 11400000, guid: 4c28e38d62c8fc5469b080e37f0c3b59, type: 2}

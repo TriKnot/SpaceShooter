@@ -9,8 +9,8 @@ namespace Asteroids
         [Tooltip("\"Fractured\" is the object that this will break into")]
         public AsteroidFractured fractured;
         
-        [SerializeField] private float _minScaleMultiplier;
-        [SerializeField] private float _maxScaleMultiplier;
+        [SerializeField] private FloatVariableSO _minScaleMultiplier;
+        [SerializeField] private FloatVariableSO _maxScaleMultiplier;
         [SerializeField] private AnimationCurve _massCurve;
         [SerializeField] private AsteroidHealthSystem _healthSystem;
         
@@ -22,7 +22,7 @@ namespace Asteroids
         private void Awake()
         {
             float mass = _massCurve.Evaluate(Random.value);
-            _scaleMultiplier = Mathf.Lerp(_minScaleMultiplier, _maxScaleMultiplier, mass);
+            _scaleMultiplier = Mathf.Lerp(_minScaleMultiplier.Value, _maxScaleMultiplier.Value, mass);
             transform.localScale *= _scaleMultiplier;
             _asteroidMovement = gameObject.AddComponent<AsteroidMovement>();
             _asteroidMovement.Init(_scaleMultiplier, Mathf.Pow(_scaleMultiplier, 3));
