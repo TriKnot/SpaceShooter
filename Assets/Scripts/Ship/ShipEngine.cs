@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -64,7 +65,10 @@ namespace Ship
 
             // Update the particle systems
             UpdateEngineParticles();
-        
+        }
+
+        private void Update()
+        {
             // Move the ship
             MoveShip();
         }
