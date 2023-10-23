@@ -9,7 +9,6 @@ namespace Ship
         [SerializeField] private Vector3 _laserStartRotation;
         [SerializeField] private float cooldownTime = 0.5f;
 
-        private bool _isOnCooldown = false;
         private float _shotTimer;
 
         public bool ShouldShoot { get; set; } = false;
