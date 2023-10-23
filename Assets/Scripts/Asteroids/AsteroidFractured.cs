@@ -12,16 +12,12 @@ namespace Asteroids
         [SerializeField] private IntVariableSO _entityCount;
         [SerializeField] private Explosion _explosionPrefab;
 
-        public void Init(float scaleMultiplier, Vector3 velocity, Vector3 angularVelocity)
+        public void Init()
         {
-            Transform trans = transform;
-            trans.localScale *= scaleMultiplier;
-            trans.rotation *= Quaternion.Euler(angularVelocity * Time.fixedDeltaTime);
-            
-            Explosion explosion = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
-            explosion.Explode(scaleMultiplier);
-            
-            FractureObject(scaleMultiplier, velocity, angularVelocity);
+            foreach (AsteroidPiece piece in _pieces)
+            {
+                piece.gameObject.SetActive(false);
+            }
         }
 
 
@@ -29,6 +25,8 @@ namespace Asteroids
         {
             foreach (AsteroidPiece piece in _pieces)
             {
+                if(piece == null) continue;
+                
                 piece.gameObject.SetActive(true);
                 
                 Vector3 piecePosition = piece.transform.position;
@@ -41,9 +39,15 @@ namespace Asteroids
                 calculatedVelocity = Vector3.ClampMagnitude(calculatedVelocity, 100);
                 piece.Init(calculatedVelocity, Random.insideUnitSphere, scaleMultiplier, scaleMultiplier / _pieces.Length, _entityCount);
             }
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
+        public void Activate(Transform parentTransform, float scaleMultiplier, Vector3 velocity, Vector3 angularVelocity)
+        {
+            transform.position = parentTransform.position;
+            FractureObject(scaleMultiplier, velocity, angularVelocity);
+        }
+        
         private void OnEnable()
         {
             _entityCount.Value++;
@@ -53,6 +57,6 @@ namespace Asteroids
         {
             _entityCount.Value--;
         }
-        
+
     }
 }

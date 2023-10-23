@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b8c7d88eebb9940b3c4196017b84df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fractured: {fileID: 1368036757577677200, guid: 0df7f3e030f1da24a9abe74e81197585, type: 3}
+  _fracturedPrefab: {fileID: 1368036757577677200, guid: 0df7f3e030f1da24a9abe74e81197585, type: 3}
   _minScaleMultiplier: {fileID: 11400000, guid: 2146f3de2f2e57c4a99af9cb1c3a3902, type: 2}
   _maxScaleMultiplier: {fileID: 11400000, guid: c1a8bbf7443287545817c672e426a5e2, type: 2}
   _massCurve:
@@ -136,6 +136,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _healthSystem: {fileID: -5117580941194427090}
+  _transform: {fileID: 9078225647539654632}
   _entityCount: {fileID: 11400000, guid: 909bdc52c947b5c4aab2e94a77181910, type: 2}
 --- !u!64 &8767721942521339058
 MeshCollider:

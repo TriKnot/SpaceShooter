@@ -599,6 +599,7 @@ MonoBehaviour:
   - {fileID: 1705999101787402632, guid: ec4c29675987e87429aeec5e4e93fc5f, type: 3}
   - {fileID: 1650272209027139134, guid: c0e82ab38938b0a4ab35f65d8981ac0f, type: 3}
   _initialAsteroidCount: {fileID: 11400000, guid: db71c81dd55e0f94d9c24b0ce50731e0, type: 2}
+  _asteroidPoolInitCount: {fileID: 11400000, guid: c0908e43fbbbda9429f56401b94a5664, type: 2}
   _maxspawnRadius: {fileID: 11400000, guid: df63386f1ca51cd4aab4e35472ed056e, type: 2}
   _minSpawnDistance: {fileID: 11400000, guid: 08fdb074204822c4eb9b55ffd4fc3de1, type: 2}
   _spawnRate: {fileID: 11400000, guid: 6c585951d7b73e74c8b176b011ff55ed, type: 2}

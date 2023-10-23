@@ -52,7 +52,6 @@ namespace Asteroids
             explosion.Explode(transform.localScale.x / transform.localScale.x);
             
             _onDeathEvent?.Invoke();
-            Destroy(gameObject);
         }
     }
 }

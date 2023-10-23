@@ -24,7 +24,7 @@ namespace Asteroids
         
         private void OnDisable()
         {
-            _entityCount.Value--;
+            if(_entityCount != null) _entityCount.Value--;
         }
 
     }
