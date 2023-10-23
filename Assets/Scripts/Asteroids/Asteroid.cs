@@ -56,7 +56,7 @@ namespace Asteroids
                 Destroy(gameObject);
             
             fracturedAsteroid = Instantiate(_fracturedPrefab, _transform.position, _transform.rotation); //Spawn in the broken version
-            fracturedAsteroid.Init( _scaleMultiplier,_asteroidMovement.Velocity, _asteroidMovement.AngularVelocity); //Initialise the broken version
+            fracturedAsteroid.FractureObject( _scaleMultiplier,_asteroidMovement.Velocity, _asteroidMovement.AngularVelocity); //Initialise the broken version
             _entityCount.Value--;
         }
 

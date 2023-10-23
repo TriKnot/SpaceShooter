@@ -12,17 +12,11 @@ namespace Asteroids
         [SerializeField] private IntVariableSO _entityCount;
         [SerializeField] private Explosion _explosionPrefab;
 
-        public void Init()
+        public void FractureObject(float scaleMultiplier, Vector3 velocity, Vector3 angularVelocity)
         {
-            foreach (AsteroidPiece piece in _pieces)
-            {
-                piece.gameObject.SetActive(false);
-            }
-        }
-
-
-        private void FractureObject(float scaleMultiplier, Vector3 velocity, Vector3 angularVelocity)
-        {
+            Explosion explosion = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
+            explosion.Explode(scaleMultiplier);
+            
             foreach (AsteroidPiece piece in _pieces)
             {
                 if(piece == null) continue;
