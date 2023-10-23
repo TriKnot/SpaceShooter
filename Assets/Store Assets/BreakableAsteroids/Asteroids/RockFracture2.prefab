@@ -252,6 +252,7 @@ MonoBehaviour:
   _entityCount: {fileID: 11400000, guid: b6544f9f6cc0f1c41a0c67283548fc52, type: 2}
   _explosionPrefab: {fileID: 3917771847206133421, guid: 6e8c7c425e5bc374daf95a774767b1e3, type: 3}
   _asteroidPieceObjectPoolSO: {fileID: 11400000, guid: fc6cd4ed898f6d543907d19028d4a0d4, type: 2}
+  _usePoolingSO: {fileID: 11400000, guid: fc0693231e2fad549837e0af0b4a9121, type: 2}
 --- !u!1001 &6469115089110675
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,13 +1,19 @@
+using ScriptableObjects.Variables;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Util;
 
 namespace Ship
 {
     public class WeaponSystem : MonoBehaviour
     {
+        [SerializeField] private LaserShotObjectPoolSO _laserPool;
         [SerializeField] private Laser _laserPrefab;
         [SerializeField] private Transform _laserSpawnPoint;
         [SerializeField] private Vector3 _laserStartRotation;
         [SerializeField] private float cooldownTime = 0.5f;
+        
+        [SerializeField] private BoolVariableSO _usePoolingSO;
 
         private float _shotTimer;
 
@@ -27,18 +33,32 @@ namespace Ship
             
             ShootLaser();
         }
-
+        
         private void SpawnLaser()
         {
             // Instantiate a laser
             Laser laser = Instantiate(_laserPrefab, _laserSpawnPoint.position, _laserSpawnPoint.rotation * Quaternion.Euler(_laserStartRotation));
-            laser.Init(_laserSpawnPoint.forward);
+            laser.Init(_laserSpawnPoint.position, _laserSpawnPoint.rotation * Quaternion.Euler(_laserStartRotation), _laserSpawnPoint.forward);
+        }
+        
+        private void GetLaserFromPool()
+        {
+            // Instantiate a laser
+            Laser laser = _laserPool.Value.Get();
+            laser.Init(_laserSpawnPoint.position, _laserSpawnPoint.rotation * Quaternion.Euler(_laserStartRotation), _laserSpawnPoint.forward);
         }
 
         private void ShootLaser()
         {
             // Spawn a laser shot
-            SpawnLaser();
+            if(_usePoolingSO.Value)
+            {
+                GetLaserFromPool();
+            }
+            else
+            {
+                SpawnLaser();
+            }            
             // Set the cooldown and update the last shot time
             _shotTimer = cooldownTime;
         }

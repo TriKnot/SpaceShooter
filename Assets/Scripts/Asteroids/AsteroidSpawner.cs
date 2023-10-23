@@ -10,7 +10,6 @@ namespace Asteroids
     {
         [Header("Setup")] [SerializeField] private AsteroidArraySO _asteroidPrefabs;
         [SerializeField] private IntVariableSO _initialAsteroidCount;
-        [SerializeField] private IntVariableSO _asteroidPoolInitCount;
         [SerializeField] private FloatVariableSO _maxspawnRadius;
         [SerializeField] private FloatVariableSO _minSpawnDistance;
         [SerializeField] private FloatVariableSO _spawnRate;
@@ -108,8 +107,13 @@ namespace Asteroids
         #region Camera Viewport Check
         private bool PointInCameraView(Vector3 point) {
             
-            if(_camera == null) {
+            if(_camera == null && _cameraGameObject.Value != null) {
                 _camera = _cameraGameObject.Value.GetComponent<Camera>();
+            }
+            else
+            {
+                // Cant be in camera view if there is no camera
+                return false;
             }
             
             Vector3 viewport = _camera.WorldToViewportPoint(point);

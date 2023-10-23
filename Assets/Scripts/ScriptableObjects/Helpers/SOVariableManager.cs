@@ -7,7 +7,7 @@ namespace ScriptableObjects.Variables
 
         private void Awake()
         {
-            ResettableVariableBase[] variables = Resources.LoadAll<ResettableVariableBase>("ScriptableObjects/Variables");
+            ResettableVariableBase[] variables = Resources.FindObjectsOfTypeAll(typeof(ResettableVariableBase)) as ResettableVariableBase[];
             foreach (ResettableVariableBase variable in variables)
             {
                 if (variable.ResetOnAwake)

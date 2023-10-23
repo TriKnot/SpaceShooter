@@ -10,6 +10,7 @@ namespace Asteroids
         [SerializeField] private IntVariableSO _entityCount;
         [SerializeField] private Explosion _explosionPrefab;
         [SerializeField] private AsteroidPieceObjectPoolSO _asteroidPieceObjectPoolSO;
+        [SerializeField] private BoolVariableSO _usePoolingSO;
 
         public void FractureObject(float scaleMultiplier, Vector3 velocity, Vector3 angularVelocity)
         {
@@ -30,11 +31,20 @@ namespace Asteroids
                 Vector3 asteroidRotationVelocity = Vector3.Cross(angularVelocity, piecePosition - asteroidCenter);
                 Vector3 calculatedVelocity = asteroidRotationVelocity + velocity + randomDirectionVelocity;
                 calculatedVelocity = Vector3.ClampMagnitude(calculatedVelocity, 100);
-                piece.Init(calculatedVelocity, Random.insideUnitSphere, scaleMultiplier, scaleMultiplier / _pieces.Length, _entityCount);
-                piece.InitializePool(_asteroidPieceObjectPoolSO.Value);
+                SpawnPiece(piece, calculatedVelocity, Random.insideUnitSphere, scaleMultiplier, scaleMultiplier / _pieces.Length, _entityCount);
             }
             gameObject.SetActive(false);
         }
+
+        private void SpawnPiece(AsteroidPiece piece, Vector3 calculatedVelocity, Vector3 insideUnitSphere, float scaleMultiplier, float piecesLength, IntVariableSO entityCount)
+        {
+            piece.Init(calculatedVelocity, Random.insideUnitSphere, scaleMultiplier, scaleMultiplier / _pieces.Length, _entityCount);
+            if(_usePoolingSO.Value)
+            {
+                piece.InitializePool(_asteroidPieceObjectPoolSO.Value);
+            }
+        }
+
 
         public void Activate(Transform parentTransform, float scaleMultiplier, Vector3 velocity, Vector3 angularVelocity)
         {

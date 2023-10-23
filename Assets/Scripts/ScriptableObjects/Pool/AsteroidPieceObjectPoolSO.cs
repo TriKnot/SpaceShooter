@@ -9,6 +9,7 @@ namespace ScriptableObjects.Variables
     {
         [SerializeField] private IntVariableSO _initialPoolSize;
         [SerializeField] private AsteroidPieceArraySO _asteroidPieceSO;
+        [SerializeField] private BoolVariableSO _usePoolingSO;
         
         public override void SetValue(ObjectPool<AsteroidPiece> value)
         {
@@ -42,7 +43,7 @@ namespace ScriptableObjects.Variables
 
         public override void ResetValue()
         {
-            Value = new ObjectPool<AsteroidPiece>(_asteroidPieceSO.Value, _initialPoolSize.Value);
+            Value = _usePoolingSO.Value ? new ObjectPool<AsteroidPiece>(_asteroidPieceSO.Value, _initialPoolSize.Value) : default;
         }
         
     }
