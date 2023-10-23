@@ -3,11 +3,8 @@ using UnityEngine;
 
 namespace ScriptableObjects.Variables
 {
-    public abstract class VariableBaseSO<T> : ScriptableObject
+    public abstract class VariableBaseSO<T> : ResettableVariableBase
     {
-        [SerializeField]
-        private bool resetOnAwake = true;
-        
         [SerializeField]
         private T value;
 
@@ -38,11 +35,6 @@ namespace ScriptableObjects.Variables
             ValueChanged?.Invoke(newValue);
         }
         
-        public bool ResetOnAwake
-        {
-            get { return resetOnAwake; }
-        }
-        
         public abstract void SetValue(T value);
         
         public abstract void SetValue(VariableBaseSO<T> value);
@@ -54,8 +46,6 @@ namespace ScriptableObjects.Variables
         public abstract void SubtractValue(T value);
         
         public abstract void SubtractValue(VariableBaseSO<T> value);
-                
-        public abstract void ResetValue();
         
         public override string ToString()
         {
