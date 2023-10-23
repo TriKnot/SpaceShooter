@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 347fe8f2774c18d4eaea2bf0369b2b43, type: 3}
   m_Name: AsteroidPieceCount
   m_EditorClassIdentifier: 
-  value: 0
   resetOnAwake: 1
+  value: 0

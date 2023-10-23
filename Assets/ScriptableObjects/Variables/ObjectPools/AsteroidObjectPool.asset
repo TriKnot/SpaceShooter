@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 347fe8f2774c18d4eaea2bf0369b2b43, type: 3}
-  m_Name: AsteroidPoolCount
+  m_Script: {fileID: 11500000, guid: b3df22a6692d4857bd80734bbe79ff6e, type: 3}
+  m_Name: AsteroidObjectPool
   m_EditorClassIdentifier: 
-  resetOnAwake: 0
-  value: 5000
+  resetOnAwake: 1
+  _initialPoolSize: {fileID: 11400000, guid: c0908e43fbbbda9429f56401b94a5664, type: 2}
+  _asteroidSO: {fileID: 11400000, guid: f7e8a862e3efc0245a03c31009e9cdff, type: 2}

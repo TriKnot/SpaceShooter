@@ -861,6 +861,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4177242006264606059, guid: 298e900581a1ab44ab0d57ed1d773c8b, type: 3}
+      propertyPath: _asteroidPoolSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 0684ec13e8508de41b065f32df94fefc, type: 2}
+    - target: {fileID: 4177242006264606059, guid: 298e900581a1ab44ab0d57ed1d773c8b, type: 3}
+      propertyPath: _asteroidPrefabs
+      value: 
+      objectReference: {fileID: 11400000, guid: f7e8a862e3efc0245a03c31009e9cdff, type: 2}
     - target: {fileID: 4264554856167496614, guid: 298e900581a1ab44ab0d57ed1d773c8b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2371.4226

@@ -9,6 +9,8 @@ namespace Util
     {
         private List<T> _objects = new ();
         private T[] _prefabs;
+        
+        public List<T> Objects => _objects;
 
         public ObjectPool(T[] prefabs, int initialSize)
         {
@@ -44,6 +46,26 @@ namespace Util
             newObj.Initialize(this);
             _objects.Add(newObj);
             return newObj;
+        }
+        
+        public void Add(T obj)
+        {
+            _objects.Add(obj);
+        }
+        
+        public void AddRange(T[] objs)
+        {
+            _objects.AddRange(objs);
+        }
+        
+        public void Remove(T obj)
+        {
+            _objects.Remove(obj);
+        }
+        
+        public void RemoveRange(T[] objs)
+        {
+            _objects.RemoveRange(0, objs.Length);
         }
 
         public void Return(T obj)

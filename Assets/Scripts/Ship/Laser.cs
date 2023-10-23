@@ -47,10 +47,9 @@ namespace Ship
         
         private void CheckAhead()
         {
-            // Check if there's an asteroid ahead
-            RaycastHit hit;
-            if (!Physics.Raycast(_transform.position, _velocity, out hit, _speed * Time.fixedDeltaTime)) return;
-            // If there is, check if it's an asteroid
+            // Check if there's anything ahead
+            if (!Physics.Raycast(_transform.position, _velocity, out var hit, _speed * Time.fixedDeltaTime)) return;
+            // If there is, check if it's got a health system
             if (!hit.collider.TryGetComponent(out AsteroidHealthSystem healthSystem)) return;
             // If it is, fracture it
             Hit(healthSystem, hit.point);
