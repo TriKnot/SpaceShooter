@@ -9,8 +9,10 @@ namespace Asteroids
         [SerializeField] private Explosion _explosionPrefab;
         [SerializeField] private UnityEvent _onDeathEvent;
         [SerializeField] private AsteroidPieceArraySO _piecePrefabs;
-        
         [SerializeField] private float _currentHealth;
+        
+        public UnityEvent OnDeathEvent => _onDeathEvent;
+        
         public void Init(float scaleMultiplier)
         {
             _currentHealth = scaleMultiplier;
@@ -39,9 +41,10 @@ namespace Asteroids
                     
                     piece.Init(velocity, angularVelocity, _currentHealth / damage, damage, entityCount);
                 }
-                
+                // If it's not dead, return
                 return;
             }
+            // If it's dead, explode
             _currentHealth = 0;
             OnDeath();
         }

@@ -20,8 +20,16 @@ namespace Asteroids
             
             _asteroidMovement = gameObject.AddComponent<AsteroidMovement>();
             _asteroidMovement.Init(scaleMultiplier, mass, velocity, angularVelocity);
+
+            if (TryGetComponent(out AsteroidHealthSystem healthSystem))
+                healthSystem.OnDeathEvent.AddListener(OnDeath);
         }
-        
+
+        private void OnDeath()
+        {
+            Destroy(gameObject);
+        }
+
         private void OnDisable()
         {
             if(_entityCount != null) _entityCount.Value--;
