@@ -48,7 +48,6 @@ namespace Asteroids
             {
                 SpawnAsteroid();
             }
-            Debug.Log(_initialAsteroidCount.Value + " asteroids spawned.");
         }
 
         private void SpawnAsteroid()
