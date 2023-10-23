@@ -12,7 +12,7 @@ namespace Util
 
         public ObjectPool(T[] prefabs, int initialSize)
         {
-            this._prefabs = prefabs;
+            _prefabs = prefabs;
             InitializePool(initialSize);
         }
 

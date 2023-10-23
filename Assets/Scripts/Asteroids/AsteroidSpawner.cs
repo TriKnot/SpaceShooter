@@ -9,6 +9,7 @@ namespace Asteroids
 {
     public class AsteroidSpawner : MonoBehaviour
     {
+        [Header("Setup")]
         [SerializeField] private Asteroid[] _asteroidPrefabs;
         [SerializeField] private IntVariableSO _initialAsteroidCount;
         [SerializeField] private IntVariableSO _asteroidPoolInitCount;
@@ -18,14 +19,19 @@ namespace Asteroids
         [SerializeField] private GameObjectVariableSO _cameraGameObject;
         [SerializeField] private TransformVariableSO _playerTransform;
         
+        [SerializeField] private BoolVariableSO _usePoolingSO;
         private ObjectPool<Asteroid> _asteroidPool;
         
         private Camera _camera;
 
         private void Awake()
         {
-            // Initialize the pool
-            _asteroidPool = new ObjectPool<Asteroid>(_asteroidPrefabs, _asteroidPoolInitCount.Value);
+            if(_usePoolingSO.Value)
+            {
+                // Initialize the pool
+                _asteroidPool = new ObjectPool<Asteroid>(_asteroidPrefabs, _asteroidPoolInitCount.Value);
+            }
+            
             // Subscribe to the event that is fired when the player is spawned
             _playerTransform.ValueChanged += SpawnStartAsteroids;
         }
@@ -46,7 +52,9 @@ namespace Asteroids
             while (true)
             {
                 yield return new WaitForSeconds(_spawnRate.Value);
-                SpawnAsteroid();
+                Vector3 centerPosOffset = Vector3.zero;
+                if(_playerTransform.Value) centerPosOffset = _playerTransform.Value.position;
+                SpawnAsteroid(centerPosOffset);
             }
         }
         
@@ -67,6 +75,35 @@ namespace Asteroids
 
         private void SpawnAsteroid(Vector3 centerPosOffset = default)
         {
+            if(_usePoolingSO.Value)
+            {
+                SpawnAsteroidFromPool(centerPosOffset);
+            }
+            else
+            {
+                SpawnAsteroidFromPrefab(centerPosOffset);
+            }        
+        }
+
+        private void SpawnAsteroidFromPrefab(Vector3 centerPosOffset)
+        {
+            Debug.Log("Spawning from prefab");
+            int randAsteroidIndex = Random.Range(0, _asteroidPrefabs.Length);
+            Vector3 spawnPos;
+            int attempts = 0; // safety measure to prevent infinite loop
+            do
+            {
+                spawnPos = Random.insideUnitSphere * Random.Range(_minSpawnDistance.Value, _maxspawnRadius.Value) + centerPosOffset;
+            } while (PointInCameraView(spawnPos) && attempts++ < 100);
+            Asteroid asteroid = Instantiate(_asteroidPrefabs[randAsteroidIndex], spawnPos, Random.rotation);
+            asteroid.gameObject.SetActive(false);
+            asteroid.Initialize(null);
+            asteroid.Activate(spawnPos, Random.rotation);
+        }
+
+        private void SpawnAsteroidFromPool(Vector3 centerPosOffset = default)
+        {
+            Debug.Log("Spawning from pool");
             Vector3 spawnPos;
             int attempts = 0; // safety measure to prevent infinite loop
             do

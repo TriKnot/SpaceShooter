@@ -36,8 +36,6 @@ namespace Asteroids
             transform.localScale *= _scaleMultiplier;
             _asteroidMovement = gameObject.AddComponent<AsteroidMovement>();
             
-            fracturedAsteroid = Instantiate(_fracturedPrefab, _transform.position, _transform.rotation); //Spawn in the broken version
-            fracturedAsteroid.Init(); //Initialise the broken version
         }
 
         public void Activate(Vector3 position, Quaternion rotation)
@@ -52,15 +50,19 @@ namespace Asteroids
         
         public void OnDeath()
         {
-            ReturnToPool();
+            if(_pool != null)
+                ReturnToPool();
+            else
+                Destroy(gameObject);
+            
+            fracturedAsteroid = Instantiate(_fracturedPrefab, _transform.position, _transform.rotation); //Spawn in the broken version
+            fracturedAsteroid.Init( _scaleMultiplier,_asteroidMovement.Velocity, _asteroidMovement.AngularVelocity); //Initialise the broken version
+            _entityCount.Value--;
         }
 
         public void ReturnToPool()
         {
-            fracturedAsteroid.Activate(_transform, _scaleMultiplier,_asteroidMovement.Velocity, _asteroidMovement.AngularVelocity);
-            _entityCount.Value--;
-
-            if(_pool != null) _pool.Return(this);
+            _pool.Return(this);
         }
 
     }
