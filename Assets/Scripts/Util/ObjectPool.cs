@@ -25,7 +25,7 @@ namespace Util
                 int index = i % _prefabs.Length;
                 T obj = Object.Instantiate(_prefabs[index]);
                 obj.gameObject.SetActive(false);
-                obj.Initialize(this);
+                obj.InitializePool(this);
                 _objects.Add(obj);
             }
         }
@@ -43,7 +43,7 @@ namespace Util
             
             int randomIndex = Random.Range(0, _prefabs.Length);
             T newObj = Object.Instantiate(_prefabs[randomIndex]);
-            newObj.Initialize(this);
+            newObj.InitializePool(this);
             _objects.Add(newObj);
             return newObj;
         }

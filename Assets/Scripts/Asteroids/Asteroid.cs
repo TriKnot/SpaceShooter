@@ -27,7 +27,7 @@ namespace Asteroids
         private ObjectPool<Asteroid> _pool;
 
 
-        public void Initialize(ObjectPool<Asteroid> pool)
+        public void InitializePool(ObjectPool<Asteroid> pool)
         {
             _pool = pool;
             

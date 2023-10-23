@@ -89,7 +89,7 @@ namespace Asteroids
             } while (PointInCameraView(spawnPos) && attempts++ < 100);
             Asteroid asteroid = Instantiate(_asteroidPrefabs.Value[randAsteroidIndex], spawnPos, Random.rotation);
             asteroid.gameObject.SetActive(false);
-            asteroid.Initialize(null);
+            asteroid.InitializePool(null);
             asteroid.Activate(spawnPos, Random.rotation);
         }
 

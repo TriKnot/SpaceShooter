@@ -1,7 +1,5 @@
-using System;
 using ScriptableObjects.Variables;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Asteroids
@@ -11,6 +9,7 @@ namespace Asteroids
         [SerializeField] private AsteroidPiece[] _pieces;
         [SerializeField] private IntVariableSO _entityCount;
         [SerializeField] private Explosion _explosionPrefab;
+        [SerializeField] private AsteroidPieceObjectPoolSO _asteroidPieceObjectPoolSO;
 
         public void FractureObject(float scaleMultiplier, Vector3 velocity, Vector3 angularVelocity)
         {
@@ -32,6 +31,7 @@ namespace Asteroids
                 Vector3 calculatedVelocity = asteroidRotationVelocity + velocity + randomDirectionVelocity;
                 calculatedVelocity = Vector3.ClampMagnitude(calculatedVelocity, 100);
                 piece.Init(calculatedVelocity, Random.insideUnitSphere, scaleMultiplier, scaleMultiplier / _pieces.Length, _entityCount);
+                piece.InitializePool(_asteroidPieceObjectPoolSO.Value);
             }
             gameObject.SetActive(false);
         }
