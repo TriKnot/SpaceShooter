@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Asteroids
@@ -62,12 +61,12 @@ namespace Asteroids
         {
             _angularVelocity += collisionTorque1 / _mass;
         }
-
-        private void OnDrawGizmos()
-        {
-            Vector3 startPos = transform.position + _velocity.normalized * transform.localScale.magnitude;
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(startPos, _velocity);
-        }
+        //
+        // private void OnDrawGizmos()
+        // {
+        //     Vector3 startPos = transform.position + _velocity.normalized * transform.localScale.magnitude;
+        //     Gizmos.color = Color.red;
+        //     Gizmos.DrawRay(startPos, _velocity);
+        // }
     }
 }
