@@ -87,7 +87,6 @@ namespace Asteroids
 
         private void SpawnAsteroidFromPrefab(Vector3 centerPosOffset)
         {
-            Debug.Log("Spawning from prefab");
             int randAsteroidIndex = Random.Range(0, _asteroidPrefabs.Length);
             Vector3 spawnPos;
             int attempts = 0; // safety measure to prevent infinite loop
@@ -103,7 +102,6 @@ namespace Asteroids
 
         private void SpawnAsteroidFromPool(Vector3 centerPosOffset = default)
         {
-            Debug.Log("Spawning from pool");
             Vector3 spawnPos;
             int attempts = 0; // safety measure to prevent infinite loop
             do
