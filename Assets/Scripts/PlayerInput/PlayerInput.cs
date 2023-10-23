@@ -17,6 +17,7 @@ namespace PlayerInput
         private InputAction _look;
         private InputAction _fire;
         private InputAction _stop;
+        private InputAction _quit;
     
         private void Awake()
         {
@@ -55,6 +56,10 @@ namespace PlayerInput
                 _fire.started += OnFire;
                 _fire.canceled += OnFire;
             }        
+            
+            _quit = _playerInputActions.Player.Quit;
+            _quit.Enable();
+            _quit.started += OnQuit;
         }
 
 
@@ -87,8 +92,18 @@ namespace PlayerInput
                 _fire.started -= OnFire;
                 _fire.canceled -= OnFire;
             }
+            
+            _quit.Disable();
+            _quit.started -= OnQuit;
         }
-    
+
+        private void OnQuit(InputAction.CallbackContext obj)
+        {
+            
+            Application.Quit();
+            
+        }
+
         private void OnFire(InputAction.CallbackContext context)
         {
             _weaponSystem.ShouldShoot = context.started;
