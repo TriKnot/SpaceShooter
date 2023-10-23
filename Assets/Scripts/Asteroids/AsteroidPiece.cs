@@ -22,8 +22,10 @@ namespace Asteroids
             _asteroidMovement.Init(scaleMultiplier, mass, velocity, angularVelocity);
 
             if (TryGetComponent(out AsteroidHealthSystem healthSystem))
+            {
+                healthSystem.Init(scaleMultiplier);
                 healthSystem.OnDeathEvent.AddListener(OnDeath);
-        }
+            }        }
 
         private void OnDeath()
         {
