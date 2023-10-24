@@ -43,8 +43,9 @@ namespace ScriptableObjects.Variables
 
         public override void ResetValue()
         {
-            Value = _usePoolingSO.Value ? new ObjectPool<Laser>(_laserPrefabs, _initialPoolSize.Value) : default;
-        }
+            Value = _usePoolingSO.Value
+                ? new ObjectPool<Laser>(_laserPrefabs, _initialPoolSize.Value)
+                : new ObjectPool<Laser>(null, 0);        }
         
     }
 

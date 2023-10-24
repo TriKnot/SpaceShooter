@@ -15,3 +15,4 @@ MonoBehaviour:
   resetOnAwake: 1
   _initialPoolSize: {fileID: 11400000, guid: c0908e43fbbbda9429f56401b94a5664, type: 2}
   _asteroidSO: {fileID: 11400000, guid: f7e8a862e3efc0245a03c31009e9cdff, type: 2}
+  _usePoolingSO: {fileID: 11400000, guid: fc0693231e2fad549837e0af0b4a9121, type: 2}

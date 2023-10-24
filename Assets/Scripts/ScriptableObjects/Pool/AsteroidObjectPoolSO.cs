@@ -43,7 +43,10 @@ namespace ScriptableObjects.Variables
 
         public override void ResetValue()
         {
-            Value = _usePoolingSO.Value ? new ObjectPool<Asteroid>(_asteroidSO.Value, _initialPoolSize.Value) : default;
+            Value = _usePoolingSO.Value
+                ? new ObjectPool<Asteroid>(_asteroidSO.Value, _initialPoolSize.Value)
+                : new ObjectPool<Asteroid>(null, 0);
+
         }
         
     }
