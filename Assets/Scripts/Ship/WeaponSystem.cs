@@ -19,12 +19,12 @@ namespace Ship
 
         public bool ShouldShoot { get; set; } = false;
         
-        private void Update()
+        private void FixedUpdate()
         {
             // Check if the cooldown is over
             if (_shotTimer > 0.0f)
             {
-                _shotTimer -= Time.deltaTime;
+                _shotTimer -= Time.fixedDeltaTime;
                 return;
             }
             
@@ -37,7 +37,7 @@ namespace Ship
         private void SpawnLaser()
         {
             // Instantiate a laser
-            Laser laser = Instantiate(_laserPrefab, _laserSpawnPoint.position, _laserSpawnPoint.rotation * Quaternion.Euler(_laserStartRotation));
+            Laser laser = Instantiate(_laserPrefab);
             laser.Init(_laserSpawnPoint.position, _laserSpawnPoint.rotation * Quaternion.Euler(_laserStartRotation), _laserSpawnPoint.forward);
         }
         
@@ -46,6 +46,7 @@ namespace Ship
             // Instantiate a laser
             Laser laser = _laserPool.Value.Get();
             laser.Init(_laserSpawnPoint.position, _laserSpawnPoint.rotation * Quaternion.Euler(_laserStartRotation), _laserSpawnPoint.forward);
+            laser.transform.parent = _laserSpawnPoint;
         }
 
         private void ShootLaser()
