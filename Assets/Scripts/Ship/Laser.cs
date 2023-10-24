@@ -24,23 +24,20 @@ namespace Ship
         
         private ObjectPool<Laser> _pool;
         
-        
         public void Init(Vector3 startPosition, Quaternion rotation, Vector3 direction)
         {
-            _velocity = direction * _speed;
             _transform.position = startPosition;
             _transform.rotation = rotation;
-            _travelDistance = 0.0f;
-            
+            _velocity = direction * _speed;
         }
     
-        private void FixedUpdate()
+        private void Update()
         {
             // Check if it's time to despawn
             if(_travelDistance > _maxDistance) ReturnToPool();
         
             // Move and update the distance travelled
-            Vector3 frameVelocity = _velocity * Time.fixedDeltaTime;
+            Vector3 frameVelocity = _velocity * Time.deltaTime;
             _transform.position += frameVelocity;
             _travelDistance += frameVelocity.magnitude;
             CheckAhead();
@@ -56,7 +53,7 @@ namespace Ship
         private void CheckAhead()
         {
             // Check if there's anything ahead
-            if (!Physics.Raycast(_transform.position, _velocity, out var hit, _speed * Time.fixedDeltaTime)) return;
+            if (!Physics.Raycast(_transform.position, _velocity, out var hit, _speed * Time.deltaTime)) return;
             // If there is, check if it's got a health system
             if (!hit.collider.TryGetComponent(out AsteroidHealthSystem healthSystem)) return;
             // If it is, fracture it
@@ -83,6 +80,11 @@ namespace Ship
 
         public void ReturnToPool()
         {
+            // Reset values
+            _velocity = Vector3.zero;
+            _travelDistance = 0.0f;
+            
+            // Disable the laser
             if(_pool != null)
                 _pool.Return(this);
             else
