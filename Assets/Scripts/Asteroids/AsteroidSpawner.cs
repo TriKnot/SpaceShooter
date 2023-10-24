@@ -21,12 +21,6 @@ namespace Asteroids
         
         private Camera _camera;
 
-        private void Awake()
-        {
-            
-            // Subscribe to the event that is fired when the player is spawned
-            _playerTransform.ValueChanged += SpawnStartAsteroids;
-        }
 
         private void Start()
         {
@@ -35,6 +29,9 @@ namespace Asteroids
                 Debug.LogError($"Main Camera is not assigned. Please assign the camera in the Inspector of {gameObject.name}.");
                 return;
             }
+            
+            // Subscribe to the event that is fired when the player is spawned
+            SpawnStartAsteroids(_playerTransform.Value);
             
             StartCoroutine(SpawnAsteroidIEnumerator());
         }
@@ -59,6 +56,7 @@ namespace Asteroids
             for (int i = 0; i < _initialAsteroidCount.Value; i++)
             {
                 SpawnAsteroid(centerPosOffset);
+                
             }
             
             // Unsubscribe from the event
