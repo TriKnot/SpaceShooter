@@ -11,81 +11,103 @@ namespace UI
         [SerializeField] private TextMeshProUGUI _asteroidText;
         [SerializeField] private TextMeshProUGUI _asteroidPieceText;
         [SerializeField] private TextMeshProUGUI _fpsText;
-        
+
         [SerializeField] private IntVariableSO _asteroidCount;
         [SerializeField] private IntVariableSO _asteroidPieceCount;
-        
-        private Dictionary<int, string> _cachedNumberStrings = new();
+
+        private readonly Dictionary<int, string> _cachedNumberStrings = new();
         private int[] _frameRateSamples;
-        private int _cacheNumbersAmount = 1000;
-        private int _averageFromAmount = 30;
+        private readonly int _cacheNumbersAmount = 1000;
+        private readonly int _averageFromAmount = 30;
         private int _averageCounter = 0;
         private int _currentAveraged;
 
         void Awake()
         {
-            // Cache strings and create array
-            for (int i = 0; i < _cacheNumbersAmount; i++)
-            {
-                _cachedNumberStrings[i] = i.ToString();
-            }
+            CacheNumberStrings();
+            InitializeFrameRateSamples();
 
-            _frameRateSamples = new int[_averageFromAmount];
-            
-            _asteroidCount.RegisterObserver(this);
-            _asteroidPieceCount.RegisterObserver(this);
+            RegisterObservers();
         }
 
         private void OnDestroy()
         {
-            _asteroidCount.UnregisterObserver(this);
+            UnregisterObservers();
         }
 
         void Update()
         {
-            // Sample
+            SampleFrameRate();
+            CalculateAverageFrameRate();
+            UpdateFPSUI();
+
+        }
+
+        private void CacheNumberStrings()
+        {
+            for (int i = 0; i < _cacheNumbersAmount; i++)
             {
-                var currentFrame =
-                    (int)Math.Round(1f /
-                                    Time.smoothDeltaTime); // If your game modifies Time.timeScale, use unscaledDeltaTime and smooth manually (or not).
-                _frameRateSamples[_averageCounter] = currentFrame;
+                _cachedNumberStrings[i] = i.ToString();
+            }
+        }
+
+        private void InitializeFrameRateSamples()
+        {
+            _frameRateSamples = new int[_averageFromAmount];
+        }
+
+        private void RegisterObservers()
+        {
+            _asteroidCount.RegisterObserver(this);
+            _asteroidPieceCount.RegisterObserver(this);
+        }
+
+        private void UnregisterObservers()
+        {
+            _asteroidCount.UnregisterObserver(this);
+            _asteroidPieceCount.UnregisterObserver(this);
+        }
+
+        private void SampleFrameRate()
+        {
+            var currentFrame = (int)Math.Round(1f / Time.smoothDeltaTime);
+            _frameRateSamples[_averageCounter] = currentFrame;
+        }
+
+        private void CalculateAverageFrameRate()
+        {
+            var average = 0f;
+
+            foreach (var frameRate in _frameRateSamples)
+            {
+                average += frameRate;
             }
 
-            // Average
+            _currentAveraged = (int)Math.Round(average / _averageFromAmount);
+            _averageCounter = (_averageCounter + 1) % _averageFromAmount;
+        }
+
+        private void UpdateFPSUI()
+        {
+            string fps = _currentAveraged switch
             {
-                var average = 0f;
+                var x when x >= 0 && x < _cacheNumbersAmount => _cachedNumberStrings[x],
+                var x when x >= _cacheNumbersAmount => $"> {_cacheNumbersAmount}",
+                var x when x < 0 => "< 0",
+                _ => "?"
+            };
 
-                foreach (var frameRate in _frameRateSamples)
-                {
-                    average += frameRate;
-                }
-
-                _currentAveraged = (int)Math.Round(average / _averageFromAmount);
-                _averageCounter = (_averageCounter + 1) % _averageFromAmount;
-            }
-
-            // Assign to UI
-            {
-                 string fps = _currentAveraged switch
-                {
-                    var x when x >= 0 && x < _cacheNumbersAmount => _cachedNumberStrings[x],
-                    var x when x >= _cacheNumbersAmount => $"> {_cacheNumbersAmount}",
-                    var x when x < 0 => "< 0",
-                    _ => "?"
-                };
-                 
-                 _fpsText.text = "FPS: " + fps;
-            }
+            _fpsText.text = "FPS: " + fps;
         }
 
         private void UpdateAsteroidCountText()
         {
-            _asteroidText.text = "Asteroids: " + _asteroidCount.Value;    
+            _asteroidText.text = "Asteroids: " + _asteroidCount.Value;
         }
-        
+
         private void UpdateAsteroidPieceCountText()
         {
-            _asteroidPieceText.text = "Asteroid pieces: " + _asteroidPieceCount.Value;    
+            _asteroidPieceText.text = "Asteroid pieces: " + _asteroidPieceCount.Value;
         }
 
         public void OnValueChanged(int newValue)

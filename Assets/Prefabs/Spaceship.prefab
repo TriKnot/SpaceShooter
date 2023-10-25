@@ -176,10 +176,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7025c4f4e59b6246bfcb6820417180a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _laserPool: {fileID: 11400000, guid: 0520c1a9f3cebeb41873ddae6aeac684, type: 2}
   _laserPrefab: {fileID: 237629716101580376, guid: a212475828d24c741b5c2c7e654d6878, type: 3}
   _laserSpawnPoint: {fileID: 31782022756789237}
   _laserStartRotation: {x: 90, y: 0, z: 0}
   cooldownTime: 0.1
+  _usePoolingSO: {fileID: 11400000, guid: fc0693231e2fad549837e0af0b4a9121, type: 2}
 --- !u!54 &6810704665422523245
 Rigidbody:
   m_ObjectHideFlags: 0

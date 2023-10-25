@@ -8,18 +8,19 @@ namespace Asteroids
 {
     public class AsteroidPiece : MonoBehaviour, IPoolObject<AsteroidPiece>
     {
-        private Transform _transform;
-        private IntVariableSO _entityCount;
+        [Header("Dependencies")]
+        [SerializeField] private IntVariableSO _entityCount;
+        private ObjectPool<AsteroidPiece> _pool;
         private AsteroidMovement _asteroidMovement;
         private MoveData _asteroidMoveData;
+        private Transform _transform;
 
-        private ObjectPool<AsteroidPiece> _pool;
-        
         public void Init(Vector3 velocity, Vector3 angularVelocity, float scaleMultiplier, float mass, IntVariableSO entityCount)
         {
             _transform = transform;
             _transform.parent = null;
             _transform.localScale = new Vector3(scaleMultiplier, scaleMultiplier, scaleMultiplier);
+            
             _entityCount = entityCount;
             _entityCount.Value++;
             
@@ -30,7 +31,7 @@ namespace Asteroids
             };
 
             _asteroidMovement = gameObject.AddComponent<AsteroidMovement>();
-            _asteroidMovement.Init( mass, _asteroidMoveData );
+            _asteroidMovement.Init(mass, _asteroidMoveData);
 
             if (TryGetComponent(out AsteroidHealthSystem healthSystem))
             {

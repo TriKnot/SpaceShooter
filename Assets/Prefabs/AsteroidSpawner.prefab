@@ -44,13 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28bcfd3569910f942a40f14d270660ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _asteroidPrefabs: {fileID: 11400000, guid: f7e8a862e3efc0245a03c31009e9cdff, type: 2}
-  _initialAsteroidCount: {fileID: 11400000, guid: db71c81dd55e0f94d9c24b0ce50731e0, type: 2}
-  _asteroidPoolInitCount: {fileID: 11400000, guid: c0908e43fbbbda9429f56401b94a5664, type: 2}
-  _maxspawnRadius: {fileID: 11400000, guid: df63386f1ca51cd4aab4e35472ed056e, type: 2}
-  _minSpawnDistance: {fileID: 11400000, guid: 08fdb074204822c4eb9b55ffd4fc3de1, type: 2}
-  _spawnRate: {fileID: 11400000, guid: 6c585951d7b73e74c8b176b011ff55ed, type: 2}
-  _cameraGameObject: {fileID: 11400000, guid: 4c28e38d62c8fc5469b080e37f0c3b59, type: 2}
-  _playerTransform: {fileID: 11400000, guid: b300da4337a04024981c5446904dd2f4, type: 2}
+  _asteroidPrefabsSO: {fileID: 11400000, guid: f7e8a862e3efc0245a03c31009e9cdff, type: 2}
+  _initialAsteroidCountSO: {fileID: 11400000, guid: db71c81dd55e0f94d9c24b0ce50731e0, type: 2}
+  _maxspawnRadiusSO: {fileID: 11400000, guid: df63386f1ca51cd4aab4e35472ed056e, type: 2}
+  _minSpawnDistanceSO: {fileID: 11400000, guid: 08fdb074204822c4eb9b55ffd4fc3de1, type: 2}
+  _spawnRateSO: {fileID: 11400000, guid: 6c585951d7b73e74c8b176b011ff55ed, type: 2}
+  _cameraGameObjectSO: {fileID: 11400000, guid: 4c28e38d62c8fc5469b080e37f0c3b59, type: 2}
+  _playerTransformSO: {fileID: 11400000, guid: b300da4337a04024981c5446904dd2f4, type: 2}
   _usePoolingSO: {fileID: 11400000, guid: fc0693231e2fad549837e0af0b4a9121, type: 2}
   _asteroidPoolSO: {fileID: 11400000, guid: 0684ec13e8508de41b065f32df94fefc, type: 2}
+  _useJobsSO: {fileID: 11400000, guid: fd3ef7be19eba0248a9b6e9654ee98c0, type: 2}

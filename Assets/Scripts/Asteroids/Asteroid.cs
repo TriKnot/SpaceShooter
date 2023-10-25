@@ -9,22 +9,25 @@ namespace Asteroids
 {
     public class Asteroid : MonoBehaviour, IPoolObject<Asteroid>
     {
-        [Tooltip("\"Fractured\" is the object that this will break into")] [SerializeField]
-        private AsteroidFractured _fracturedPrefab;
-        private AsteroidFractured fracturedAsteroid;
+        [Header("Prefabs")]
+        [SerializeField] private AsteroidFractured _fracturedPrefab;
         
+        [Header("Settings")]
         [SerializeField] private FloatVariableSO _minScaleMultiplier;
         [SerializeField] private FloatVariableSO _maxScaleMultiplier;
         [SerializeField] private AnimationCurve _massCurve;
         [SerializeField] private AsteroidHealthSystem _healthSystem;
-        [SerializeField] private Transform _transform;
         [SerializeField] private BoolVariableSO _useJobsSO;
         
         private float _scaleMultiplier;
+        private MoveData _asteroidMoveData;
+
+        [Header("Dependencies")]
+        [SerializeField] private Transform _transform;
+        [SerializeField] private IntVariableSO _entityCount;
+        private ObjectPool<Asteroid> _pool;
         private AsteroidMovement _asteroidMovement;
 
-
-        private MoveData _asteroidMoveData;
         public MoveData AsteroidMoveData
         {
             get => _asteroidMoveData;
@@ -36,10 +39,6 @@ namespace Asteroids
             }
         }
 
-        [SerializeField] private IntVariableSO _entityCount;
-        
-        private ObjectPool<Asteroid> _pool;
-
         public void Init()
         {            
             float mass = _massCurve.Evaluate(Random.value);
@@ -48,8 +47,8 @@ namespace Asteroids
             
             AsteroidMoveData = new MoveData()
             {
-                Velocity = Random.insideUnitSphere * Random.Range(0, 100) ,
-                AngularVelocity = Random.insideUnitSphere * Random.Range(0, 100) 
+                Velocity = Random.insideUnitSphere * Random.Range(0, 100),
+                AngularVelocity = Random.insideUnitSphere * Random.Range(0, 100)
             };
 
             if (_useJobsSO.Value) return;
@@ -73,18 +72,18 @@ namespace Asteroids
             
             if (_useJobsSO.Value) return;
 
-            _asteroidMovement.Init( Mathf.Pow(_scaleMultiplier, 3), _asteroidMoveData);
+            _asteroidMovement.Init(Mathf.Pow(_scaleMultiplier, 3), _asteroidMoveData);
         }
         
         public void OnDeath()
         {
-            if(_pool != null)
+            if (_pool != null)
                 ReturnToPool();
             else
                 Destroy(gameObject);
             
-            fracturedAsteroid = Instantiate(_fracturedPrefab, _transform.position, _transform.rotation); //Spawn in the broken version
-            fracturedAsteroid.FractureObject( _scaleMultiplier, AsteroidMoveData); //Initialise the broken version
+            var fracturedAsteroid = Instantiate(_fracturedPrefab, _transform.position, _transform.rotation);
+            fracturedAsteroid.FractureObject(_scaleMultiplier, AsteroidMoveData);
             _entityCount.Value--;
         }
 
@@ -92,6 +91,5 @@ namespace Asteroids
         {
             _pool.Return(this);
         }
-
     }
 }

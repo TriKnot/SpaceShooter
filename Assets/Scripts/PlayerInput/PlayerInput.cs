@@ -9,16 +9,15 @@ namespace PlayerInput
         [Header("Components")]
         [SerializeField] private ShipEngine _shipEngine;
         [SerializeField] private WeaponSystem _weaponSystem;
-    
+
         private PlayerInputActions _playerInputActions;
-    
-        // Actions
+
         private InputAction _move;
         private InputAction _look;
         private InputAction _fire;
         private InputAction _stop;
         private InputAction _quit;
-    
+
         private void Awake()
         {
             _playerInputActions = new PlayerInputActions();
@@ -26,89 +25,129 @@ namespace PlayerInput
 
         private void OnEnable()
         {
-            // Hide and lock the cursor
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        
-            // Enable the actions
-        
-            if(_shipEngine)
+            ConfigureCursorState(lockCursor: true);
+
+            if (_shipEngine)
             {
-                _move = _playerInputActions.Player.Move;
-                _move.Enable();
-                _move.performed += OnMove;
-                _move.canceled += OnMove;
-
-                _look = _playerInputActions.Player.Look;
-                _look.Enable();
-                _look.performed += OnLook;
-                _look.canceled += OnLook;
-
-                _stop = _playerInputActions.Player.Stop;
-                _stop.Enable();
-                _stop.started += OnStop;
-                _stop.canceled += OnStop;
+                ConfigureMoveActions();
+                ConfigureLookActions();
+                ConfigureStopAction();
             }
-            if(_weaponSystem)
+            if (_weaponSystem)
             {
-                _fire = _playerInputActions.Player.Fire;
-                _fire.Enable();
-                _fire.started += OnFire;
-                _fire.canceled += OnFire;
-            }        
-            
+                ConfigureFireAction();
+            }
+
+            ConfigureQuitAction();
+        }
+
+        private void OnDisable()
+        {
+            ConfigureCursorState(lockCursor: false);
+
+            if (_shipEngine)
+            {
+                DisableMoveActions();
+                DisableLookActions();
+                DisableStopAction();
+            }
+            if (_weaponSystem)
+            {
+                DisableFireAction();
+            }
+
+            DisableQuitAction();
+        }
+
+        private void ConfigureCursorState(bool lockCursor)
+        {
+            Cursor.visible = !lockCursor;
+            Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
+        }
+
+        private void ConfigureMoveActions()
+        {
+            _move = _playerInputActions.Player.Move;
+            _move.Enable();
+            _move.performed += OnMove;
+            _move.canceled += OnMove;
+        }
+
+        private void DisableMoveActions()
+        {
+            _move.Disable();
+            _move.performed -= OnMove;
+            _move.canceled -= OnMove;
+        }
+
+        private void ConfigureLookActions()
+        {
+            _look = _playerInputActions.Player.Look;
+            _look.Enable();
+            _look.performed += OnLook;
+            _look.canceled += OnLook;
+        }
+
+        private void DisableLookActions()
+        {
+            _look.Disable();
+            _look.performed -= OnLook;
+            _look.canceled -= OnLook;
+        }
+
+        private void ConfigureStopAction()
+        {
+            _stop = _playerInputActions.Player.Stop;
+            _stop.Enable();
+            _stop.started += OnStop;
+            _stop.canceled += OnStop;
+        }
+
+        private void DisableStopAction()
+        {
+            _stop.Disable();
+            _stop.started -= OnStop;
+            _stop.canceled -= OnStop;
+        }
+
+        private void ConfigureFireAction()
+        {
+            _fire = _playerInputActions.Player.Fire;
+            _fire.Enable();
+            _fire.started += OnFire;
+            _fire.canceled += OnFire;
+        }
+
+        private void DisableFireAction()
+        {
+            _fire.Disable();
+            _fire.started -= OnFire;
+            _fire.canceled -= OnFire;
+        }
+
+        private void ConfigureQuitAction()
+        {
             _quit = _playerInputActions.Player.Quit;
             _quit.Enable();
             _quit.started += OnQuit;
         }
 
-
-        private void OnDisable()
+        private void DisableQuitAction()
         {
-            // Show and unlock the cursor
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        
-            // Disable the actions
-        
-            if(_shipEngine)
-            {
-                _move.Disable();
-                _move.performed -= OnMove;
-                _move.canceled -= OnMove;
-            
-                _look.Disable();
-                _look.performed -= OnLook;
-                _look.canceled -= OnLook;
-            
-                _stop.Disable();
-                _stop.started -= OnStop;
-                _stop.canceled -= OnStop;
-            }
-            
-            if(_weaponSystem)
-            {
-                _fire.Disable();
-                _fire.started -= OnFire;
-                _fire.canceled -= OnFire;
-            }
-            
             _quit.Disable();
             _quit.started -= OnQuit;
         }
 
-        private void OnQuit(InputAction.CallbackContext obj)
+        private void OnQuit(InputAction.CallbackContext context)
         {
-            
             Application.Quit();
-            
         }
 
         private void OnFire(InputAction.CallbackContext context)
         {
             _weaponSystem.ShouldShoot = context.started;
         }
-    
+
         private void OnMove(InputAction.CallbackContext context)
         {
             Vector2 input = context.ReadValue<Vector2>();
@@ -122,7 +161,7 @@ namespace PlayerInput
             _shipEngine.SetPitch(input.y);
             _shipEngine.SetYaw(input.x);
         }
-    
+
         private void OnStop(InputAction.CallbackContext context)
         {
             _shipEngine.ShouldDampenCurrentValues = context.started;

@@ -6,9 +6,14 @@ namespace Asteroids
 {
     public class AsteroidHealthSystem : MonoBehaviour
     {
+        [Header("Health Settings")]
         [SerializeField] private Explosion _explosionPrefab;
-        [SerializeField] private UnityEvent _onDeathEvent;
         [SerializeField] private AsteroidPieceArraySO _piecePrefabs;
+
+        [Header("Events")]
+        [SerializeField] private UnityEvent _onDeathEvent;
+
+        [Header("Current Health")]
         [SerializeField] private float _currentHealth;
         
         public UnityEvent OnDeathEvent => _onDeathEvent;

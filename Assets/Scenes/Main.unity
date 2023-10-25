@@ -861,46 +861,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4177242006264606059, guid: 298e900581a1ab44ab0d57ed1d773c8b, type: 3}
-      propertyPath: _useJobs
-      value: 
-      objectReference: {fileID: 11400000, guid: fd3ef7be19eba0248a9b6e9654ee98c0, type: 2}
-    - target: {fileID: 4177242006264606059, guid: 298e900581a1ab44ab0d57ed1d773c8b, type: 3}
-      propertyPath: _useJobsSO
-      value: 
-      objectReference: {fileID: 11400000, guid: fd3ef7be19eba0248a9b6e9654ee98c0, type: 2}
-    - target: {fileID: 4177242006264606059, guid: 298e900581a1ab44ab0d57ed1d773c8b, type: 3}
-      propertyPath: _spawnRateSO
-      value: 
-      objectReference: {fileID: 11400000, guid: 6c585951d7b73e74c8b176b011ff55ed, type: 2}
-    - target: {fileID: 4177242006264606059, guid: 298e900581a1ab44ab0d57ed1d773c8b, type: 3}
-      propertyPath: _asteroidPoolSO
-      value: 
-      objectReference: {fileID: 11400000, guid: 0684ec13e8508de41b065f32df94fefc, type: 2}
-    - target: {fileID: 4177242006264606059, guid: 298e900581a1ab44ab0d57ed1d773c8b, type: 3}
-      propertyPath: _asteroidPrefabs
-      value: 
-      objectReference: {fileID: 11400000, guid: f7e8a862e3efc0245a03c31009e9cdff, type: 2}
-    - target: {fileID: 4177242006264606059, guid: 298e900581a1ab44ab0d57ed1d773c8b, type: 3}
-      propertyPath: _maxspawnRadiusSO
-      value: 
-      objectReference: {fileID: 11400000, guid: df63386f1ca51cd4aab4e35472ed056e, type: 2}
-    - target: {fileID: 4177242006264606059, guid: 298e900581a1ab44ab0d57ed1d773c8b, type: 3}
-      propertyPath: _playerTransformSO
-      value: 
-      objectReference: {fileID: 11400000, guid: b300da4337a04024981c5446904dd2f4, type: 2}
-    - target: {fileID: 4177242006264606059, guid: 298e900581a1ab44ab0d57ed1d773c8b, type: 3}
-      propertyPath: _cameraGameObjectSO
-      value: 
-      objectReference: {fileID: 11400000, guid: 4c28e38d62c8fc5469b080e37f0c3b59, type: 2}
-    - target: {fileID: 4177242006264606059, guid: 298e900581a1ab44ab0d57ed1d773c8b, type: 3}
-      propertyPath: _minSpawnDistanceSO
-      value: 
-      objectReference: {fileID: 11400000, guid: 08fdb074204822c4eb9b55ffd4fc3de1, type: 2}
-    - target: {fileID: 4177242006264606059, guid: 298e900581a1ab44ab0d57ed1d773c8b, type: 3}
-      propertyPath: _initialAsteroidCountSO
-      value: 
-      objectReference: {fileID: 11400000, guid: db71c81dd55e0f94d9c24b0ce50731e0, type: 2}
     - target: {fileID: 4264554856167496614, guid: 298e900581a1ab44ab0d57ed1d773c8b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2371.4226
@@ -962,18 +922,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spaceship
       objectReference: {fileID: 0}
-    - target: {fileID: 5070867055277325207, guid: cb544a9179cb2244d854eca89bb5a7c7, type: 3}
-      propertyPath: _laserPool
-      value: 
-      objectReference: {fileID: 11400000, guid: 0520c1a9f3cebeb41873ddae6aeac684, type: 2}
-    - target: {fileID: 5070867055277325207, guid: cb544a9179cb2244d854eca89bb5a7c7, type: 3}
-      propertyPath: _laserPrefab
-      value: 
-      objectReference: {fileID: 237629716101580376, guid: a212475828d24c741b5c2c7e654d6878, type: 3}
-    - target: {fileID: 5070867055277325207, guid: cb544a9179cb2244d854eca89bb5a7c7, type: 3}
-      propertyPath: _usePoolingSO
-      value: 
-      objectReference: {fileID: 11400000, guid: fc0693231e2fad549837e0af0b4a9121, type: 2}
     - target: {fileID: 9157108533330915895, guid: cb544a9179cb2244d854eca89bb5a7c7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

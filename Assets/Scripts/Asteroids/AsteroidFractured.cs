@@ -7,11 +7,14 @@ namespace Asteroids
 {
     public class AsteroidFractured : MonoBehaviour
     {
+        [Header("Fractured Settings")]
         [SerializeField] private AsteroidPiece[] _pieces;
-        [SerializeField] private IntVariableSO _entityCount;
         [SerializeField] private Explosion _explosionPrefab;
-        [SerializeField] private AsteroidPieceObjectPoolSO _asteroidPieceObjectPoolSO;
         [SerializeField] private BoolVariableSO _usePoolingSO;
+
+        [Header("References")]
+        [SerializeField] private IntVariableSO _entityCount;
+        [SerializeField] private AsteroidPieceObjectPoolSO _asteroidPieceObjectPoolSO;
 
         public void FractureObject(float scaleMultiplier, MoveData asteroidMoveData)
         {
@@ -23,7 +26,6 @@ namespace Asteroids
                 if(piece == null) continue;
                 
                 piece.gameObject.SetActive(true);
-                
                 Vector3 piecePosition = piece.transform.position;
                 Vector3 asteroidCenter = transform.position;
                 
@@ -32,15 +34,17 @@ namespace Asteroids
                 Vector3 asteroidRotationVelocity = Vector3.Cross(asteroidMoveData.AngularVelocity, piecePosition - asteroidCenter);
                 Vector3 calculatedVelocity = asteroidRotationVelocity + (Vector3)asteroidMoveData.Velocity + randomDirectionVelocity;
                 calculatedVelocity = Vector3.ClampMagnitude(calculatedVelocity, 100);
-                SpawnPiece(piece, calculatedVelocity, Random.insideUnitSphere, scaleMultiplier, scaleMultiplier / _pieces.Length, _entityCount);
+                
+                SpawnPiece(piece, calculatedVelocity, Random.insideUnitSphere, scaleMultiplier, scaleMultiplier / _pieces.Length);
             }
             gameObject.SetActive(false);
         }
 
-        private void SpawnPiece(AsteroidPiece piece, Vector3 calculatedVelocity, Vector3 insideUnitSphere, float scaleMultiplier, float piecesLength, IntVariableSO entityCount)
+        private void SpawnPiece(AsteroidPiece piece, Vector3 calculatedVelocity, Vector3 insideUnitSphere, float scaleMultiplier, float piecesLength)
         {
             piece.Init(calculatedVelocity, Random.insideUnitSphere, scaleMultiplier, scaleMultiplier / _pieces.Length, _entityCount);
-            if(_usePoolingSO.Value)
+            
+            if (_usePoolingSO.Value)
             {
                 piece.InitializePool(_asteroidPieceObjectPoolSO.Value);
             }
@@ -55,6 +59,5 @@ namespace Asteroids
         {
             _entityCount.Value--;
         }
-
     }
 }

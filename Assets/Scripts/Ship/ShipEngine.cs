@@ -30,118 +30,56 @@ namespace Ship
         [SerializeField] private Light _leftBackThrusterLight;
         [SerializeField] private Light _rightBackThrusterLight;
         [SerializeField] private Light _leftFrontThrusterLight;
-        [SerializeField] private Light _rightFrontThrusterLight;
-        [SerializeField] private float _engineThrustEmissionRateMax = 25.0f;
+        [SerializeField] private Light _rightFrontThrusterLight;        [SerializeField] private float _engineThrustEmissionRateMax = 25.0f;
         [SerializeField] private float _engineThrustEmissionLifeTimeMax = 3.5f;
         [SerializeField] private float _engineLightIntensityMax = 10.0f;
     
         private Vector3 _velocity;
-        private Vector3 _angularVelocity; // x = pitch, y = yaw, z = roll
+        private Vector3 _angularVelocity;
     
-        private bool _shouldStop = false;
-    
-        public bool ShouldDampenCurrentValues
-        {
-            set
-            {
-                _shouldStop = value;
-                if (!value)
-                    _currentThrustInput = 0;
-            }
-        }
+        public bool ShouldDampenCurrentValues { set; get; }
 
         private void Awake()
         {
-            // Reset the ship
-            _currentThrustInput = 0f;
-            _currentPitchInput = 0f;
-            _currentYawInput = 0f;
-            _currentRollInput = 0f;
+            ResetCurrentInputs();
         }
 
         private void FixedUpdate()
         {
             UpdateVelocity();
-
-            // Update the particle systems
             UpdateEngineParticles();
         }
 
         private void Update()
         {
-            // Move the ship
             MoveShip();
         }
 
         private void UpdateVelocity()
         {
-
-            if (_shouldStop)
+            if (ShouldDampenCurrentValues)
             {
-            
-                if(_velocity.magnitude < 10.0f)
-                {
-                    _velocity = Vector3.zero;
-                    _angularVelocity = Vector3.zero;
-                    _currentThrustInput = 0f;
-                    return;
-                }
-            
-                // Calculate the target rotation based on the input values
-                Quaternion targetRotation = Quaternion.LookRotation(_velocity, Vector3.up);
-                // Check if forward of backward rotation is closest to current
-                Quaternion currentRotation = _transform.rotation;
-                float forwardAngle = Quaternion.Angle(currentRotation, targetRotation);
-                float backwardAngle = Quaternion.Angle(currentRotation, targetRotation * Quaternion.Euler(0, 180, 0));
-                float thrustDirection = -1f;
-                if (backwardAngle < forwardAngle)
-                {
-                    targetRotation *= Quaternion.Euler(0, 180, 0);
-                    thrustDirection = 1f;
-                }
-                
-                targetRotation *= Quaternion.Euler(_currentPitchInput, _currentYawInput, _currentRollInput);
-
-                // Calculate the rotation step based on your desired rotation speed
-                var rotationStep = Time.deltaTime; // You need to define rotationSpeed
-
-                // Interpolate between the current rotation and the target rotation
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationStep);
-            
-                // Dampen the angular velocity
-                _angularVelocity = Vector3.Lerp(_angularVelocity, Vector3.zero, Time.deltaTime);
-            
-                if(Quaternion.Angle(_transform.rotation, targetRotation) < 15.0f)
-                {
-                    // Scale the thrust based of the current velocity
-                    thrustDirection *= Mathf.InverseLerp(0, 1000, _velocity.magnitude);
-                    // Dampen the velocity
-                    _currentThrustInput = thrustDirection;
-                }
-            
+                DampenVelocity();
             }
         
-            // Calculate the current angular velocity
-            _angularVelocity = new Vector3(-_pitchForce * _currentPitchInput, _yawForce * _currentYawInput, -_rollForce * _currentRollInput);
-
-            // Calculate the current velocity
-            _velocity += _transform.forward * (_thrustForce * _currentThrustInput);
+            UpdateCurrentInputs();
         
+            _angularVelocity = new Vector3(-_pitchForce * _currentPitchInput, _yawForce * _currentYawInput, -_rollForce * _currentRollInput);
+        
+            _velocity += _transform.forward * (_thrustForce * _currentThrustInput);
         }
 
         private void MoveShip()
         {
-            if(_angularVelocity.magnitude > 0.1f)
+            if (_angularVelocity.magnitude > 0.1f)
             {
                 // Rotate the ship
-                transform.Rotate(_angularVelocity * Time.deltaTime, Space.Self);
+                _transform.Rotate(_angularVelocity * Time.deltaTime, Space.Self);
             }
         
-            // Move the ship
             _transform.position += _velocity * Time.deltaTime;
-        
         }
-
+        
         private void UpdateEngineParticles()
         {
             // Calculate the emission rate and lifetime based on the current thrust
@@ -209,6 +147,60 @@ namespace Ship
         public void SetRoll(float roll)
         {
             _currentRollInput = roll;
+        }
+
+        private void ResetCurrentInputs()
+        {
+            _currentThrustInput = 0f;
+            _currentPitchInput = 0f;
+            _currentYawInput = 0f;
+            _currentRollInput = 0f;
+        }
+
+        private void UpdateCurrentInputs()
+        {
+            if (ShouldDampenCurrentValues)
+            {
+                if (_velocity.magnitude < 10.0f)
+                {
+                    ResetCurrentInputs();
+                    return;
+                }
+            
+                Quaternion targetRotation = Quaternion.LookRotation(_velocity, Vector3.up);
+                Quaternion currentRotation = _transform.rotation;
+                float forwardAngle = Quaternion.Angle(currentRotation, targetRotation);
+                float backwardAngle = Quaternion.Angle(currentRotation, targetRotation * Quaternion.Euler(0, 180, 0));
+                float thrustDirection = -1f;
+                if (backwardAngle < forwardAngle)
+                {
+                    targetRotation *= Quaternion.Euler(0, 180, 0);
+                    thrustDirection = 1f;
+                }
+                
+                targetRotation *= Quaternion.Euler(_currentPitchInput, _currentYawInput, _currentRollInput);
+
+                var rotationStep = Time.deltaTime;
+                _transform.rotation = Quaternion.Slerp(_transform.rotation, targetRotation, rotationStep);
+            
+                _angularVelocity = Vector3.Lerp(_angularVelocity, Vector3.zero, Time.deltaTime);
+            
+                if (Quaternion.Angle(_transform.rotation, targetRotation) < 15.0f)
+                {
+                    thrustDirection *= Mathf.InverseLerp(0, 1000, _velocity.magnitude);
+                    _currentThrustInput = thrustDirection;
+                }
+            }
+        }
+
+        private void DampenVelocity()
+        {
+            if (_velocity.magnitude < 10.0f)
+            {
+                _velocity = Vector3.zero;
+                _angularVelocity = Vector3.zero;
+                ResetCurrentInputs();
+            }
         }
     }
 }

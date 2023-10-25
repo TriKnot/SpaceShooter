@@ -9,7 +9,7 @@ namespace Jobs
     [BurstCompile]
     public struct TransformMoveJob : IJobParallelForTransform
     {
-        [ReadOnly] private float _deltaTime;
+        [ReadOnly] private readonly float _deltaTime;
         [ReadOnly] private NativeArray<MoveData> _moveDataArray;
 
         public TransformMoveJob(float deltaTime, NativeArray<MoveData> moveDataArray)
@@ -20,17 +20,25 @@ namespace Jobs
         
         public void Execute(int index, TransformAccess transform)
         {
-            // Check if active
             if (!_moveDataArray[index].IsActive)
             {
                 return;
             }
-            // Move the asteroid
+
+            MoveAsteroid(transform, _moveDataArray[index]);
+            RotateAsteroid(transform, _moveDataArray[index]);
+        }
+
+        private void MoveAsteroid(TransformAccess transform, MoveData moveData)
+        {
             Vector3 pos = transform.position;
-            pos += _moveDataArray[index].Velocity * _deltaTime;
+            pos += moveData.Velocity * _deltaTime;
             transform.position = pos;
-            // Rotate the asteroid
-            quaternion deltaRotation = Quaternion.Euler(_moveDataArray[index].AngularVelocity * _deltaTime);
+        }
+
+        private void RotateAsteroid(TransformAccess transform, MoveData moveData)
+        {
+            quaternion deltaRotation = Quaternion.Euler(moveData.AngularVelocity * _deltaTime);
             quaternion rot = transform.rotation;
             rot = math.mul(rot, deltaRotation);
             transform.rotation = rot;
