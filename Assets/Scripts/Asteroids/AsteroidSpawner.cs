@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using Unity.Burst;
-using Unity.Collections;
-using Unity.Jobs;
+﻿using Unity.Burst;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using Util;
@@ -9,7 +6,7 @@ using Util;
 namespace Asteroids
 {
     [BurstCompile]
-    public class AsteroidSpawner
+    public static class AsteroidSpawner
     {
         public static Asteroid SpawnAsteroid(
             Asteroid[] asteroidPrefabs,
