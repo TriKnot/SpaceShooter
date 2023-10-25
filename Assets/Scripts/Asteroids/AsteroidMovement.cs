@@ -1,4 +1,5 @@
-﻿using Jobs;
+﻿using System.Collections;
+using Jobs;
 using UnityEngine;
 
 namespace Asteroids
@@ -14,33 +15,49 @@ namespace Asteroids
 
         public void Init(float mass, MoveData moveData)
         {
-            AsteroidMoveData = moveData; 
+            AsteroidMoveData = moveData;
             _mass = mass;
-            
-            Invoke(nameof(EnableCollision), 0.1f);
+
+            StartCoroutine(EnableCollisionDelayed());
         }
 
         public void FixedUpdate()
         {
+            MoveAsteroid();
+        }
+
+        private void MoveAsteroid()
+        {
             // Move the asteroid
-            transform.position += (Vector3)AsteroidMoveData.Velocity * Time.fixedDeltaTime;
-            transform.rotation *= Quaternion.Euler((Vector3)AsteroidMoveData.AngularVelocity * Time.fixedDeltaTime);
+            Vector3 velocity = (Vector3)AsteroidMoveData.Velocity;
+            Vector3 angularVelocity = (Vector3)AsteroidMoveData.AngularVelocity;
+            transform.position += velocity * Time.fixedDeltaTime;
+            transform.rotation *= Quaternion.Euler(angularVelocity * Time.fixedDeltaTime);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!_collisionIsOn) return;
-            if (!other.gameObject.TryGetComponent(out AsteroidMovement asteroid)) return;
-            // Let the larger asteroid send the collision message
-            if (asteroid.Mass > _mass) return;
-            Vector3 hitPoint = other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
-            CollisionManager.CalculateCollision(this, asteroid, hitPoint);
+            if (!_collisionIsOn || !TryHandleCollision(other)) return;
         }
 
+        private bool TryHandleCollision(Collider other)
+        {
+            if (!other.gameObject.TryGetComponent(out AsteroidMovement asteroid)) return false;
+            if (asteroid.Mass > _mass) return false;
+            Vector3 hitPoint = other.ClosestPointOnBounds(transform.position);
+            CollisionManager.CalculateCollision(this, asteroid, hitPoint);
+            return true;
+        }
+        
+        private IEnumerator EnableCollisionDelayed()
+        {
+            yield return new WaitForSeconds(0.1f);
+            EnableCollision();
+        }
+        
         private void EnableCollision()
         {
             _collisionIsOn = true;
         }
-        
     }
 }
