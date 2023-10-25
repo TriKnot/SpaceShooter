@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8687226547870863576}
   - component: {fileID: 635422582205603307}
   - component: {fileID: 4039586575218629321}
-  - component: {fileID: 3090920525940344229}
   - component: {fileID: 8190185350224683094}
   m_Layer: 0
   m_Name: Rock9
@@ -137,6 +136,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _healthSystem: {fileID: 8190185350224683094}
   _transform: {fileID: 151006984981307525}
+  _useJobsSO: {fileID: 11400000, guid: fd3ef7be19eba0248a9b6e9654ee98c0, type: 2}
   _entityCount: {fileID: 11400000, guid: 909bdc52c947b5c4aab2e94a77181910, type: 2}
 --- !u!64 &4039586575218629321
 MeshCollider:
@@ -160,33 +160,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6866498158435587154, guid: ba8ad55c52432c9458973a60328b3451, type: 3}
---- !u!54 &3090920525940344229
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3291891354613854917}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &8190185350224683094
 MonoBehaviour:
   m_ObjectHideFlags: 0

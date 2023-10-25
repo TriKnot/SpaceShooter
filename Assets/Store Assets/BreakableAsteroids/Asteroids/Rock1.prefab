@@ -137,6 +137,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   _healthSystem: {fileID: -5009720661602912809}
   _transform: {fileID: 8202099386964702900}
+  _useJobsSO: {fileID: 11400000, guid: fd3ef7be19eba0248a9b6e9654ee98c0, type: 2}
   _entityCount: {fileID: 11400000, guid: 909bdc52c947b5c4aab2e94a77181910, type: 2}
 --- !u!64 &2615907601388813192
 MeshCollider:
