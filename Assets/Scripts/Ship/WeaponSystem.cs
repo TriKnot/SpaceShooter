@@ -1,7 +1,5 @@
 using ScriptableObjects.Variables;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Util;
 
 namespace Ship
 {
@@ -21,48 +19,48 @@ namespace Ship
         
         private void FixedUpdate()
         {
-            // Check if the cooldown is over
             if (_shotTimer > 0.0f)
             {
                 _shotTimer -= Time.fixedDeltaTime;
                 return;
             }
             
-            // Check if we want to shoot
-            if(!ShouldShoot) return;
-            
-            ShootLaser();
-        }
-        
-        private void SpawnLaser()
-        {
-            // Instantiate a laser
-            Laser laser = Instantiate(_laserPrefab);
-            laser.Init(_laserSpawnPoint.position, _laserSpawnPoint.rotation * Quaternion.Euler(_laserStartRotation), _laserSpawnPoint.forward);
-        }
-        
-        private void GetLaserFromPool()
-        {
-            // Instantiate a laser
-            Laser laser = _laserPool.Value.Get();
-            laser.Init(_laserSpawnPoint.position, _laserSpawnPoint.rotation * Quaternion.Euler(_laserStartRotation), _laserSpawnPoint.forward);
-            laser.transform.parent = _laserSpawnPoint;
+            if (ShouldShoot)
+            {
+                ShootLaser();
+            }
         }
 
         private void ShootLaser()
         {
-            // Spawn a laser shot
-            if(_usePoolingSO.Value)
+            if (_usePoolingSO.Value)
             {
                 GetLaserFromPool();
             }
             else
             {
-                SpawnLaser();
-            }            
-            // Set the cooldown and update the last shot time
+                SpawnLaser(_laserSpawnPoint.position, _laserSpawnPoint.rotation * Quaternion.Euler(_laserStartRotation), _laserSpawnPoint.forward);
+            }
+
             _shotTimer = cooldownTime;
         }
+        
+        private void SpawnLaser(Vector3 position, Quaternion rotation, Vector3 direction)
+        {
+            Laser laser = InstantiateLaser(position, rotation, direction);
+            laser.transform.parent = _laserSpawnPoint;
+        }
+        private Laser InstantiateLaser(Vector3 position, Quaternion rotation, Vector3 direction)
+        {
+            Laser laser = _usePoolingSO.Value ? _laserPool.Value.Get() : Instantiate(_laserPrefab);
+            laser.Init(position, rotation, direction);
+            return laser;
+        }
 
+        private void GetLaserFromPool()
+        {
+            Laser laser = InstantiateLaser(_laserSpawnPoint.position, _laserSpawnPoint.rotation * Quaternion.Euler(_laserStartRotation), _laserSpawnPoint.forward);
+            laser.transform.parent = _laserSpawnPoint;
+        }
     }
 }
