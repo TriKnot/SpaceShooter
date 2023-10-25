@@ -1,35 +1,20 @@
-﻿using UnityEngine;
-using Random = UnityEngine.Random;
+﻿using Jobs;
+using UnityEngine;
 
 namespace Asteroids
 {
     public class AsteroidMovement : MonoBehaviour
     {
-        private Vector3 _velocity;
-        private Vector3 _angularVelocity;
         private float _mass;
+        private bool _collisionIsOn = false;
 
-        private bool collisionIsOn = false;
+        public MoveData AsteroidMoveData { get; set; }
 
-        public Vector3 Velocity
-        {
-            get => _velocity;
-            set => _velocity = value;
-        }
-
-        public Vector3 AngularVelocity
-        {
-            get => _angularVelocity;
-            set => _angularVelocity = value;
-        }
-        
         public float Mass => _mass;
 
-
-        public void Init(float scaleMultiplier, float mass, Vector3 initialVelocity = default, Vector3 initialAngularVelocity = default)
+        public void Init(float mass, MoveData moveData)
         {
-            _velocity = Random.insideUnitSphere * Random.Range(0, 100) + initialVelocity;
-            _angularVelocity = Random.insideUnitSphere * Random.Range(0, 100) + initialAngularVelocity;
+            AsteroidMoveData = moveData; 
             _mass = mass;
             
             Invoke(nameof(EnableCollision), 0.1f);
@@ -38,13 +23,13 @@ namespace Asteroids
         public void FixedUpdate()
         {
             // Move the asteroid
-            transform.position += _velocity * Time.fixedDeltaTime;
-            transform.rotation *= Quaternion.Euler(_angularVelocity * Time.fixedDeltaTime);
+            transform.position += (Vector3)AsteroidMoveData.Velocity * Time.fixedDeltaTime;
+            transform.rotation *= Quaternion.Euler((Vector3)AsteroidMoveData.AngularVelocity * Time.fixedDeltaTime);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!collisionIsOn) return;
+            if (!_collisionIsOn) return;
             if (!other.gameObject.TryGetComponent(out AsteroidMovement asteroid)) return;
             // Let the larger asteroid send the collision message
             if (asteroid.Mass > _mass) return;
@@ -54,19 +39,8 @@ namespace Asteroids
 
         private void EnableCollision()
         {
-            collisionIsOn = true;
+            _collisionIsOn = true;
         }
-
-        public void AddAngularVelocity(Vector3 collisionTorque1)
-        {
-            _angularVelocity += collisionTorque1 / _mass;
-        }
-        //
-        // private void OnDrawGizmos()
-        // {
-        //     Vector3 startPos = transform.position + _velocity.normalized * transform.localScale.magnitude;
-        //     Gizmos.color = Color.red;
-        //     Gizmos.DrawRay(startPos, _velocity);
-        // }
+        
     }
 }

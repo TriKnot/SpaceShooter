@@ -1,3 +1,4 @@
+using Jobs;
 using ScriptableObjects.Variables;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -12,7 +13,7 @@ namespace Asteroids
         [SerializeField] private AsteroidPieceObjectPoolSO _asteroidPieceObjectPoolSO;
         [SerializeField] private BoolVariableSO _usePoolingSO;
 
-        public void FractureObject(float scaleMultiplier, Vector3 velocity, Vector3 angularVelocity)
+        public void FractureObject(float scaleMultiplier, MoveData asteroidMoveData)
         {
             Explosion explosion = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
             explosion.Explode(scaleMultiplier);
@@ -28,8 +29,8 @@ namespace Asteroids
                 
                 Vector3 randomDirectionVelocity = Random.insideUnitSphere * scaleMultiplier;
                 
-                Vector3 asteroidRotationVelocity = Vector3.Cross(angularVelocity, piecePosition - asteroidCenter);
-                Vector3 calculatedVelocity = asteroidRotationVelocity + velocity + randomDirectionVelocity;
+                Vector3 asteroidRotationVelocity = Vector3.Cross(asteroidMoveData.AngularVelocity, piecePosition - asteroidCenter);
+                Vector3 calculatedVelocity = asteroidRotationVelocity + (Vector3)asteroidMoveData.Velocity + randomDirectionVelocity;
                 calculatedVelocity = Vector3.ClampMagnitude(calculatedVelocity, 100);
                 SpawnPiece(piece, calculatedVelocity, Random.insideUnitSphere, scaleMultiplier, scaleMultiplier / _pieces.Length, _entityCount);
             }
@@ -43,13 +44,6 @@ namespace Asteroids
             {
                 piece.InitializePool(_asteroidPieceObjectPoolSO.Value);
             }
-        }
-
-
-        public void Activate(Transform parentTransform, float scaleMultiplier, Vector3 velocity, Vector3 angularVelocity)
-        {
-            transform.position = parentTransform.position;
-            FractureObject(scaleMultiplier, velocity, angularVelocity);
         }
         
         private void OnEnable()

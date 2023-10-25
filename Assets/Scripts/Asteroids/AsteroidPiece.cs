@@ -1,3 +1,4 @@
+using Jobs;
 using ScriptableObjects.Variables;
 using UnityEngine;
 using Util;
@@ -10,6 +11,7 @@ namespace Asteroids
         private Transform _transform;
         private IntVariableSO _entityCount;
         private AsteroidMovement _asteroidMovement;
+        private MoveData _asteroidMoveData;
 
         private ObjectPool<AsteroidPiece> _pool;
         
@@ -21,8 +23,14 @@ namespace Asteroids
             _entityCount = entityCount;
             _entityCount.Value++;
             
+            _asteroidMoveData = new MoveData()
+            {
+                Velocity = Random.insideUnitSphere * Random.Range(0, 100) + velocity,
+                AngularVelocity = Random.insideUnitSphere * Random.Range(0, 100) + angularVelocity 
+            };
+
             _asteroidMovement = gameObject.AddComponent<AsteroidMovement>();
-            _asteroidMovement.Init(scaleMultiplier, mass, velocity, angularVelocity);
+            _asteroidMovement.Init( mass, _asteroidMoveData );
 
             if (TryGetComponent(out AsteroidHealthSystem healthSystem))
             {

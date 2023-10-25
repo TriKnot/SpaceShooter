@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Jobs;
+using UnityEngine;
 
 namespace Asteroids
 {
@@ -11,8 +12,8 @@ namespace Asteroids
             float mass1 = asteroid1.Mass;
             float mass2 = asteroid2.Mass;
     
-            Vector3 initialVelocity1 = asteroid1.Velocity;
-            Vector3 initialVelocity2 = asteroid2.Velocity;
+            Vector3 initialVelocity1 = asteroid1.AsteroidMoveData.Velocity;
+            Vector3 initialVelocity2 = asteroid2.AsteroidMoveData.Velocity;
 
             // Calculate the relative velocity
             Vector3 relativeVelocity = initialVelocity1 - initialVelocity2;
@@ -27,19 +28,21 @@ namespace Asteroids
             Vector3 finalVelocity1 = initialVelocity1 + (linearVelocityChange * (mass2 / (mass1 + mass2)));
             Vector3 finalVelocity2 = initialVelocity2 - (linearVelocityChange * (mass1 / (mass1 + mass2)));
 
-            // // Calculate the change in angular velocity (collision torque)
-            // Vector3 relativePosition1 = contactPoint - asteroid1.transform.position;
-            // Vector3 relativePosition2 = contactPoint - asteroid2.transform.position;
-            //
-            // Vector3 collisionTorque1 = Vector3.Cross(relativePosition1, linearVelocityChange * mass2);
-            // Vector3 collisionTorque2 = Vector3.Cross(relativePosition2, linearVelocityChange * mass1);
-            //
-            // // Add velocity based on the collision torque
-            // finalVelocity1 += collisionTorque1 / mass1;
-            // finalVelocity2 += collisionTorque2 / mass2;
+
+            MoveData asteroidMoveData = new MoveData()
+            {
+                Velocity = finalVelocity1,
+                AngularVelocity = asteroid1.AsteroidMoveData.AngularVelocity
+            };
+            asteroid1.AsteroidMoveData = asteroidMoveData;
             
-            asteroid1.Velocity = finalVelocity1;
-            asteroid2.Velocity = finalVelocity2;
+            asteroidMoveData = new MoveData()
+            {
+                Velocity = finalVelocity2,
+                AngularVelocity = asteroid2.AsteroidMoveData.AngularVelocity
+            };
+
+            asteroid2.AsteroidMoveData = asteroidMoveData;
 
         }
 

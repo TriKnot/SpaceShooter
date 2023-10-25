@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: AsteroidSpawnRate
   m_EditorClassIdentifier: 
   resetOnAwake: 0
-  value: 0.1
+  value: 5000
