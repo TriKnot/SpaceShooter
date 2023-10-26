@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Threading;
+using System.Threading.Tasks;
 using Jobs;
 using Unity.Collections;
 using Unity.Jobs;
@@ -42,13 +44,21 @@ namespace Asteroids
         
         [Header("Runtime")]
         private bool _shouldSpawnAsteroids = true;
+        private CancellationTokenSource _cancellationTokenSource;
+        bool _asteroidsSpawned = false;
+
+        public static bool MoveDataHasChanged { get; set; } = false;
 
 
-        private void Start()
+        private async void Start()
         {
+            _cancellationTokenSource = new CancellationTokenSource();
+            CancellationToken cancellationToken = _cancellationTokenSource.Token;
             InitializeArrays();
-            SpawnStartAsteroids();
+            await SpawnStartAsteroidsAsync(cancellationToken);
             InitializeTransformArrays();
+            UpdateMoveDataArrays();
+            
             if (_spawnRateSO.Value > 0)
                 StartCoroutine(SpawnAsteroidIEnumerator());
         }
@@ -58,10 +68,11 @@ namespace Asteroids
             // Asteroids
             _asteroids = _asteroidPoolSO.Value.Objects.ToArray();
             _asteroidMoveDataArray = new NativeArray<MoveData>(_asteroids.Length, Allocator.Persistent);
-            
+
             // Asteroid Pieces
             _asteroidPieces = _asteroidPiecesPoolSO.Value.Objects.ToArray();
             _asteroidPieceMoveDataArray = new NativeArray<MoveData>(_asteroidPieces.Length, Allocator.Persistent);
+
         }
 
         private void InitializeTransformArrays()
@@ -82,10 +93,15 @@ namespace Asteroids
             }
             _asteroidPieceTransformAccessArray = new TransformAccessArray(transforms);
         }
-
+        
         private void FixedUpdate()
         {
-            if(!_useJobsSO.Value ) return;
+            if(!_useJobsSO.Value || !_asteroidsSpawned ) return;
+            
+            if(MoveDataHasChanged)
+            {
+                UpdateMoveDataArrays();
+            }
             
             if ( _asteroidMoveJobHandle.IsCompleted)
             {
@@ -100,15 +116,31 @@ namespace Asteroids
                     .Schedule(_asteroidPieceTransformAccessArray);
             }
         }
-
         
         private TransformMoveJob CreateAsteroidMoveJob(Asteroid[] asteroids, NativeArray<MoveData> moveDataArray)
         {
-            for (int i = 0; i < asteroids.Length; i++)
+            if(MoveDataHasChanged)
             {
-                moveDataArray[i] = asteroids[i].AsteroidMoveData;
+                for (int i = 0; i < asteroids.Length; i++)
+                {
+                    moveDataArray[i] = asteroids[i].AsteroidMoveData;
+                }
             }
             return new TransformMoveJob(Time.fixedDeltaTime, moveDataArray);
+        }
+        
+        private void UpdateMoveDataArrays()
+        {
+            for (int i = 0; i < _asteroids.Length; i++)
+            {
+                _asteroidMoveDataArray[i] = _asteroids[i].AsteroidMoveData;
+            }
+                        
+            for (int i = 0; i < _asteroidPieces.Length; i++)
+            {
+                _asteroidPieceMoveDataArray[i] = _asteroidPieces[i].AsteroidMoveData;
+            }
+            MoveDataHasChanged = false;
         }
 
         private void OnDestroy()
@@ -119,6 +151,7 @@ namespace Asteroids
                 EnsureJobComplete(_asteroidPieceMoveJobHandle);
             }
             DisposeAsteroidArrays();
+            _cancellationTokenSource.Cancel();
             _shouldSpawnAsteroids = false;
         }
 
@@ -129,8 +162,13 @@ namespace Asteroids
 
         private void DisposeAsteroidArrays()
         {
+            // Asteroids
             _asteroidMoveDataArray.Dispose();
             _asteroidTransformAccessArray.Dispose();
+            
+            // Asteroid Pieces
+            _asteroidPieceMoveDataArray.Dispose();
+            _asteroidPieceTransformAccessArray.Dispose();
         }
 
         private IEnumerator SpawnAsteroidIEnumerator()
@@ -142,15 +180,34 @@ namespace Asteroids
             }
         }
 
-        private void SpawnStartAsteroids()
+        private async Task SpawnStartAsteroidsAsync(CancellationToken cancellationToken)
         {
-            for (int i = 0; i < _initialAsteroidCountSO.Value; i++)
+            int maxPerFrame = 350;
+            int count = _initialAsteroidCountSO.Value;
+            int iterations = count / maxPerFrame;
+            int remainder = count % maxPerFrame;
+            for (int i = 0; i < iterations; i++)
             {
-                Asteroid asteroid = SpawnAsteroid();
-                _asteroids[i] = asteroid;
-                _asteroidMoveDataArray[i] = asteroid.AsteroidMoveData;
+                for (int j = 0; j < maxPerFrame; j++)
+                {
+                    if (cancellationToken.IsCancellationRequested)
+                    {
+                        return;
+                    }
+                    Asteroid asteroid = SpawnAsteroid();
+                    _asteroids[i] = asteroid;
+                    _asteroidMoveDataArray[i] = asteroid.AsteroidMoveData;
+                }
+                await Task.Yield();
             }
+            for (int i = 0; i < remainder; i++)
+            {
+                SpawnAsteroid();
+            }
+
+            _asteroidsSpawned = true;
         }
+
 
         private Asteroid SpawnAsteroid()
         {

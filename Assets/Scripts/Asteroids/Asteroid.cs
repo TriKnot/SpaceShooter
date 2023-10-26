@@ -29,8 +29,17 @@ namespace Asteroids
         private ObjectPool<Asteroid> _pool;
         private AsteroidMovement _asteroidMovement;
         private AsteroidHealthSystem _healthSystem;
-        
-        public MoveData AsteroidMoveData { get => _asteroidMoveData; private set => _asteroidMoveData = value; }
+
+        public MoveData AsteroidMoveData
+        {
+            get => _asteroidMoveData;
+            private set
+            {
+                _asteroidMoveData = value;
+                if (_useJobsSO.Value)
+                    AsteroidManager.MoveDataHasChanged = true;
+            }
+        }
 
         private void Awake()
         {
