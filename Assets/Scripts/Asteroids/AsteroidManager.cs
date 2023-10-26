@@ -1,6 +1,5 @@
 using System.Collections;
 using Jobs;
-using Unity.Burst;
 using Unity.Collections;
 using Unity.Jobs;
 using UnityEngine;
@@ -9,78 +8,123 @@ using ScriptableObjects.Variables;
 
 namespace Asteroids
 {
-    [BurstCompile]
     public class AsteroidManager : MonoBehaviour
     {
         [Header("Setup")]
+        [SerializeField] private BoolVariableSO _usePoolingSO;
+        [SerializeField] private BoolVariableSO _useJobsSO;
+        
+        [Header("Setup Asteroids")]
         [SerializeField] private AsteroidArraySO _asteroidPrefabsSO;
         [SerializeField] private IntVariableSO _initialAsteroidCountSO;
         [SerializeField] private FloatVariableSO _maxspawnRadiusSO;
         [SerializeField] private FloatVariableSO _minSpawnDistanceSO;
         [SerializeField] private FloatVariableSO _spawnRateSO;
         [SerializeField] private TransformVariableSO _playerTransformSO;
-        [SerializeField] private BoolVariableSO _usePoolingSO;
         [SerializeField] private AsteroidObjectPoolSO _asteroidPoolSO;
-        [SerializeField] private BoolVariableSO _useJobsSO;
 
+        [Header("Setup Asteroid Pieces")]
+        [SerializeField] private AsteroidObjectPoolSO _asteroidPiecesPoolSO;
+        
+        [Header("References Asteroids")]
         private Asteroid[] _asteroids;
         private NativeArray<MoveData> _asteroidMoveDataArray;
         private TransformMoveJob _asteroidMoveJob;
         private JobHandle _asteroidMoveJobHandle;
         private TransformAccessArray _asteroidTransformAccessArray;
+        
+        [Header("References Asteroid Pieces")]
+        private Asteroid[] _asteroidPieces;
+        private NativeArray<MoveData> _asteroidPieceMoveDataArray;
+        private TransformMoveJob _asteroidPieceMoveJob;
+        private JobHandle _asteroidPieceMoveJobHandle;
+        private TransformAccessArray _asteroidPieceTransformAccessArray;
+        
+        [Header("Runtime")]
+        private bool _shouldSpawnAsteroids = true;
+
 
         private void Start()
         {
             InitializeArrays();
             SpawnStartAsteroids();
-            InitializeAsteroids();
+            InitializeTransformArrays();
             if (_spawnRateSO.Value > 0)
                 StartCoroutine(SpawnAsteroidIEnumerator());
         }
 
         private void InitializeArrays()
         {
+            // Asteroids
             _asteroids = _asteroidPoolSO.Value.Objects.ToArray();
             _asteroidMoveDataArray = new NativeArray<MoveData>(_asteroids.Length, Allocator.Persistent);
+            
+            // Asteroid Pieces
+            _asteroidPieces = _asteroidPiecesPoolSO.Value.Objects.ToArray();
+            _asteroidPieceMoveDataArray = new NativeArray<MoveData>(_asteroidPieces.Length, Allocator.Persistent);
         }
 
-        private void InitializeAsteroids()
+        private void InitializeTransformArrays()
         {
+            // Asteroids
             Transform[] transforms = new Transform[_asteroids.Length];
             for (int i = 0; i < _asteroids.Length; i++)
             {
                 transforms[i] = _asteroids[i].gameObject.transform;
             }
-
             _asteroidTransformAccessArray = new TransformAccessArray(transforms);
+            
+            // Asteroid Pieces
+            transforms = new Transform[_asteroidPieces.Length];
+            for (int i = 0; i < _asteroidPieces.Length; i++)
+            {
+                transforms[i] = _asteroidPieces[i].gameObject.transform;
+            }
+            _asteroidPieceTransformAccessArray = new TransformAccessArray(transforms);
         }
 
         private void FixedUpdate()
         {
-            if (!_useJobsSO.Value || !_asteroidMoveJobHandle.IsCompleted) return;
-            EnsureAsteroidJobComplete();
-            ScheduleAsteroidMoveJob();
+            if(!_useJobsSO.Value ) return;
+            
+            if ( _asteroidMoveJobHandle.IsCompleted)
+            {
+                EnsureJobComplete(_asteroidMoveJobHandle);
+                _asteroidMoveJobHandle = CreateAsteroidMoveJob(_asteroids, _asteroidMoveDataArray)
+                    .Schedule(_asteroidTransformAccessArray);
+            }
+            if( _asteroidPieceMoveJobHandle.IsCompleted)
+            {
+                EnsureJobComplete(_asteroidPieceMoveJobHandle);
+                _asteroidPieceMoveJobHandle = CreateAsteroidMoveJob(_asteroidPieces, _asteroidPieceMoveDataArray)
+                    .Schedule(_asteroidPieceTransformAccessArray);
+            }
         }
 
-        private void ScheduleAsteroidMoveJob()
+        
+        private TransformMoveJob CreateAsteroidMoveJob(Asteroid[] asteroids, NativeArray<MoveData> moveDataArray)
         {
-            for (int i = 0; i < _asteroids.Length; i++)
+            for (int i = 0; i < asteroids.Length; i++)
             {
-                _asteroidMoveDataArray[i] = _asteroids[i].AsteroidMoveData;
+                moveDataArray[i] = asteroids[i].AsteroidMoveData;
             }
-            _asteroidMoveJob = new TransformMoveJob(Time.fixedDeltaTime, _asteroidMoveDataArray);
-            _asteroidMoveJobHandle = _asteroidMoveJob.Schedule(_asteroidTransformAccessArray);
+            return new TransformMoveJob(Time.fixedDeltaTime, moveDataArray);
         }
 
         private void OnDestroy()
         {
-            EnsureAsteroidJobComplete();
+            if (_useJobsSO.Value)
+            {
+                EnsureJobComplete(_asteroidMoveJobHandle);
+                EnsureJobComplete(_asteroidPieceMoveJobHandle);
+            }
             DisposeAsteroidArrays();
+            _shouldSpawnAsteroids = false;
         }
 
-        private void EnsureAsteroidJobComplete()
+        private void EnsureJobComplete(JobHandle jobHandle)
         {
-            _asteroidMoveJobHandle.Complete();
+            jobHandle.Complete();
         }
 
         private void DisposeAsteroidArrays()
@@ -91,7 +135,7 @@ namespace Asteroids
 
         private IEnumerator SpawnAsteroidIEnumerator()
         {
-            while (true)
+            while (_shouldSpawnAsteroids)
             {
                 yield return new WaitForSeconds(_spawnRateSO.Value);
                 SpawnAsteroid();
@@ -110,9 +154,19 @@ namespace Asteroids
 
         private Asteroid SpawnAsteroid()
         {
-            Asteroid asteroid = AsteroidSpawner.SpawnAsteroid(
-                _asteroidPrefabsSO.Value, _minSpawnDistanceSO.Value, _maxspawnRadiusSO.Value, _usePoolingSO,
-                _playerTransformSO.Value, _asteroidPoolSO.Value);
+            Vector3 spawnPos;
+            do
+            {
+                spawnPos = _playerTransformSO.Value.position + 
+                               Random.insideUnitSphere * 
+                               Random.Range(_minSpawnDistanceSO.Value, _maxspawnRadiusSO.Value);
+                
+            } while (!AsteroidSpawner.IsValidSpawnPosition(spawnPos));
+            
+            Asteroid asteroid = _usePoolingSO.Value ? 
+                AsteroidSpawner.SpawnAsteroid(_asteroidPoolSO.Value, spawnPos) : 
+                AsteroidSpawner.SpawnAsteroid(_asteroidPrefabsSO.Value, spawnPos); 
+            
             return asteroid;
         }
     }
