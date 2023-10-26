@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b8c7d88eebb9940b3c4196017b84df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fracturedPrefab: {fileID: 5802414221815388905, guid: 8a0d737915eae7a4e8c4176987503064, type: 3}
   _minScaleMultiplier: {fileID: 11400000, guid: 2146f3de2f2e57c4a99af9cb1c3a3902, type: 2}
   _maxScaleMultiplier: {fileID: 11400000, guid: c1a8bbf7443287545817c672e426a5e2, type: 2}
+  _usePoolingSO: {fileID: 11400000, guid: fc0693231e2fad549837e0af0b4a9121, type: 2}
   _massCurve:
     serializedVersion: 2
     m_Curve:
@@ -134,10 +134,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _healthSystem: {fileID: -7315563173149381404}
-  _transform: {fileID: 4506349960858086802}
   _useJobsSO: {fileID: 11400000, guid: fd3ef7be19eba0248a9b6e9654ee98c0, type: 2}
   _entityCount: {fileID: 11400000, guid: 909bdc52c947b5c4aab2e94a77181910, type: 2}
+  _explosionPoolSO: {fileID: 11400000, guid: cae42e91b17375641814721ee2d038c2, type: 2}
+  _asteroidPieceObjectPoolSO: {fileID: 11400000, guid: 67396a55076f67f45aa1691e72830f14, type: 2}
 --- !u!64 &7950008947720794758
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267f28d7333e464da3e0a0520a72db3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionPrefab: {fileID: 3917771847206133421, guid: 6e8c7c425e5bc374daf95a774767b1e3, type: 3}
+  _asteroidPieceSO: {fileID: 11400000, guid: 0684ec13e8508de41b065f32df94fefc, type: 2}
   _onDeathEvent:
     m_PersistentCalls:
       m_Calls:
@@ -188,5 +188,4 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _piecePrefabs: {fileID: 11400000, guid: aaa1fbea16871f142ae069c0b9639fe4, type: 2}
   _currentHealth: 0
