@@ -1,65 +1,53 @@
 ﻿using ScriptableObjects.Variables;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Asteroids
 {
     public class AsteroidHealthSystem : MonoBehaviour
     {
-        [Header("Health Settings")]
-        [SerializeField] private Explosion _explosionPrefab;
-        [SerializeField] private AsteroidPieceArraySO _piecePrefabs;
-
-        [Header("Events")]
-        [SerializeField] private UnityEvent _onDeathEvent;
-
+        private Asteroid _asteroid;
+        
         [Header("Current Health")]
         [SerializeField] private float _currentHealth;
         
-        public UnityEvent OnDeathEvent => _onDeathEvent;
-        
-        public void Init(float scaleMultiplier)
+        public void Init(Asteroid asteroid, float scaleMultiplier)
         {
+            _asteroid = asteroid;
             _currentHealth = scaleMultiplier;
         }
         
-        public void Hit(float damage, Vector3 hitPoint, IntVariableSO entityCount)
+        public void Hit(float damage, Vector3 hitPoint)
         {
             _currentHealth -= damage;
             
             if (_currentHealth > 0)
             {
+                // TODO: Spawn asteroid pieces on hit
                 // Spawn 1-3 pieces
-                int pieceCount = Random.Range(1, 4);
-                for (int i = 0; i < pieceCount; i++)
-                {
-                    AsteroidPiece piece = Instantiate(_piecePrefabs.Value[Random.Range(0, _piecePrefabs.Value.Length)], hitPoint, Quaternion.identity);
-
-                    // Make it move away from the hit point
-                    Vector3 velocity = (piece.transform.position - hitPoint).normalized;
-                    // Add some random direction
-                    velocity += Random.insideUnitSphere * damage;
-                    // Clamp the magnitude
-                    velocity = Vector3.ClampMagnitude(velocity, 100.0f);
-                    
-                    Vector3 angularVelocity = Random.insideUnitSphere * 100.0f;
-                    
-                    piece.Init(velocity, angularVelocity, _currentHealth / damage, damage, entityCount);
-                }
+                // int pieceCount = Random.Range(1, 4);
+                // for (int i = 0; i < pieceCount; i++)
+                // {
+                //     // Get a random piece   
+                //     Asteroid piece = _asteroidPieceSO.Value.Get();
+                //     
+                //     // Make it move away from the hit point
+                //     Vector3 startPosition = (transform.position - hitPoint).normalized;
+                //     // Add some random direction
+                //     startPosition += Random.insideUnitSphere * damage;
+                //     // Clamp the magnitude
+                //     startPosition = Vector3.ClampMagnitude(startPosition, 100.0f);
+                //     
+                //     Quaternion rotation = Quaternion.Euler(Random.insideUnitSphere * 360);
+                //     
+                //     piece.Init();
+                //     piece.Activate( startPosition, rotation );
+                // }
                 // If it's not dead, return
                 return;
             }
             // If it's dead, explode
             _currentHealth = 0;
-            OnDeath();
-        }
-
-        private void OnDeath()
-        {
-            Explosion explosion = Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
-            explosion.Explode(transform.localScale.x / transform.localScale.x);
-            
-            _onDeathEvent?.Invoke();
+            _asteroid.OnDeath();
         }
     }
 }
