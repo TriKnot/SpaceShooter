@@ -1,56 +1,36 @@
-﻿using Unity.Burst;
-using UnityEngine;
+﻿using UnityEngine;
 using Random = UnityEngine.Random;
 using Util;
 
 namespace Asteroids
 {
-    [BurstCompile]
     public static class AsteroidSpawner
     {
-        public static Asteroid SpawnAsteroid(
-            Asteroid[] asteroidPrefabs,
-            float minSpawnDistance,
-            float maxSpawnRadius,
-            bool usePooling,
-            Transform playerTransform = null,
-            ObjectPool<Asteroid> asteroidPool = null)
-        {
-            Vector3 centerPosOffset = playerTransform ? playerTransform.position : Vector3.zero;
-            Vector3 spawnPos = GetRandomSpawnPosition(centerPosOffset, minSpawnDistance, maxSpawnRadius);
-
-            Asteroid asteroid = usePooling || asteroidPool == null ? SpawnAsteroidFromPool(asteroidPool) : SpawnAsteroidFromPrefab(asteroidPrefabs);
-            asteroid.Init();
-            asteroid.Activate(spawnPos, Random.rotation);
-            return asteroid;
-        }
-
-        private static Vector3 GetRandomSpawnPosition(Vector3 centerPosOffset, float minSpawnDistance, float maxSpawnRadius)
-        {
-            Vector3 spawnPos;
-            Camera mainCamera = Camera.main; // Kind of a hack for the time being
-            int attempts = 0; // Safety measure to prevent infinite loop
-
-            do
-            {
-                spawnPos = Random.insideUnitSphere * Random.Range(minSpawnDistance, maxSpawnRadius) + centerPosOffset;
-            } while (PointInCameraView(spawnPos, mainCamera) && attempts++ < 100);
-
-            return spawnPos;
-        }
-
-        private static Asteroid SpawnAsteroidFromPrefab(Asteroid[] asteroidPrefabs)
+        public static Asteroid SpawnAsteroid(Asteroid[] asteroidPrefabs, Vector3 spawnPos)
         {
             int randAsteroidIndex = Random.Range(0, asteroidPrefabs.Length);
             Asteroid asteroid = Object.Instantiate(asteroidPrefabs[randAsteroidIndex]);
             asteroid.gameObject.SetActive(false);
+            asteroid.Activate(spawnPos, Random.rotation);
+
             return asteroid;
         }
 
-        private static Asteroid SpawnAsteroidFromPool(ObjectPool<Asteroid> asteroidPool)
+        public static Asteroid SpawnAsteroid(ObjectPool<Asteroid> asteroidPool, Vector3 spawnPos)
         {
-            return asteroidPool.Get();
+            Asteroid asteroid = asteroidPool.Get();
+            asteroid.Activate(spawnPos, Random.rotation);
+
+            return asteroid;
         }
+
+        public static bool IsValidSpawnPosition(Vector3 spawnPosition, Camera camera = null)
+        {
+            if(camera == null )
+                camera = Camera.main;
+            return !PointInCameraView(spawnPosition, camera);
+        }
+
 
         private static bool PointInCameraView(Vector3 point, Camera camera)
         {
