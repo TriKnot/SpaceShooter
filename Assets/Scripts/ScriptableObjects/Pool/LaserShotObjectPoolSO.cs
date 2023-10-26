@@ -45,7 +45,8 @@ namespace ScriptableObjects.Variables
         {
             Value = _usePoolingSO.Value
                 ? new ObjectPool<Laser>(_laserPrefabs, _initialPoolSize.Value)
-                : new ObjectPool<Laser>(null, 0);        }
+                : new ObjectPool<Laser>(null, 0);        
+        }
         
     }
 

@@ -1,3 +1,4 @@
+using System;
 using Asteroids;
 using ScriptableObjects.Variables;
 using UnityEngine;
@@ -10,16 +11,20 @@ namespace Ship
     {
         [SerializeField] private float _speed;
         [SerializeField] private float _maxDistance;
-        [SerializeField] private Transform _transform;
         [SerializeField] private float _damage;
         [SerializeField] private Explosion _hitEffectPrefab;
-        [SerializeField] private IntVariableSO _asteroidPieceCountSO;
     
+        private Transform _transform;
         private Vector3 _velocity;
         private float _travelDistance;
         
         private ObjectPool<Laser> _pool;
-        
+
+        private void Awake()
+        {
+            _transform = transform;
+        }
+
         public void Init(Vector3 startPosition, Quaternion rotation, Vector3 direction)
         {
             _transform.position = startPosition;
@@ -59,21 +64,21 @@ namespace Ship
 
         private void HandleHit(Collider other)
         {
-            if (!other.TryGetComponent(out AsteroidHealthSystem healthSystem)) return;
-            DamageAsteroid(healthSystem, other.transform.position);        
+            if (other.TryGetComponent(out AsteroidHealthSystem healthSystem))
+                DamageAsteroid(healthSystem, other.transform.position);        
         }
 
         private void DamageAsteroid(AsteroidHealthSystem healthSystem, Vector3 hitPoint)
         {
-            healthSystem.Hit(_damage, hitPoint, _asteroidPieceCountSO);
-            Vector3 hitPosition = hitPoint + _velocity.normalized * 100.0f;
-            Explosion explosion = Instantiate(_hitEffectPrefab, hitPosition, Quaternion.identity);
-            explosion.Explode(100);
+            healthSystem.Hit(_damage, hitPoint);
+            //Vector3 hitPosition = hitPoint + _velocity.normalized * 100.0f;
+            // Explosion explosion = Instantiate(_hitEffectPrefab, hitPosition, Quaternion.identity);
+            // explosion.Explode(100);
             
             ReturnToPool();
         }
 
-        public void InitializePool(ObjectPool<Laser> pool)
+        public void InitializePoolObject(ObjectPool<Laser> pool)
         {
             _pool = pool;
         }
