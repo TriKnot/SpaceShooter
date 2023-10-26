@@ -1,12 +1,15 @@
 using System;
 using UnityEngine;
+using Util;
+using Utils;
 
 namespace Asteroids
 {
-    public class Explosion : MonoBehaviour
+    public class Explosion : MonoBehaviour, IPoolObject<Explosion>
     {
         [SerializeField] private ParticleSystem _particleSystems;
         [SerializeField] private Light _light;
+        private ObjectPool<Explosion> _pool;
 
         private float _scaleMultiplier;
 
@@ -16,7 +19,7 @@ namespace Asteroids
             UpdateParticleSystem(scaleMultiplier);
             UpdateLight(scaleMultiplier);
             SetRandomRotation();
-            Invoke(nameof(DespawnExplosion), 2.0f);
+            Invoke(nameof(ReturnToPool), 2.0f);
         }
 
         private void UpdateParticleSystem(float scaleMultiplier)
@@ -55,9 +58,14 @@ namespace Asteroids
             _light.range -= step;
         }
 
-        private void DespawnExplosion()
+        public void InitializePoolObject(ObjectPool<Explosion> pool)
         {
-            Destroy(gameObject);
+            _pool = pool;
+        }
+
+        public void ReturnToPool()
+        {
+            _pool.Return(this);
         }
     }
 }
