@@ -28,10 +28,25 @@ namespace Util
             for (int i = 0; i < initialSize; i++)
             {
                 int index = i % _prefabs.Length;
-                T obj = Object.Instantiate(_prefabs[index], _parentObject.transform, true);
-                obj.gameObject.SetActive(false);
-                obj.InitializePoolObject(this);
-                _objects.Add(obj);
+                CreateNewObject(_prefabs[index]);
+            }
+        }
+        
+        private T CreateNewObject(T prefab)
+        {
+            T obj = Object.Instantiate(prefab, _parentObject.transform, true);
+            obj.gameObject.SetActive(false);
+            obj.InitializePoolObject(this);
+            _objects.Add(obj);
+            return obj;
+        }
+        
+        public void ExtendPool(int amount)
+        {
+            for (int i = 0; i < amount; i++)
+            {
+                int index = i % _prefabs.Length;
+                CreateNewObject(_prefabs[index]);
             }
         }
 
@@ -48,9 +63,7 @@ namespace Util
             }
             
             int randomIndex = Random.Range(0, _prefabs.Length);
-            T newObj = Object.Instantiate(_prefabs[randomIndex]);
-            newObj.InitializePoolObject(this);
-            _objects.Add(newObj);
+            T newObj = CreateNewObject(_prefabs[randomIndex]);
             return newObj;
         }
         
