@@ -112,6 +112,8 @@ namespace Asteroids
             
             if(MoveDataHasChanged)
             {
+                EnsureJobComplete(_asteroidMoveJobHandle);
+                EnsureJobComplete(_asteroidPieceMoveJobHandle);
                 UpdateMoveDataArrays();
             }
             
