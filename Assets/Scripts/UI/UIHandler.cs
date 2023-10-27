@@ -14,6 +14,8 @@ namespace UI
 
         [SerializeField] private IntVariableSO _asteroidCount;
         [SerializeField] private IntVariableSO _asteroidPieceCount;
+        
+        [SerializeField] private float _updateInterval = 0.1f;
 
         private readonly Dictionary<int, string> _cachedNumberStrings = new();
         private int[] _frameRateSamples;
@@ -21,6 +23,8 @@ namespace UI
         private readonly int _averageFromAmount = 30;
         private int _averageCounter = 0;
         private int _currentAveraged;
+        
+        private float _timeSinceLastUpdate = 0f;
 
         void Awake()
         {
@@ -39,7 +43,13 @@ namespace UI
         {
             SampleFrameRate();
             CalculateAverageFrameRate();
-            UpdateFPSUI();
+            if(_timeSinceLastUpdate < _updateInterval)
+                _timeSinceLastUpdate += Time.deltaTime;
+            else
+            {
+                UpdateFPSUI();
+                _timeSinceLastUpdate = 0f;
+            }
 
         }
 
