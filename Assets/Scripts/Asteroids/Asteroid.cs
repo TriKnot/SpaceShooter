@@ -16,20 +16,20 @@ namespace Asteroids
         [SerializeField] private BoolVariableSO _usePoolingSO;
         [SerializeField] private AnimationCurve _massCurve;
         [SerializeField] private BoolVariableSO _useJobsSO;
-        
-        private float _scaleMultiplier;
-        private float _mass;
-        private MoveData _asteroidMoveData;
 
         [Header("Dependencies")]
         [SerializeField] private IntVariableSO _entityCount;
         [SerializeField] private ExplosionObjectPoolSO _explosionPoolSO;
         [SerializeField] private AsteroidObjectPoolSO _asteroidPieceObjectPoolSO;
+        
         private Transform _transform;
         private ObjectPool<Asteroid> _pool;
         private AsteroidMovement _asteroidMovement;
         private AsteroidHealthSystem _healthSystem;
-
+        private MoveData _asteroidMoveData;
+        private AsteroidData _asteroidData;
+        
+        public AsteroidData AsteroidData  => _asteroidData;
         public MoveData AsteroidMoveData
         {
             get => _asteroidMoveData;
@@ -40,6 +40,7 @@ namespace Asteroids
                     AsteroidManager.MoveDataHasChanged = true;
             }
         }
+        
 
         private void Awake()
         {
@@ -51,17 +52,14 @@ namespace Asteroids
 
         private void Init(float scaleMultiplier)
         {
-            _scaleMultiplier = scaleMultiplier;
-            
-            _transform.localScale = Vector3.one * _scaleMultiplier; 
-            _mass = Mathf.Pow(_scaleMultiplier, 3);
-            
+           _asteroidData = new AsteroidData(scaleMultiplier);
             AsteroidMoveData = new MoveData()
             {
                 Velocity = Random.insideUnitSphere * Random.Range(0, 100),
                 AngularVelocity = Random.insideUnitSphere * Random.Range(0, 100)
             };
             
+            _transform.localScale = Vector3.one * _asteroidData.ScaleMultiplier; 
             gameObject.SetActive(false);
 
             if (!_useJobsSO.Value)
@@ -89,10 +87,10 @@ namespace Asteroids
             _entityCount.Value++;
             _asteroidMoveData.IsActive = true;
             
-            _healthSystem.Init(this, _scaleMultiplier);
+            _healthSystem.Init(this, _asteroidData.ScaleMultiplier);
             
             if (!_useJobsSO.Value)
-                _asteroidMovement.Init(Mathf.Pow(_scaleMultiplier, 3), _asteroidMoveData);
+                _asteroidMovement.Init(_asteroidData.Mass, _asteroidMoveData);
         }
         
         public void OnDeath()
@@ -117,22 +115,27 @@ namespace Asteroids
             // explosion.Explode(_scaleMultiplier);
 
             // TODO: Decide how many pieces to spawn
-            for(int i = 0; i < _scaleMultiplier; i++)
+            float pieceScaleMultiplier = _asteroidData.IsPiece ? _asteroidData.ScaleMultiplier / 5 : _asteroidData.ScaleMultiplier;
+            if(pieceScaleMultiplier < 3f)
+                return;
+            
+            for(int i = 0; i < pieceScaleMultiplier; i++)
             {
-                SpawnPiece();
+                SpawnPiece(pieceScaleMultiplier);
             }
         }
 
-        private void SpawnPiece()
+        private void SpawnPiece(float pieceScaleMultiplier)
         {
             Asteroid piece = _asteroidPieceObjectPoolSO.Value.Get();
             
             Vector3 asteroidCenter = _transform.position;
-            Vector3 randomDirectionVelocity = Random.insideUnitSphere * _scaleMultiplier;
-            Vector3 piecePosition = asteroidCenter + randomDirectionVelocity;
-                
-            Vector3 parentAsteroidRotationVelocity = Vector3.Cross(_asteroidMoveData.AngularVelocity, asteroidCenter - asteroidCenter);
-            Vector3 calculatedVelocity = parentAsteroidRotationVelocity + _asteroidMoveData.Velocity + randomDirectionVelocity;
+            Vector3 pieceRelativeLocation = Random.insideUnitSphere * (_asteroidData.ScaleMultiplier * Random.Range(0.5f, 2.0f));
+            Vector3 piecePosition = asteroidCenter + pieceRelativeLocation;
+            Vector3 torqueDirection = Vector3.Cross(pieceRelativeLocation, _asteroidMoveData.AngularVelocity);
+            Vector3 torque = torqueDirection * _asteroidData.Mass;
+            
+            Vector3 calculatedVelocity = torque + _asteroidMoveData.Velocity + pieceRelativeLocation;
             
             calculatedVelocity = Vector3.ClampMagnitude(calculatedVelocity, 100);
             
@@ -143,7 +146,8 @@ namespace Asteroids
                 AngularVelocity = Random.insideUnitSphere * Random.Range(0, 100),
             };
             
-            piece.Init(_scaleMultiplier);
+            piece.Init(pieceScaleMultiplier);
+            piece.AsteroidData.IsPiece = true;
             piece.Activate( piecePosition, _transform.rotation, moveData );
             
         }
