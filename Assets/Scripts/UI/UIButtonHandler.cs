@@ -30,12 +30,17 @@ namespace UI
         {
             // Set the UI to the current settings
             // Bool
+            SetUseJobs(_useJobsSO.Value);
             _useJobsToggle.isOn = _useJobsSO.Value;
+            SetUsePooling(_usePoolingSO.Value);
             _usePoolingToggle.isOn = _usePoolingSO.Value;
             // Int
+            SetVSync(_vSyncSO.Value);
             _vSyncToggle.value = _vSyncSO.Value;
+            SetInitialAsteroidCount(_initialAsteroidCountSO.Value);
             _initialAsteroidCountSlider.value = _initialAsteroidCountSO.Value;
             // Float
+            SetSpawnRate(_spawnRateSO.Value);
              _spawnRateSlider.value = _spawnRateSO.Value;
         }
 
