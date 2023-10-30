@@ -13,7 +13,6 @@ namespace UI
         [SerializeField] private TextMeshProUGUI _fpsText;
 
         [SerializeField] private IntVariableSO _asteroidCount;
-        [SerializeField] private IntVariableSO _asteroidPieceCount;
         
         [SerializeField] private float _updateInterval = 0.1f;
 
@@ -69,13 +68,11 @@ namespace UI
         private void RegisterObservers()
         {
             _asteroidCount.RegisterObserver(this);
-            _asteroidPieceCount.RegisterObserver(this);
         }
 
         private void UnregisterObservers()
         {
             _asteroidCount.UnregisterObserver(this);
-            _asteroidPieceCount.UnregisterObserver(this);
         }
 
         private void SampleFrameRate()
@@ -115,15 +112,9 @@ namespace UI
             _asteroidText.text = "Asteroids: " + _asteroidCount.Value;
         }
 
-        private void UpdateAsteroidPieceCountText()
-        {
-            _asteroidPieceText.text = "Asteroid pieces: " + _asteroidPieceCount.Value;
-        }
-
         public void OnValueChanged(int newValue)
         {
             UpdateAsteroidCountText();
-            UpdateAsteroidPieceCountText();
         }
     }
 }
