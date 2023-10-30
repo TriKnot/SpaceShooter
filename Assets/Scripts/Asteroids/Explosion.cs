@@ -1,3 +1,4 @@
+using ScriptableObjects.Variables;
 using UnityEngine;
 using Util;
 using Utils;
@@ -7,6 +8,7 @@ namespace Asteroids
     public class Explosion : MonoBehaviour, IPoolObject<Explosion>
     {
         [Header("Dependencies")]
+        [SerializeField] private BoolVariableSO _usePoolingSO;
         [SerializeField] private ParticleSystem _particleSystems;
         [SerializeField] private Light _light;
         private ObjectPool<Explosion> _pool;
@@ -36,6 +38,8 @@ namespace Asteroids
             ActivateParticleSystem(scaleMultiplier);
             ActivateLight(scaleMultiplier);
             SetRandomRotation();
+            
+            Invoke(nameof(Despawn), _duration * 1.5f);
         }
 
         private void ActivateParticleSystem(float scaleMultiplier)
@@ -62,7 +66,6 @@ namespace Asteroids
         {
             if (!_light) return;
             
-            // Step up light intensity and size to max over the duration and then back down to 0 over half the duration
             float t = Mathf.PingPong(Time.time, _duration) / _duration;
             _light.range = Mathf.Lerp(0, _startSizeMultiplier, t);
             _light.intensity = Mathf.Lerp(0, 8, t);
@@ -84,6 +87,14 @@ namespace Asteroids
         public void InitializePoolObject(ObjectPool<Explosion> pool)
         {
             _pool = pool;
+        }
+        
+        private void Despawn()
+        {
+            if(_usePoolingSO.Value) 
+                ReturnToPool();
+            else
+                Destroy(gameObject);
         }
 
         public void ReturnToPool()
