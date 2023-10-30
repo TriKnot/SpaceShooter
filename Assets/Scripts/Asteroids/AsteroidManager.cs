@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Jobs;
@@ -7,6 +9,7 @@ using Unity.Jobs;
 using UnityEngine;
 using UnityEngine.Jobs;
 using ScriptableObjects.Variables;
+using Random = UnityEngine.Random;
 
 namespace Asteroids
 {
@@ -24,43 +27,41 @@ namespace Asteroids
         [SerializeField] private FloatVariableSO _spawnRateSO;
         [SerializeField] private TransformVariableSO _playerTransformSO;
         [SerializeField] private AsteroidObjectPoolSO _asteroidPoolSO;
-
-        [Header("Setup Asteroid Pieces")]
-        [SerializeField] private AsteroidObjectPoolSO _asteroidPiecesPoolSO;
+        [SerializeField] private AsteroidObjectPoolSO _asteroidPiecePoolSO;
         
         [Header("References Asteroids")]
-        private Asteroid[] _asteroids;
+        private static readonly List<Asteroid> Asteroids = new List<Asteroid>();
         private NativeArray<MoveData> _asteroidMoveDataArray;
         private TransformMoveJob _asteroidMoveJob;
         private JobHandle _asteroidMoveJobHandle;
         private TransformAccessArray _asteroidTransformAccessArray;
         
-        [Header("References Asteroid Pieces")]
-        private Asteroid[] _asteroidPieces;
-        private NativeArray<MoveData> _asteroidPieceMoveDataArray;
-        private TransformMoveJob _asteroidPieceMoveJob;
-        private JobHandle _asteroidPieceMoveJobHandle;
-        private TransformAccessArray _asteroidPieceTransformAccessArray;
-        
         [Header("Runtime")]
         private bool _shouldSpawnAsteroids = true;
         private CancellationTokenSource _cancellationTokenSource;
-        bool _moveJobsActive = false;
-        int _activeAsteroidCount = 0;
+        private CancellationToken _cancellationToken;
+        bool _moveJobsActive;
+        int _activeAsteroidCount;
+        int _targetAsteroidCount;
 
         public static bool MoveDataHasChanged { get; set; } = false;
 
         private async void Start()
         {
+            _cancellationTokenSource = new CancellationTokenSource();
+            _cancellationToken = _cancellationTokenSource.Token;
+            _targetAsteroidCount = _initialAsteroidCountSO.Value;
+            
             // Make sure pool is initialized properly if we are using pooling
             if (_usePoolingSO.Value)
             {
-                EnsurePoolInitializedAsync();
+                EnsurePoolInitialized();
             }
-            _cancellationTokenSource = new CancellationTokenSource();
-            CancellationToken cancellationToken = _cancellationTokenSource.Token;
+            
             InitializeArrays();
-            await SpawnStartAsteroidsAsync(cancellationToken);
+            
+            await SpawnStartAsteroidsAsync(_cancellationToken);
+            
             InitializeTransformArrays();
             UpdateMoveDataArrays();
             
@@ -68,26 +69,27 @@ namespace Asteroids
                 StartCoroutine(SpawnAsteroidIEnumerator());
         }
 
-        private void EnsurePoolInitializedAsync()
+        private void EnsurePoolInitialized()
         {
-            if (_asteroidPoolSO.Value.Objects.Count < _initialAsteroidCountSO.Value)
+            if (_asteroidPoolSO.Value.Objects.Count + _asteroidPiecePoolSO.Value.Objects.Count < _initialAsteroidCountSO.Value)
             {
                 int extendAmount = Mathf.FloorToInt(_initialAsteroidCountSO.Value - _asteroidPoolSO.Value.Objects.Count);
                 extendAmount += Mathf.FloorToInt(_initialAsteroidCountSO.Value * 0.2f);
                 _asteroidPoolSO.Value.ExtendPool(extendAmount);
+                
+                extendAmount = Mathf.FloorToInt(_initialAsteroidCountSO.Value - _asteroidPiecePoolSO.Value.Objects.Count);
+                extendAmount += Mathf.FloorToInt(_initialAsteroidCountSO.Value * 0.2f);
+                _asteroidPiecePoolSO.Value.ExtendPool(extendAmount);
             }
+            Asteroids.Clear();
+            Asteroids.AddRange(_asteroidPoolSO.Value.Objects);
+            Asteroids.AddRange(_asteroidPiecePoolSO.Value.Objects);
         }
 
         private void InitializeArrays()
         {
             // Asteroids
-            _asteroids = _asteroidPoolSO.Value.Objects.ToArray();
-            _asteroidMoveDataArray = new NativeArray<MoveData>(_asteroids.Length, Allocator.Persistent);
-
-            // Asteroid Pieces
-            _asteroidPieces = _asteroidPiecesPoolSO.Value.Objects.ToArray();
-            _asteroidPieceMoveDataArray = new NativeArray<MoveData>(_asteroidPieces.Length, Allocator.Persistent);
-
+            _asteroidMoveDataArray = new NativeArray<MoveData>(_targetAsteroidCount, Allocator.Persistent);
         }
 
         private void InitializeTransformArrays()
@@ -98,27 +100,22 @@ namespace Asteroids
                 EnsureJobComplete(_asteroidMoveJobHandle);
                 _asteroidTransformAccessArray.Dispose();
             }            
-            if(_asteroidPieceTransformAccessArray.isCreated)
-            {
-                EnsureJobComplete(_asteroidPieceMoveJobHandle);
-                _asteroidPieceTransformAccessArray.Dispose();
-            }            
             
             // Asteroids
-            Transform[] transforms = new Transform[_asteroids.Length];
-            for (int i = 0; i < _asteroids.Length; i++)
+            Transform[] transforms = new Transform[Asteroids.Count];
+            for (int i = 0; i < Asteroids.Count; i++)
             {
-                transforms[i] = _asteroids[i].gameObject.transform;
+                Asteroid asteroid = Asteroids[i];
+                if (asteroid == null)
+                {
+                    Asteroids.RemoveAt(i);
+                    i--;
+                    continue;
+                }
+                transforms[i] = asteroid.Transform;
             }
             _asteroidTransformAccessArray = new TransformAccessArray(transforms);
-            
-            // Asteroid Pieces
-            transforms = new Transform[_asteroidPieces.Length];
-            for (int i = 0; i < _asteroidPieces.Length; i++)
-            {
-                transforms[i] = _asteroidPieces[i].gameObject.transform;
-            }
-            _asteroidPieceTransformAccessArray = new TransformAccessArray(transforms);
+
         }
         
         private void FixedUpdate()
@@ -128,48 +125,42 @@ namespace Asteroids
             if(MoveDataHasChanged)
             {
                 EnsureJobComplete(_asteroidMoveJobHandle);
-                EnsureJobComplete(_asteroidPieceMoveJobHandle);
+                if(_cancellationToken.IsCancellationRequested)
+                    return;
                 UpdateMoveDataArrays();
             }
+            if(_asteroidTransformAccessArray.length != Asteroids.Count)
+                InitializeTransformArrays();
             
-            if ( _asteroidMoveJobHandle.IsCompleted)
-            {
-                EnsureJobComplete(_asteroidMoveJobHandle);
-                _asteroidMoveJobHandle = CreateAsteroidMoveJob(_asteroids, _asteroidMoveDataArray)
-                    .Schedule(_asteroidTransformAccessArray);
-            }
-            if( _asteroidPieceMoveJobHandle.IsCompleted)
-            {
-                EnsureJobComplete(_asteroidPieceMoveJobHandle);
-                _asteroidPieceMoveJobHandle = CreateAsteroidMoveJob(_asteroidPieces, _asteroidPieceMoveDataArray)
-                    .Schedule(_asteroidPieceTransformAccessArray);
-            }
+            _asteroidMoveJobHandle = CreateAsteroidMoveJob(Asteroids.ToArray(), _asteroidMoveDataArray)
+                .Schedule(_asteroidTransformAccessArray);
+
         }
-        
+
+        private void LateUpdate()
+        {
+            if (!_asteroidMoveJobHandle.IsCompleted || _cancellationToken.IsCancellationRequested) return;
+            
+            EnsureJobComplete(_asteroidMoveJobHandle);
+        }
+
         private TransformMoveJob CreateAsteroidMoveJob(Asteroid[] asteroids, NativeArray<MoveData> moveDataArray)
         {
-            if(MoveDataHasChanged)
-            {
-                for (int i = 0; i < asteroids.Length; i++)
-                {
-                    moveDataArray[i] = asteroids[i].AsteroidMoveData;
-                }
-            }
             return new TransformMoveJob(Time.fixedDeltaTime, moveDataArray);
         }
         
         private void UpdateMoveDataArrays()
         {
-            for (int i = 0; i < _asteroids.Length; i++)
+            if (_asteroidMoveDataArray.Length != Asteroids.Count)
             {
-                _asteroidMoveDataArray[i] = _asteroids[i].AsteroidMoveData;
+                if(_asteroidMoveDataArray.IsCreated)
+                    _asteroidMoveDataArray.Dispose();
+                _asteroidMoveDataArray = new NativeArray<MoveData>(Asteroids.Count, Allocator.Persistent);
             }
-                        
-            for (int i = 0; i < _asteroidPieces.Length; i++)
+            for (int i = 0; i < Asteroids.Count; i++)
             {
-                _asteroidPieceMoveDataArray[i] = _asteroidPieces[i].AsteroidMoveData;
+                _asteroidMoveDataArray[i] = Asteroids[i].AsteroidMoveData;
             }
-            MoveDataHasChanged = false;
         }
 
         private void OnDestroy()
@@ -177,7 +168,6 @@ namespace Asteroids
             if (_useJobsSO.Value)
             {
                 EnsureJobComplete(_asteroidMoveJobHandle);
-                EnsureJobComplete(_asteroidPieceMoveJobHandle);
             }
             DisposeAsteroidArrays();
             _cancellationTokenSource.Cancel();
@@ -199,13 +189,6 @@ namespace Asteroids
             if (_asteroidTransformAccessArray is { isCreated: true, length: > 0 })
                 _asteroidTransformAccessArray.Dispose();
             
-            
-            
-            // Asteroid Pieces
-            if (_asteroidPieceMoveDataArray is { IsCreated: true, Length: > 0 }) 
-                _asteroidPieceMoveDataArray.Dispose();
-            if (_asteroidPieceTransformAccessArray is { isCreated: true, length: > 0 })
-                _asteroidPieceTransformAccessArray.Dispose();
         }
 
         private IEnumerator SpawnAsteroidIEnumerator()
@@ -213,7 +196,7 @@ namespace Asteroids
             while (_shouldSpawnAsteroids)
             {
                 yield return new WaitForSeconds(_spawnRateSO.Value);
-                SpawnAsteroid();
+                SpawnAsteroidAsync();
             }
         }
 
@@ -222,6 +205,7 @@ namespace Asteroids
             int maxPerFrame = 200;
             int iterations = _initialAsteroidCountSO.Value / maxPerFrame;
             int remainder = _initialAsteroidCountSO.Value % maxPerFrame;
+            Asteroid asteroid;
             for (int i = 0; i < iterations; i++)
             {
                 for (int j = 0; j < maxPerFrame; j++)
@@ -230,27 +214,19 @@ namespace Asteroids
                     {
                         return;
                     }
-                    Task<Asteroid> task = SpawnAsteroid();
-                    Asteroid asteroid = await task;
-                    int index = i * maxPerFrame + j;
-                    _asteroids[index] = asteroid;
-                    _asteroidMoveDataArray[index] = asteroid.AsteroidMoveData;
+                    await SpawnAsteroidAsync();
                 }
                 await Task.Yield();
             }
             for (int i = 0; i < remainder; i++)
             {
-                Task<Asteroid> task = SpawnAsteroid();
-                Asteroid asteroid = await task;
-                int index = _asteroids.Length - remainder + i;
-                _asteroids[index] = asteroid;
-                _asteroidMoveDataArray[index] = asteroid.AsteroidMoveData;
+                await SpawnAsteroidAsync();
             }
 
             _moveJobsActive = true;
         }
         
-        private async Task<Asteroid> SpawnAsteroid()
+        private async Task<Asteroid> SpawnAsteroidAsync()
         {
             Vector3 spawnPos = _playerTransformSO.Value ? 
                 _playerTransformSO.Value.position : Vector3.zero;
@@ -267,41 +243,52 @@ namespace Asteroids
             
             if(_activeAsteroidCount >= Mathf.FloorToInt(_asteroidPoolSO.Value.Objects.Count * 0.95f))
             {
-                bool jobsStopped = false;
-                // Check if move jobs are active and if so, stop them
-                if (_useJobsSO.Value && _moveJobsActive)
-                {
-                    _moveJobsActive = false;
-                    // Ensure the jobs are complete before disposing the arrays
-                    EnsureJobComplete(_asteroidMoveJobHandle);
-                    EnsureJobComplete(_asteroidPieceMoveJobHandle);
-                    jobsStopped = true;
-                }
-                
-                // Extend the pool by 20% of the current pool size if the pool is getting full up to a max of 1000
-                int extendAmount = Mathf.FloorToInt(_asteroidPoolSO.Value.Objects.Count * 0.2f);
-                extendAmount = Mathf.Clamp(extendAmount, 0, 1000);
-                _asteroidPoolSO.Value.ExtendPool(extendAmount);
-
-                // Reinitialize the arrays
-                DisposeAsteroidArrays();
-                InitializeArrays(); 
-                InitializeTransformArrays();
-                UpdateMoveDataArrays();
-
-                // Restart the move jobs
-                MoveDataHasChanged = true;
-                
-                // If we stopped the jobs, restart them
-                if(jobsStopped)
-                    _moveJobsActive = true;
-                
+                Extend();
                 await Task.Yield();
             }
             
             _activeAsteroidCount++;
             
             return asteroid;
+        }
+
+        private void Extend()
+        {
+            bool jobsStopped = false;
+            
+            // Check if move jobs are active and if so, stop them
+            if (_useJobsSO.Value && _moveJobsActive)
+            {
+                _moveJobsActive = false;
+                // Ensure the jobs are complete before disposing the arrays
+                EnsureJobComplete(_asteroidMoveJobHandle);
+                jobsStopped = true;
+            }
+                
+            // Extend the pool by 20% of the current pool size if the pool is getting full up to a max of 1000
+            int extendAmount = Mathf.FloorToInt(_asteroidPoolSO.Value.Objects.Count * 0.2f);
+            extendAmount = Mathf.Clamp(extendAmount, 0, 1000);
+            
+            if(_usePoolingSO.Value)
+                _asteroidPoolSO.Value.ExtendPool(extendAmount);
+
+            // Restart the move jobs
+            MoveDataHasChanged = true;
+                
+            // If we stopped the jobs, restart them
+            if(jobsStopped)
+                _moveJobsActive = true;
+                
+        }
+        
+        public static void AddAsteroid(Asteroid value)
+        {
+            Asteroids.Add(value);
+        }
+        
+        public static void RemoveAsteroid(Asteroid value)
+        {
+            Asteroids.Remove(value);
         }
     }
 }

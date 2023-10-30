@@ -20,7 +20,9 @@ namespace Asteroids
         [Header("Dependencies")]
         [SerializeField] private IntVariableSO _entityCount;
         [SerializeField] private ExplosionObjectPoolSO _explosionPoolSO;
+        [SerializeField] private GameObjectVariableSO _explosionPrefab;
         [SerializeField] private AsteroidObjectPoolSO _asteroidPieceObjectPoolSO;
+        [SerializeField] private AsteroidArraySO _asteroidPiecePrefabs;
         
         private Transform _transform;
         private ObjectPool<Asteroid> _pool;
@@ -30,6 +32,7 @@ namespace Asteroids
         private AsteroidData _asteroidData;
         
         public AsteroidData AsteroidData  => _asteroidData;
+        public Transform Transform => _transform;
         public MoveData AsteroidMoveData
         {
             get => _asteroidMoveData;
@@ -77,9 +80,11 @@ namespace Asteroids
             Activate(position, rotation);
             _asteroidMoveData = newMoveData;
         }
+        
         public void Activate(Vector3 position, Quaternion rotation)
         {
             gameObject.SetActive(true);
+            AsteroidManager.AddAsteroid(this);
             
             _transform.position = position;
             _transform.rotation = rotation;
@@ -101,16 +106,17 @@ namespace Asteroids
             if (_pool != null)
                 ReturnToPool();
             else
+            {
+                AsteroidManager.RemoveAsteroid(this);
                 Destroy(gameObject);
-            
+            }            
         }
 
         private void Fracture()
         {
-            Explosion explosion = _explosionPoolSO.Value.Get();
+            Explosion explosion = _usePoolingSO.Value ? _explosionPoolSO.Value.Get() : Instantiate(_explosionPrefab.Value).GetComponent<Explosion>();
             explosion.Explode(_asteroidData.ScaleMultiplier, _transform.position, _transform.rotation);
-
-            // TODO: Decide how many pieces to spawn
+            
             float pieceScaleMultiplier = _asteroidData.IsPiece ? _asteroidData.ScaleMultiplier / 5 : _asteroidData.ScaleMultiplier;
             if(pieceScaleMultiplier < 3f)
                 return;
@@ -123,7 +129,7 @@ namespace Asteroids
 
         private void SpawnPiece(float pieceScaleMultiplier)
         {
-            Asteroid piece = _asteroidPieceObjectPoolSO.Value.Get();
+            Asteroid piece = _usePoolingSO.Value ? _asteroidPieceObjectPoolSO.Value.Get() : AsteroidSpawner.SpawnAsteroid(_asteroidPiecePrefabs.Value, Vector3.zero);
             
             Vector3 asteroidCenter = _transform.position;
             Vector3 pieceRelativeLocation = Random.insideUnitSphere * (_asteroidData.ScaleMultiplier * Random.Range(0.5f, 2.0f));
