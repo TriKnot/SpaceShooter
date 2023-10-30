@@ -12,6 +12,8 @@ namespace Util
         private GameObject _parentObject;
         
         public List<T> Objects => _objects;
+        public delegate void ValueChangedHandler(T value);
+        public event ValueChangedHandler OnValueChanged;
 
         public ObjectPool(T[] prefabs, int initialSize)
         {
@@ -38,6 +40,7 @@ namespace Util
             obj.gameObject.SetActive(false);
             obj.InitializePoolObject(this);
             _objects.Add(obj);
+            OnValueChanged?.Invoke(obj);
             return obj;
         }
         
