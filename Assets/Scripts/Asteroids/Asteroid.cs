@@ -107,12 +107,8 @@ namespace Asteroids
 
         private void Fracture()
         {
-            // TODO Clear up this mess
-            // Explosion explosion = _explosionPoolSO.Value.Get();
-            // explosion.transform.position = _transform.position;
-            // explosion.transform.rotation = _transform.rotation;
-            // explosion.InitializePoolObject(_explosionPoolSO.Value);
-            // explosion.Explode(_scaleMultiplier);
+            Explosion explosion = _explosionPoolSO.Value.Get();
+            explosion.Explode(_asteroidData.ScaleMultiplier, _transform.position, _transform.rotation);
 
             // TODO: Decide how many pieces to spawn
             float pieceScaleMultiplier = _asteroidData.IsPiece ? _asteroidData.ScaleMultiplier / 5 : _asteroidData.ScaleMultiplier;

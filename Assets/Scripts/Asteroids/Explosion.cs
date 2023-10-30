@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Util;
 using Utils;
@@ -7,43 +6,69 @@ namespace Asteroids
 {
     public class Explosion : MonoBehaviour, IPoolObject<Explosion>
     {
+        [Header("Dependencies")]
         [SerializeField] private ParticleSystem _particleSystems;
         [SerializeField] private Light _light;
         private ObjectPool<Explosion> _pool;
+        private Transform _transform;
+        
+        [Header("Settings")]
+        [SerializeField] private float _minimumSize = 15f;
+        [SerializeField] private float _maximumSize = 300f;
+        [SerializeField] private float _minimumTime = 0.25f;
+        [SerializeField] private float _maximumTime = 1f;
+        
+        private float _duration;
+        private float _startSizeMultiplier;
 
-        private float _scaleMultiplier;
-
-        public void Explode(float scaleMultiplier)
+        private void Awake()
         {
-            _scaleMultiplier = scaleMultiplier;
-            UpdateParticleSystem(scaleMultiplier);
-            UpdateLight(scaleMultiplier);
+            _transform = transform;
+        }
+
+        public void Explode(float scaleMultiplier, Vector3 position, Quaternion rotation)
+        {
+            _duration = Mathf.Lerp(_minimumTime, _maximumTime, Mathf.InverseLerp(1, 100, scaleMultiplier));
+            _startSizeMultiplier = Mathf.Lerp(_minimumSize, _maximumSize, Mathf.InverseLerp(1, 100, scaleMultiplier));
+            _transform.position = position;
+            _transform.rotation = rotation;
+
+            ActivateParticleSystem(scaleMultiplier);
+            ActivateLight(scaleMultiplier);
             SetRandomRotation();
-            Invoke(nameof(ReturnToPool), 2.0f);
         }
 
-        private void UpdateParticleSystem(float scaleMultiplier)
+        private void ActivateParticleSystem(float scaleMultiplier)
         {
-            if (_particleSystems)
-            {
-                ParticleSystem.MainModule main = _particleSystems.main;
-                main.startSizeMultiplier *= scaleMultiplier * 2;
+            if (!_particleSystems) return;
+            
+            ParticleSystem.MainModule main = _particleSystems.main;
+            main.startSizeMultiplier = _startSizeMultiplier;
 
-                float duration = Mathf.Lerp(0.25f, 2.5f, Mathf.InverseLerp(10, 100, scaleMultiplier));
-                main.duration = duration;
-                main.startLifetimeMultiplier = duration;
+            main.duration = _duration;
+            main.startLifetimeMultiplier = _duration;
 
-                _particleSystems.Play();
-            }
+            _particleSystems.Play();
         }
 
-        private void UpdateLight(float scaleMultiplier)
+        private void ActivateLight(float scaleMultiplier)
         {
-            if (_light)
-            {
-                _light.range *= scaleMultiplier;
-                _light.intensity *= scaleMultiplier;
-            }
+            if (!_light) return;
+            _light.range = 0;
+            _light.intensity = 0;
+        }
+        
+        private void UpdateLight()
+        {
+            if (!_light) return;
+            
+            // Step up light intensity and size to max over the duration and then back down to 0 over half the duration
+            float t = Mathf.PingPong(Time.time, _duration) / _duration;
+            _light.range = Mathf.Lerp(0, _startSizeMultiplier, t);
+            _light.intensity = Mathf.Lerp(0, 8, t);
+            
+            if(t >= 1)
+                ReturnToPool();
         }
 
         private void SetRandomRotation()
@@ -53,9 +78,7 @@ namespace Asteroids
 
         private void LateUpdate()
         {
-            float step = _scaleMultiplier * Time.deltaTime * 10;
-            _light.intensity -= step;
-            _light.range -= step;
+            UpdateLight();
         }
 
         public void InitializePoolObject(ObjectPool<Explosion> pool)

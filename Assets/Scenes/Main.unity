@@ -898,6 +898,7 @@ MonoBehaviour:
   _fpsText: {fileID: 1964678638}
   _asteroidCount: {fileID: 11400000, guid: 909bdc52c947b5c4aab2e94a77181910, type: 2}
   _asteroidPieceCount: {fileID: 11400000, guid: b6544f9f6cc0f1c41a0c67283548fc52, type: 2}
+  _updateInterval: 0.2
 --- !u!1001 &7924182086274314016
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -910,6 +911,14 @@ PrefabInstance:
       propertyPath: _asteroidPiecesPoolSO
       value: 
       objectReference: {fileID: 11400000, guid: 67396a55076f67f45aa1691e72830f14, type: 2}
+    - target: {fileID: 4177242006264606059, guid: 298e900581a1ab44ab0d57ed1d773c8b, type: 3}
+      propertyPath: _initialAsteroidSpawnCountSO
+      value: 
+      objectReference: {fileID: 11400000, guid: db71c81dd55e0f94d9c24b0ce50731e0, type: 2}
+    - target: {fileID: 4177242006264606059, guid: 298e900581a1ab44ab0d57ed1d773c8b, type: 3}
+      propertyPath: _initialAsteroidPiecesSpawnCountSO
+      value: 
+      objectReference: {fileID: 11400000, guid: c0908e43fbbbda9429f56401b94a5664, type: 2}
     - target: {fileID: 4264554856167496614, guid: 298e900581a1ab44ab0d57ed1d773c8b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2371.4226
