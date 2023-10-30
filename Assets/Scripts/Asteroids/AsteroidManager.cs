@@ -46,12 +46,17 @@ namespace Asteroids
         private bool _shouldSpawnAsteroids = true;
         private CancellationTokenSource _cancellationTokenSource;
         bool _moveJobsActive = false;
-        int _asteroidCount = 0;
+        int _activeAsteroidCount = 0;
 
         public static bool MoveDataHasChanged { get; set; } = false;
 
         private async void Start()
         {
+            // Make sure pool is initialized properly if we are using pooling
+            if (_usePoolingSO.Value)
+            {
+                EnsurePoolInitializedAsync();
+            }
             _cancellationTokenSource = new CancellationTokenSource();
             CancellationToken cancellationToken = _cancellationTokenSource.Token;
             InitializeArrays();
@@ -61,6 +66,16 @@ namespace Asteroids
             
             if (_spawnRateSO.Value > 0)
                 StartCoroutine(SpawnAsteroidIEnumerator());
+        }
+
+        private void EnsurePoolInitializedAsync()
+        {
+            if (_asteroidPoolSO.Value.Objects.Count < _initialAsteroidCountSO.Value)
+            {
+                int extendAmount = Mathf.FloorToInt(_initialAsteroidCountSO.Value - _asteroidPoolSO.Value.Objects.Count);
+                extendAmount += Mathf.FloorToInt(_initialAsteroidCountSO.Value * 0.2f);
+                _asteroidPoolSO.Value.ExtendPool(extendAmount);
+            }
         }
 
         private void InitializeArrays()
@@ -205,9 +220,8 @@ namespace Asteroids
         private async Task SpawnStartAsteroidsAsync(CancellationToken cancellationToken)
         {
             int maxPerFrame = 200;
-            int count = _initialAsteroidCountSO.Value;
-            int iterations = count / maxPerFrame;
-            int remainder = count % maxPerFrame;
+            int iterations = _initialAsteroidCountSO.Value / maxPerFrame;
+            int remainder = _initialAsteroidCountSO.Value % maxPerFrame;
             for (int i = 0; i < iterations; i++)
             {
                 for (int j = 0; j < maxPerFrame; j++)
@@ -218,8 +232,9 @@ namespace Asteroids
                     }
                     Task<Asteroid> task = SpawnAsteroid();
                     Asteroid asteroid = await task;
-                    _asteroids[i] = asteroid;
-                    _asteroidMoveDataArray[i] = asteroid.AsteroidMoveData;
+                    int index = i * maxPerFrame + j;
+                    _asteroids[index] = asteroid;
+                    _asteroidMoveDataArray[index] = asteroid.AsteroidMoveData;
                 }
                 await Task.Yield();
             }
@@ -227,22 +242,22 @@ namespace Asteroids
             {
                 Task<Asteroid> task = SpawnAsteroid();
                 Asteroid asteroid = await task;
-                _asteroids[^i] = asteroid;
-                _asteroidMoveDataArray[^i] = asteroid.AsteroidMoveData;
+                int index = _asteroids.Length - remainder + i;
+                _asteroids[index] = asteroid;
+                _asteroidMoveDataArray[index] = asteroid.AsteroidMoveData;
             }
 
             _moveJobsActive = true;
         }
-
-
+        
         private async Task<Asteroid> SpawnAsteroid()
         {
-            Vector3 spawnPos;
+            Vector3 spawnPos = _playerTransformSO.Value ? 
+                _playerTransformSO.Value.position : Vector3.zero;
             do
             {
-                spawnPos = _playerTransformSO.Value.position + 
-                               Random.insideUnitSphere * 
-                               Random.Range(_minSpawnDistanceSO.Value, _maxspawnRadiusSO.Value);
+                spawnPos += Random.insideUnitSphere * 
+                            Random.Range(_minSpawnDistanceSO.Value, _maxspawnRadiusSO.Value);
                 
             } while (!AsteroidSpawner.IsValidSpawnPosition(spawnPos));
             
@@ -250,7 +265,7 @@ namespace Asteroids
                 AsteroidSpawner.SpawnAsteroid(_asteroidPoolSO.Value, spawnPos) : 
                 AsteroidSpawner.SpawnAsteroid(_asteroidPrefabsSO.Value, spawnPos); 
             
-            if(_asteroidCount >= Mathf.FloorToInt(_asteroidPoolSO.Value.Objects.Count * 0.95f))
+            if(_activeAsteroidCount >= Mathf.FloorToInt(_asteroidPoolSO.Value.Objects.Count * 0.95f))
             {
                 bool jobsStopped = false;
                 // Check if move jobs are active and if so, stop them
@@ -284,7 +299,7 @@ namespace Asteroids
                 await Task.Yield();
             }
             
-            _asteroidCount++;
+            _activeAsteroidCount++;
             
             return asteroid;
         }

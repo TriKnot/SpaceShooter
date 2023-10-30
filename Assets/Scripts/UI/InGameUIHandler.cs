@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace UI
 {
-    public class UIHandler : MonoBehaviour, IVariableObserver<int>
+    public class InGameUIHandler : MonoBehaviour, IVariableObserver<int>
     {
         [SerializeField] private TextMeshProUGUI _asteroidText;
         [SerializeField] private TextMeshProUGUI _asteroidPieceText;

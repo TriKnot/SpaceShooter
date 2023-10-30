@@ -1,6 +1,7 @@
 using Ship;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace PlayerInput
 {
@@ -140,7 +141,7 @@ namespace PlayerInput
 
         private void OnQuit(InputAction.CallbackContext context)
         {
-            Application.Quit();
+            SceneManager.LoadScene(0);
         }
 
         private void OnFire(InputAction.CallbackContext context)
