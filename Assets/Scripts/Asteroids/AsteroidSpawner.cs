@@ -6,6 +6,7 @@ namespace Asteroids
 {
     public static class AsteroidSpawner
     {
+        
         public static Asteroid SpawnAsteroid(Asteroid[] asteroidPrefabs, Vector3 spawnPos)
         {
             int randAsteroidIndex = Random.Range(0, asteroidPrefabs.Length);
@@ -40,11 +41,11 @@ namespace Asteroids
             }
 
             Vector3 viewport = camera.WorldToViewportPoint(point);
-            bool inCameraFrustum = Is01(viewport.x) && Is01(viewport.y);
-            bool inFrontOfCamera = viewport.z > 0;
-            bool objectBlockingPoint = CheckObjectBlockingPoint(point, camera.transform.position);
-
-            return inCameraFrustum && inFrontOfCamera && !objectBlockingPoint;
+            if(!(viewport.z > 0))
+                return false;
+            if(!(Is01(viewport.x) && Is01(viewport.y)))
+                return false;
+            return !CheckObjectBlockingPoint(point, camera.transform.position);
         }
 
         private static bool Is01(float a)
