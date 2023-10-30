@@ -120,10 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267f28d7333e464da3e0a0520a72db3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _asteroidPieceSO: {fileID: 0}
-  _onDeathEvent:
-    m_PersistentCalls:
-      m_Calls: []
   _currentHealth: 0
 --- !u!114 &-4031698719864598912
 MonoBehaviour:
@@ -176,4 +172,6 @@ MonoBehaviour:
   _useJobsSO: {fileID: 11400000, guid: fd3ef7be19eba0248a9b6e9654ee98c0, type: 2}
   _entityCount: {fileID: 11400000, guid: 909bdc52c947b5c4aab2e94a77181910, type: 2}
   _explosionPoolSO: {fileID: 11400000, guid: cae42e91b17375641814721ee2d038c2, type: 2}
+  _explosionPrefab: {fileID: 11400000, guid: 8542d9cfe3dfca341b243c730011df4e, type: 2}
   _asteroidPieceObjectPoolSO: {fileID: 11400000, guid: 67396a55076f67f45aa1691e72830f14, type: 2}
+  _asteroidPiecePrefabs: {fileID: 11400000, guid: cc0e0b920e463cc44847d5b00a3f258a, type: 2}
