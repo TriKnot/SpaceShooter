@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: AsteroidPoolStartCount
   m_EditorClassIdentifier: 
   resetOnAwake: 0
-  value: 5000
+  value: 1000

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: AsteroidInitialSpawnCount
   m_EditorClassIdentifier: 
   resetOnAwake: 0
-  value: 500
+  value: 3290
