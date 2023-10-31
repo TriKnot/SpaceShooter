@@ -216,7 +216,6 @@ namespace Asteroids
                     }
                     await SpawnAsteroidAsync();
                 }
-                Debug.Log("Spawned Asteroid: waiting a frame");
                 await Task.Yield();
             }
             for (int i = 0; i < remainder; i++)
