@@ -32,7 +32,7 @@ namespace Ship
             _velocity = direction * _speed;
         }
     
-        private void Update()
+        private void LateUpdate()
         {
             UpdateMovement();
         }
