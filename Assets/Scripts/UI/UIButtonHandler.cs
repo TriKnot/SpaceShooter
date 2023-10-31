@@ -2,7 +2,6 @@ using ScriptableObjects.Variables;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 using Slider = UnityEngine.UI.Slider;
 using Toggle = UnityEngine.UI.Toggle;
 
@@ -13,6 +12,7 @@ namespace UI
         [Header("Dependencies")]
         [SerializeField] private Toggle _useJobsToggle;
         [SerializeField] private Toggle _usePoolingToggle;
+        [SerializeField] private Toggle _usePhysicsToggle;
         [SerializeField] private TMP_Dropdown _vSyncToggle;
         [SerializeField] private Slider _spawnRateSlider;
         [SerializeField] private TextMeshProUGUI _spawnRateText;
@@ -22,6 +22,7 @@ namespace UI
         [Header("Scene References")]
         [SerializeField] private BoolVariableSO _useJobsSO;
         [SerializeField] private BoolVariableSO _usePoolingSO;
+        [SerializeField] private BoolVariableSO _usePhysicsSO;
         [SerializeField] private IntVariableSO _vSyncSO;
         [SerializeField] private FloatVariableSO _spawnRateSO;
         [SerializeField] private IntVariableSO _initialAsteroidCountSO;
@@ -34,6 +35,8 @@ namespace UI
             _useJobsToggle.isOn = _useJobsSO.Value;
             SetUsePooling(_usePoolingSO.Value);
             _usePoolingToggle.isOn = _usePoolingSO.Value;
+            SetUsePhysics(_usePhysicsSO.Value);
+            _usePhysicsToggle.isOn = _usePhysicsSO.Value;
             // Int
             SetVSync(_vSyncSO.Value);
             _vSyncToggle.value = _vSyncSO.Value;
@@ -43,7 +46,7 @@ namespace UI
             SetSpawnRate(_spawnRateSO.Value);
              _spawnRateSlider.value = _spawnRateSO.Value;
         }
-
+        
         public void StartGame()
         {
             SceneManager.LoadScene(1);
@@ -59,16 +62,19 @@ namespace UI
         
         public void SetUseJobs(bool value)
         {
-            // 0 = off, 1 = on
             _useJobsSO.Value = value;
         }
         
         public void SetUsePooling(bool value)
         {
-            // 0 = off, 1 = on
             _usePoolingSO.Value = value;
         }
         
+        public void SetUsePhysics(bool value)
+        {
+            _usePhysicsSO.Value = value;
+        }
+
         public void SetSpawnRate(float value)
         {
             _spawnRateSO.Value = value;
