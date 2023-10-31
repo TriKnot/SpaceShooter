@@ -16,6 +16,7 @@ namespace Asteroids
         [SerializeField] private BoolVariableSO _usePoolingSO;
         [SerializeField] private AnimationCurve _massCurve;
         [SerializeField] private BoolVariableSO _useJobsSO;
+        [SerializeField] private BoolVariableSO _usePhysicsSO;
 
         [Header("Dependencies")]
         [SerializeField] private IntVariableSO _entityCount;
@@ -25,6 +26,7 @@ namespace Asteroids
         [SerializeField] private AsteroidArraySO _asteroidPiecePrefabs;
         
         private Transform _transform;
+        private MeshCollider _meshCollider;
         private ObjectPool<Asteroid> _pool;
         private AsteroidMovement _asteroidMovement;
         private AsteroidHealthSystem _healthSystem;
@@ -39,16 +41,17 @@ namespace Asteroids
             private set
             {
                 _asteroidMoveData = value;
-                if (_useJobsSO.Value)
+                //if (_useJobsSO.Value)
                     AsteroidManager.MoveDataHasChanged = true;
             }
         }
         
-
         private void Awake()
         {
             _healthSystem = GetComponent<AsteroidHealthSystem>();
             _transform = transform;
+            if (!_usePhysicsSO.Value)
+                Destroy(GetComponent<Collider>());
             float scaleMultiplier = Mathf.Lerp(_minScaleMultiplier.Value, _maxScaleMultiplier.Value, _massCurve.Evaluate(Random.value));
             Init(scaleMultiplier);
         }

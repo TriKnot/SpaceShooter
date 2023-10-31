@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8422643619591072449}
   - component: {fileID: 5175909829843006713}
   - component: {fileID: 2615907601388813192}
-  - component: {fileID: -2831160691867042654}
   - component: {fileID: -5009720661602912809}
   m_Layer: 0
   m_Name: Rock1
@@ -136,6 +135,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _useJobsSO: {fileID: 11400000, guid: fd3ef7be19eba0248a9b6e9654ee98c0, type: 2}
+  _usePhysicsSO: {fileID: 11400000, guid: 0151dc01c31714646b06033cb4160feb, type: 2}
   _entityCount: {fileID: 11400000, guid: 909bdc52c947b5c4aab2e94a77181910, type: 2}
   _explosionPoolSO: {fileID: 11400000, guid: cae42e91b17375641814721ee2d038c2, type: 2}
   _explosionPrefab: {fileID: 11400000, guid: 8542d9cfe3dfca341b243c730011df4e, type: 2}
@@ -163,33 +163,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6938710573835471721, guid: ba8ad55c52432c9458973a60328b3451, type: 3}
---- !u!54 &-2831160691867042654
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7437889339238721774}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &-5009720661602912809
 MonoBehaviour:
   m_ObjectHideFlags: 0

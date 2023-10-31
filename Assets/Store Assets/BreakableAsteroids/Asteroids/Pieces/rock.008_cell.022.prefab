@@ -170,6 +170,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _useJobsSO: {fileID: 11400000, guid: fd3ef7be19eba0248a9b6e9654ee98c0, type: 2}
+  _usePhysicsSO: {fileID: 11400000, guid: 0151dc01c31714646b06033cb4160feb, type: 2}
   _entityCount: {fileID: 11400000, guid: 909bdc52c947b5c4aab2e94a77181910, type: 2}
   _explosionPoolSO: {fileID: 11400000, guid: cae42e91b17375641814721ee2d038c2, type: 2}
   _explosionPrefab: {fileID: 11400000, guid: 8542d9cfe3dfca341b243c730011df4e, type: 2}
