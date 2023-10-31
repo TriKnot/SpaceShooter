@@ -81,9 +81,9 @@ namespace Asteroids
                 extendAmount += Mathf.FloorToInt(_initialAsteroidCountSO.Value * 0.2f);
                 _asteroidPiecePoolSO.Value.ExtendPool(extendAmount);
             }
-            Asteroids.Clear();
-            Asteroids.AddRange(_asteroidPoolSO.Value.Objects);
-            Asteroids.AddRange(_asteroidPiecePoolSO.Value.Objects);
+            ClearAllAsteroids();
+            AddAsteroids(_asteroidPoolSO.Value.Objects);
+            AddAsteroids(_asteroidPiecePoolSO.Value.Objects);
         }
 
         private void InitializeArrays()
@@ -129,10 +129,8 @@ namespace Asteroids
                     return;
                 UpdateMoveDataArrays();
             }
-            if(_asteroidTransformAccessArray.length != Asteroids.Count)
-                InitializeTransformArrays();
             
-            _asteroidMoveJobHandle = CreateAsteroidMoveJob(Asteroids.ToArray(), _asteroidMoveDataArray)
+            _asteroidMoveJobHandle = CreateAsteroidMoveJob(_asteroidMoveDataArray)
                 .Schedule(_asteroidTransformAccessArray);
 
         }
@@ -144,8 +142,10 @@ namespace Asteroids
             EnsureJobComplete(_asteroidMoveJobHandle);
         }
 
-        private TransformMoveJob CreateAsteroidMoveJob(Asteroid[] asteroids, NativeArray<MoveData> moveDataArray)
-        {
+        private TransformMoveJob CreateAsteroidMoveJob(NativeArray<MoveData> moveDataArray)
+        {            
+            if(_asteroidTransformAccessArray.length != _asteroidMoveDataArray.Length)
+                InitializeTransformArrays();
             return new TransformMoveJob(Time.fixedDeltaTime, moveDataArray);
         }
         
@@ -161,6 +161,7 @@ namespace Asteroids
             {
                 _asteroidMoveDataArray[i] = Asteroids[i].AsteroidMoveData;
             }
+            MoveDataHasChanged = false;
         }
 
         private void OnDestroy()
@@ -205,7 +206,6 @@ namespace Asteroids
             int maxPerFrame = 200;
             int iterations = _initialAsteroidCountSO.Value / maxPerFrame;
             int remainder = _initialAsteroidCountSO.Value % maxPerFrame;
-            Asteroid asteroid;
             for (int i = 0; i < iterations; i++)
             {
                 for (int j = 0; j < maxPerFrame; j++)
@@ -216,6 +216,7 @@ namespace Asteroids
                     }
                     await SpawnAsteroidAsync();
                 }
+                Debug.Log("Spawned Asteroid: waiting a frame");
                 await Task.Yield();
             }
             for (int i = 0; i < remainder; i++)
@@ -226,7 +227,7 @@ namespace Asteroids
             _moveJobsActive = true;
         }
         
-        private async Task<Asteroid> SpawnAsteroidAsync()
+        private async Task SpawnAsteroidAsync()
         {
             Vector3 spawnPos = _playerTransformSO.Value ? 
                 _playerTransformSO.Value.position : Vector3.zero;
@@ -236,9 +237,10 @@ namespace Asteroids
                             Random.Range(_minSpawnDistanceSO.Value, _maxspawnRadiusSO.Value);
                 
             } while (!AsteroidSpawner.IsValidSpawnPosition(spawnPos));
-            
-            Asteroid asteroid = _usePoolingSO.Value ? 
-                AsteroidSpawner.SpawnAsteroid(_asteroidPoolSO.Value, spawnPos) : 
+
+            if (_usePoolingSO.Value)
+                AsteroidSpawner.SpawnAsteroid(_asteroidPoolSO.Value, spawnPos);
+            else
                 AsteroidSpawner.SpawnAsteroid(_asteroidPrefabsSO.Value, spawnPos); 
             
             if(_activeAsteroidCount >= Mathf.FloorToInt(_asteroidPoolSO.Value.Objects.Count * 0.95f))
@@ -249,7 +251,6 @@ namespace Asteroids
             
             _activeAsteroidCount++;
             
-            return asteroid;
         }
 
         private void Extend()
@@ -289,6 +290,21 @@ namespace Asteroids
         public static void RemoveAsteroid(Asteroid value)
         {
             Asteroids.Remove(value);
+        }
+        public static void AddAsteroids(IEnumerable<Asteroid> values)
+        {
+            List<Asteroid> enumerable = values.ToList();
+            Asteroids.AddRange(enumerable);
+        }
+        public static void RemoveAsteroids(IEnumerable<Asteroid> values)
+        {
+            List<Asteroid> enumerable = values.ToList();
+            Asteroids.RemoveAll(enumerable.Contains);
+        }
+        
+        public static void ClearAllAsteroids()
+        {
+            Asteroids.Clear();
         }
     }
 }
