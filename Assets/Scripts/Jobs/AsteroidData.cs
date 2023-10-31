@@ -2,7 +2,7 @@
 
 namespace Jobs
 {
-    public class AsteroidData
+    public struct AsteroidData
     {
         public float ScaleMultiplier;
         public float Mass;

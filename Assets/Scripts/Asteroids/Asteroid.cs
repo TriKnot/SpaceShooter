@@ -56,7 +56,7 @@ namespace Asteroids
             Init(scaleMultiplier);
         }
 
-        private void Init(float scaleMultiplier)
+        private void Init(float scaleMultiplier, bool isPiece = false)
         {
            _asteroidData = new AsteroidData(scaleMultiplier);
             AsteroidMoveData = new MoveData()
@@ -151,8 +151,7 @@ namespace Asteroids
                 AngularVelocity = Random.insideUnitSphere * Random.Range(0, 100),
             };
             
-            piece.Init(pieceScaleMultiplier);
-            piece.AsteroidData.IsPiece = true;
+            piece.Init(pieceScaleMultiplier, true);
             piece.Activate( piecePosition, _transform.rotation, moveData );
             
         }
