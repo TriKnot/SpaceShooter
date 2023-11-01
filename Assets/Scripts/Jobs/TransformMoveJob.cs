@@ -18,6 +18,7 @@ namespace Jobs
             _moveDataArray = moveDataArray;
         }
         
+        [BurstCompile]
         public void Execute(int index, TransformAccess transform)
         {
             if (!_moveDataArray[index].IsActive)
@@ -29,6 +30,7 @@ namespace Jobs
             RotateAsteroid(transform, _moveDataArray[index]);
         }
 
+        [BurstCompile]
         private void MoveAsteroid(TransformAccess transform, MoveData moveData)
         {
             Vector3 pos = transform.position;
@@ -36,6 +38,7 @@ namespace Jobs
             transform.position = pos;
         }
 
+        [BurstCompile]
         private void RotateAsteroid(TransformAccess transform, MoveData moveData)
         {
             quaternion deltaRotation = Quaternion.Euler(moveData.AngularVelocity * _deltaTime);
