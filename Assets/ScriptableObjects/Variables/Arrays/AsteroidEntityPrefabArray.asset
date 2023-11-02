@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 347fe8f2774c18d4eaea2bf0369b2b43, type: 3}
-  m_Name: AsteroidInitialSpawnCount
+  m_Script: {fileID: 11500000, guid: 5021a006accc46b18ad887f530698b4b, type: 3}
+  m_Name: AsteroidEntityPrefabArray
   m_EditorClassIdentifier: 
   resetOnAwake: 0
-  value: 5000
+  value:
+  - {fileID: -83361696518943245, guid: a028a9caf7ccf2443a238296ded73a04, type: 3}

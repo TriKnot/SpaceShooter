@@ -7,7 +7,7 @@ using Unity.Transforms;
 namespace ECS.Aspect
 {
     [BurstCompile]
-    public readonly partial struct MoveAspect : IAspect
+    public readonly partial struct MoveAspect_ECS : IAspect
     {
         private readonly RefRW<LocalTransform> _localTransform;
         private readonly RefRO<MoveDataEcs> _moveData;
