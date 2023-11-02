@@ -1,5 +1,6 @@
 using Asteroids;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Util;
 
 namespace ScriptableObjects.Variables
@@ -8,8 +9,10 @@ namespace ScriptableObjects.Variables
     public class AsteroidObjectPoolSO : VariableBaseSO<ObjectPool<Asteroid>>
     {
         [SerializeField] private IntVariableSO _initialPoolSize;
-        [SerializeField] private AsteroidArraySO _asteroidSO;
+        [SerializeField] private AsteroidArraySO _asteroidPrefabSO;
+        [SerializeField] private AsteroidArraySO _cubeAsteroidPrefabSO;
         [SerializeField] private BoolVariableSO _usePoolingSO;
+        [SerializeField] private BoolVariableSO _useCubeMeshSO;
 
         public override void SetValue(ObjectPool<Asteroid> value)
         {
@@ -43,10 +46,14 @@ namespace ScriptableObjects.Variables
 
         public override void ResetValue()
         {
-            Value = _usePoolingSO.Value
-                ? new ObjectPool<Asteroid>(_asteroidSO.Value, _initialPoolSize.Value)
-                : new ObjectPool<Asteroid>(null, 0);
-
+            if(_usePoolingSO.Value)
+            {
+                Value = _useCubeMeshSO.Value
+                    ? new ObjectPool<Asteroid>(_cubeAsteroidPrefabSO.Value, _initialPoolSize.Value)
+                    : new ObjectPool<Asteroid>(_asteroidPrefabSO.Value, _initialPoolSize.Value);
+                return;
+            }            
+            Value = new ObjectPool<Asteroid>(null, 0);
         }
         
     }

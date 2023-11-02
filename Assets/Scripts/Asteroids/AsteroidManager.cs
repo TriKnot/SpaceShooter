@@ -18,6 +18,7 @@ namespace Asteroids
         [Header("Setup")]
         [SerializeField] private BoolVariableSO _usePoolingSO;
         [SerializeField] private BoolVariableSO _useJobsSO;
+        [SerializeField] private BoolVariableSO _useCubeMeshSO;
         
         [Header("Setup Asteroids")]
         [SerializeField] private AsteroidArraySO _asteroidPrefabsSO;

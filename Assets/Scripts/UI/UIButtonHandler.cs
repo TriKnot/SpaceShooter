@@ -14,6 +14,7 @@ namespace UI
         [SerializeField] private Toggle _usePoolingToggle;
         [SerializeField] private Toggle _usePhysicsToggle;
         [SerializeField] private Toggle _useECSToggle;
+        [SerializeField] private Toggle _useCubeMeshToggle;
         [SerializeField] private TMP_Dropdown _vSyncToggle;
         [SerializeField] private Slider _spawnRateSlider;
         [SerializeField] private TextMeshProUGUI _spawnRateText;
@@ -25,6 +26,7 @@ namespace UI
         [SerializeField] private BoolVariableSO _usePoolingSO;
         [SerializeField] private BoolVariableSO _usePhysicsSO;
         [SerializeField] private BoolVariableSO _useECSSO;
+        [SerializeField] private BoolVariableSO _useCubeMeshSO;
         [SerializeField] private IntVariableSO _vSyncSO;
         [SerializeField] private FloatVariableSO _spawnRateSO;
         [SerializeField] private IntVariableSO _initialAsteroidCountSO;
@@ -43,6 +45,8 @@ namespace UI
             _usePhysicsToggle.isOn = _usePhysicsSO.Value;
             SetUseECS(_useECSSO.Value);
             _useECSToggle.isOn = _useECSSO.Value;
+            SetUseCubeMesh(_useCubeMeshSO.Value);
+            _useCubeMeshToggle.isOn = _useCubeMeshSO.Value;
             // Int
             SetVSync(_vSyncSO.Value);
             _vSyncToggle.value = _vSyncSO.Value;
@@ -90,7 +94,12 @@ namespace UI
             _useJobsToggle.interactable = !value;
             _usePoolingToggle.interactable = !value;
         }
-
+        
+        public void SetUseCubeMesh(bool value)
+        {
+            _useCubeMeshSO.Value = value;
+        }
+        
         public void SetSpawnRate(float value)
         {
             _spawnRateSO.Value = value;

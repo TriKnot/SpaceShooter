@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resetOnAwake: 1
   _initialPoolSize: {fileID: 11400000, guid: 3cc2cb4d51e961740808e857133b162a, type: 2}
-  _asteroidSO: {fileID: 11400000, guid: cc0e0b920e463cc44847d5b00a3f258a, type: 2}
+  _asteroidPrefabSO: {fileID: 11400000, guid: cc0e0b920e463cc44847d5b00a3f258a, type: 2}
+  _cubeAsteroidPrefabSO: {fileID: 11400000, guid: cbc9035150baef843b6fa8b3e3126c22, type: 2}
   _usePoolingSO: {fileID: 11400000, guid: fc0693231e2fad549837e0af0b4a9121, type: 2}
+  _useCubeMeshSO: {fileID: 11400000, guid: ea71c14319cdf5f4fa5da914338a4498, type: 2}

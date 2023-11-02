@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4930fa25f4704d3ea5d433c62668522a, type: 3}
-  m_Name: UseJobs
+  m_Script: {fileID: 11500000, guid: 5021a006accc46b18ad887f530698b4b, type: 3}
+  m_Name: EntityAsteroidPrefabArray
   m_EditorClassIdentifier: 
   resetOnAwake: 0
-  value: 1
+  value:
+  - {fileID: -83361696518943245, guid: a028a9caf7ccf2443a238296ded73a04, type: 3}

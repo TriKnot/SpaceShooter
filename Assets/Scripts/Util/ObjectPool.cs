@@ -17,6 +17,7 @@ namespace Util
 
         public ObjectPool(T[] prefabs, int initialSize)
         {
+            Debug.Log("ObjectPool constructor");
             // Store the prefabs
             _prefabs = prefabs;
             // Create a parent object for the pool

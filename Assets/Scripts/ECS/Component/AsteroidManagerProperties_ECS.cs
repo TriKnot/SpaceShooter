@@ -1,4 +1,3 @@
-using Unity.Collections;
 using Unity.Entities;
 
 namespace ECS.Component
