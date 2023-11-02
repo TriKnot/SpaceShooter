@@ -13,6 +13,7 @@ namespace UI
         [SerializeField] private Toggle _useJobsToggle;
         [SerializeField] private Toggle _usePoolingToggle;
         [SerializeField] private Toggle _usePhysicsToggle;
+        [SerializeField] private Toggle _useECSToggle;
         [SerializeField] private TMP_Dropdown _vSyncToggle;
         [SerializeField] private Slider _spawnRateSlider;
         [SerializeField] private TextMeshProUGUI _spawnRateText;
@@ -23,6 +24,7 @@ namespace UI
         [SerializeField] private BoolVariableSO _useJobsSO;
         [SerializeField] private BoolVariableSO _usePoolingSO;
         [SerializeField] private BoolVariableSO _usePhysicsSO;
+        [SerializeField] private BoolVariableSO _useECSSO;
         [SerializeField] private IntVariableSO _vSyncSO;
         [SerializeField] private FloatVariableSO _spawnRateSO;
         [SerializeField] private IntVariableSO _initialAsteroidCountSO;
@@ -37,6 +39,8 @@ namespace UI
             _usePoolingToggle.isOn = _usePoolingSO.Value;
             SetUsePhysics(_usePhysicsSO.Value);
             _usePhysicsToggle.isOn = _usePhysicsSO.Value;
+            SetUseECS(_useECSSO.Value);
+            _useECSToggle.isOn = _useECSSO.Value;
             // Int
             SetVSync(_vSyncSO.Value);
             _vSyncToggle.value = _vSyncSO.Value;
@@ -46,10 +50,11 @@ namespace UI
             SetSpawnRate(_spawnRateSO.Value);
              _spawnRateSlider.value = _spawnRateSO.Value;
         }
-        
+
         public void StartGame()
         {
-            SceneManager.LoadScene(1);
+            int sceneToLoadIndex = _useECSSO.Value ? 2 : 1;
+            SceneManager.LoadScene(sceneToLoadIndex);
         }
         
         public void SetVSync(int value)
@@ -73,6 +78,14 @@ namespace UI
         public void SetUsePhysics(bool value)
         {
             _usePhysicsSO.Value = value;
+        }
+        
+        public void SetUseECS(bool value)
+        {
+            _useECSSO.Value = value;
+            // Disable/enable toggles not used for ECS based on the value
+            _useJobsToggle.interactable = !value;
+            _usePoolingToggle.interactable = !value;
         }
 
         public void SetSpawnRate(float value)
