@@ -152,7 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f7f74a6439245a794a35881f03e94b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _asteroidPrefab: {fileID: 11400000, guid: 0537643261cd53b43910f4e5dc79cc0a, type: 2}
+  _asteroidPrefabsSO: {fileID: 11400000, guid: 0537643261cd53b43910f4e5dc79cc0a, type: 2}
+  _cubeAsteroidPrefabsSO: {fileID: 11400000, guid: a520847ccb637ef41ab44b0c0e48d99b, type: 2}
+  _useCubeMeshSO: {fileID: 11400000, guid: ea71c14319cdf5f4fa5da914338a4498, type: 2}
   _initialAsteroidCountSO: {fileID: 11400000, guid: db71c81dd55e0f94d9c24b0ce50731e0, type: 2}
   _maxspawnRadiusSO: {fileID: 11400000, guid: df63386f1ca51cd4aab4e35472ed056e, type: 2}
   _minSpawnDistanceSO: {fileID: 11400000, guid: 08fdb074204822c4eb9b55ffd4fc3de1, type: 2}

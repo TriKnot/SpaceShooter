@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f98c931200ae4ed48adb773dc43a4aa6, type: 3}
-  m_Name: EntityCubeAsteroidArray
+  m_Script: {fileID: 11500000, guid: 5021a006accc46b18ad887f530698b4b, type: 3}
+  m_Name: EntityCubeAsteroidPrefabArray
   m_EditorClassIdentifier: 
   resetOnAwake: 0
   value:
-  - {fileID: 5175909829843006713, guid: caa14092031bb11459f7d63fdb26990f, type: 3}
+  - {fileID: -83361696518943245, guid: 2929f1d56a2042343bfed3d25aeb1bde, type: 3}

@@ -12,7 +12,9 @@ namespace ECS.Authoring
     public class AsteroidManagerAuthoring_ECS : MonoBehaviour
     {
         [Header("Setup Asteroids")]
-        [SerializeField] private AsteroidAuthoringArraySO _asteroidPrefab;
+        [SerializeField] private AsteroidAuthoringArraySO _asteroidPrefabsSO;
+        [SerializeField] private AsteroidAuthoringArraySO _cubeAsteroidPrefabsSO;
+        [SerializeField] private BoolVariableSO _useCubeMeshSO;
         [SerializeField] private IntVariableSO _initialAsteroidCountSO;
         [SerializeField] private FloatVariableSO _maxspawnRadiusSO;
         [SerializeField] private FloatVariableSO _minSpawnDistanceSO;
@@ -26,10 +28,12 @@ namespace ECS.Authoring
             public override void Bake(AsteroidManagerAuthoring_ECS authoring)
             {
                 Entity entity = GetEntity(TransformUsageFlags.Dynamic);
-                NativeArray<Entity> asteroidPrefabs = new NativeArray<Entity>(authoring._asteroidPrefab.Value.Length, Allocator.Temp);
-                for (int i = 0; i < authoring._asteroidPrefab.Value.Length; i++)
+                AsteroidAuthoring_ECS[] entityArray = authoring._useCubeMeshSO.Value ?
+                    authoring._cubeAsteroidPrefabsSO.Value : authoring._asteroidPrefabsSO.Value;
+                NativeArray<Entity> asteroidPrefabs = new NativeArray<Entity>(entityArray.Length, Allocator.Temp);
+                for (int i = 0; i < entityArray.Length; i++)
                 {
-                    asteroidPrefabs[i] = GetEntity(authoring._asteroidPrefab.Value[i], TransformUsageFlags.Dynamic);
+                    asteroidPrefabs[i] = GetEntity(entityArray[i], TransformUsageFlags.Dynamic);
                 }
                 
                 AddComponent(entity, new AsteroidManagerProperties_ECS(
