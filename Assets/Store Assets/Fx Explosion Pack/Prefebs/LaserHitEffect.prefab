@@ -139,5 +139,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf611875e6fe0741b88e3e850ed4a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _usePoolingSO: {fileID: 11400000, guid: fc0693231e2fad549837e0af0b4a9121, type: 2}
   _particleSystems: {fileID: 0}
   _light: {fileID: 10800000}
+  _minimumSize: 15
+  _maximumSize: 300
+  _minimumTime: 0.25
+  _maximumTime: 1

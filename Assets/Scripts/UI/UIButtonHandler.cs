@@ -31,6 +31,8 @@ namespace UI
         
         private void Awake()
         {
+             // Set default settings for game start -> Prob better place to do this but I'm doing it here for simplicity in this project.
+             SetDefaultSettings();
             // Set the UI to the current settings
             // Bool
             SetUseJobs(_useJobsSO.Value);
@@ -49,6 +51,7 @@ namespace UI
             // Float
             SetSpawnRate(_spawnRateSO.Value);
              _spawnRateSlider.value = _spawnRateSO.Value;
+             
         }
 
         public void StartGame()
@@ -109,6 +112,12 @@ namespace UI
             #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
             #endif
+        }
+        
+        private void SetDefaultSettings()
+        {
+            Application.targetFrameRate = -1;
+            QualitySettings.maxQueuedFrames = 2;
         }
     }
 }
