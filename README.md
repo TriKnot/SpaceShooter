@@ -1,3 +1,5 @@
+**The release git commits may be missing some assets, they are uploaded separately and can be copy pasted into the folder structure overwriting everything**
+
 # Space Shooter for Computer Technology Course
 
 **4-week Assignment in Computer Technology Course at FutureGames**
@@ -14,10 +16,10 @@ The second version builds upon the first and introduces object pooling. However,
 The third version incorporates Unity Burst and Jobs for asteroid movement. Additionally, this version includes a main menu with settings for easy testing of different approaches within the same build.
 
 ## Version 1.3 - ECS
-I began exploring an implementation with Unity Entities, but I didn't have enough time to complete it before the deadline.
+I began exploring an implementation with Unity Entities, but I didn't have enough time to complete it before the deadline. I will continue working on it so it might be up soon-ish..
 
 # Performance Analysis
-I did not manage to get away from VSync even though I turned it off both in the editor and through script. The only explanation I could find online about it is that it is VSync on my GPU, and I could not find a way to turn it off. I have included VSync in the stats where it is a relevant part of the frame time.
+Note: I did not manage to get away from VSync even though I turned it off both in the editor and through script. The only explanation I could find online about it is that it is VSync on my GPU, and I could not find a way to turn it off. I have included VSync in the stats where it is a relevant part of the frame time.
 
 ## 5,000 Asteroids
 
