@@ -24,18 +24,18 @@ Note: I did not manage to get away from VSync even though I turned it off both i
 ## 5,000 Asteroids
 
 ### Version 1.0 - No Optimization (5,000 Asteroids):
-FixedUpdate: 4.43ms (27.6%)
-Physics: 3.29ms (20.5%)
-VSync: 6.15ms (38.4%)
+- FixedUpdate: 4.43ms (27.6%)
+- Physics: 3.29ms (20.5%)
+- VSync: 6.15ms (38.4%)
 
 ### Version 1.1 - Pooling (5,000 Asteroids):
 No significant difference in CPU time compared to Version 1.0. It was expected that object instantiation and destruction might have an impact during runtime, but this wasn't evident in the profiler. The only time I found a difference was in the setup of the scene where I spawned in the bulk of the asteroids, where it was a lot faster at populating the scene.
 
 ### Version 1.2 - Jobs/Burst (5,000 Asteroids):
-FixedUpdate: 0.9ms (4.2%)
-Physics: 4.2ms (19.6%)
-VSync: 12.91ms (60.2%)
-Jobs: 0.16ms
+- FixedUpdate: 0.9ms (4.2%)
+- Physics: 4.2ms (19.6%)
+- VSync: 12.91ms (60.2%)
+- Jobs: 0.16ms
 
 ### Analysis
 Surprisingly, there was barely any difference between Versions 1.0 and 1.1. The variance introduced by pooling might be more noticeable on lower-spec machines, although I don't have the means to test that currently. The substantial difference emerged when comparing Version 1.0 and Version 1.2, where the CPU time for movement decreased significantly, dropping from approximately 27.6% to around 4.2%. This reduction is substantial and indicates the remarkable performance benefits of a more data-oriented approach. To optimize my time and resources, I will focus my profiling efforts solely on the pooling and jobs versions when dealing with larger quantities of asteroids.
@@ -43,15 +43,15 @@ Surprisingly, there was barely any difference between Versions 1.0 and 1.1. The 
 ## 10,000 Asteroids
 
 ### Version 1.1 - Pooling (10,000 Asteroids):
-FixedUpdate: 7.65ms (37.5%)
-Physics: 4.56ms (22.4%)
-VSync: 6.39ms (31.3%)
+- FixedUpdate: 7.65ms (37.5%)
+- Physics: 4.56ms (22.4%)
+- VSync: 6.39ms (31.3%)
 
 ### Version 1.2 - Jobs/Burst (10,000 Asteroids):
-FixedUpdate: 0.41ms (3.3%)
-Physics: 5.07ms (40.4%)
-VSync: 5.35ms (41.7%)
-Jobs: 0.38ms
+- FixedUpdate: 0.41ms (3.3%)
+- Physics: 5.07ms (40.4%)
+- VSync: 5.35ms (41.7%)
+- Jobs: 0.38ms
 
 ### Analysis
 The key takeaway from this test is the significant difference in the FixedUpdate section. Version 1.1 experienced a substantial increase in FixedUpdate time, while the Jobs/Burst version maintained very low overall CPU time. The percentage even went down overall as other factors increased by comparison. However, despite these improvements, physics and VSync still remain resource-intensive. Further optimization in these areas could lead to more balanced performance.
@@ -59,14 +59,14 @@ The key takeaway from this test is the significant difference in the FixedUpdate
 ## 15,000 Asteroids
 
 ### Version 1.1 - Pooling (15,000 Asteroids):
-FixedUpdate: 11.93ms + 9.58ms (55.5%)
-Physics: 7.73ms + 7.15ms (38.6%)
+- FixedUpdate: 11.93ms + 9.58ms (55.5%)
+- Physics: 7.73ms + 7.15ms (38.6%)
 
 ### Version 1.2 - Jobs/Burst (15,000 Asteroids):
-FixedUpdate: <1%
-Physics: 7.8ms (46.2%)
-VSync: 6.40ms (67.9%)
-Jobs: 0.47ms
+- FixedUpdate: <1%
+- Physics: 7.8ms (46.2%)
+- VSync: 6.40ms (67.9%)
+- Jobs: 0.47ms
 
 ### Analysis
 A similar pattern emerges with 15,000 asteroids. In Version 1.1, FixedUpdate had to tick twice over each frame as the FPS went down so low. In contrast, it is now so low on the 1.2 version that it barely even makes the charts.
